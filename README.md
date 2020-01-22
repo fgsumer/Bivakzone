@@ -1,2 +1,2 @@
 # BootCamp-Bivakzone
-is web app used to find bivakzones in Belguim 
+is a web app used to find bivakzones in Belguim. 
