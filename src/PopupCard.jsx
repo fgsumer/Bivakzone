@@ -1,10 +1,8 @@
 import React from 'react';
-import {Map as LeafletMap, GeoJSON, Marker, Popup} from 'react-leaflet';
-import bivakzones from './bivakzones.json';
 import { Card, Button } from 'react-bootstrap';
 
 const BivakMap=({bivakzone})=>{
-    console.log(bivakzone)
+
     return (
       <Card>
         <Card.Img className="image" variant="top" src={`${bivakzone.properties.image}`} />
