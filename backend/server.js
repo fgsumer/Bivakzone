@@ -18,9 +18,23 @@ app.get('/', async (req, res)=>{
       }
 });
 
+app.get('/comment/:id', async (req, res)=>{
+  try {
+      const id = req.params.id;
+      const comment = await Comment.find({bivakId: `${id}`});
+      res.json(comment);
+    } catch (error) {
+      res.status(400).json({
+        message: error.message
+      })
+    }
+});
+
 app.post('/comment', async (req, res)=> {
     const {name, message} = req.body;
-    const comment = new Comment ({name, message});
+    const bivakId= req.body.id;
+    const comment = new Comment ({bivakId, name, message});
+    console.log(comment)
 
     try {
         const newComment = await comment.save()
