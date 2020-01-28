@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-const BivakMap=({bivakzone})=>{
+const PopupCard=({bivakzone})=>{
 
     return (
       <Card>
@@ -21,4 +21,4 @@ const BivakMap=({bivakzone})=>{
     )
 };
 
-export default BivakMap;
+export default PopupCard;

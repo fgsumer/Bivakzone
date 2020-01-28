@@ -1,0 +1,85 @@
+{
+    "type": "Feature",
+    "properties": {
+      "@id": "way/222137187",
+      "backcountry": "yes",
+      "bicycle": "yes",
+      "camp_site": "basic",
+      "capacity": "10",
+      "caravans": "no",
+      "description:reservation": "No reservation reqired but compulsary registration in the log book",
+      "drinking_water": "no",
+      "fee": "no",
+      "image": "http://www.bivakzone.be/images/steenberg/steenberg.jpg",
+      "image:1": "http://www.bivakzone.be/images/steenberg/vuurput.jpg",
+      "image:3": "http://www.bivakzone.be/images/steenberg/WC2.jpg",
+      "image:4": "http://www.bivakzone.be/images/steenberg/meerdaalwoud1.jpg",
+      "impromptu": "yes",
+      "landuse": "grass",
+      "maxstay": "48 hours",
+      "maxtents": "3",
+      "motor_vehicle": "no",
+      "name": "Steenberg Meerdaalwoud Oud-Heverlee",
+      "openfire": "yes",
+      "operator": "The Flemish Agency for Nature and Forests and",
+      "reservation": "no",
+      "start_date": "2013-05-06",
+      "tents": "yes",
+      "toilets": "yes",
+      "tourism": "camp_site",
+      "url": "http://www.bivakzone.be/steenberg.html",
+      "website": "https://sites.google.com/site/paalkampeerders/locatiebeschrijvingen/steenberg"
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.6744231,
+            50.8149045
+          ],
+          [
+            4.6746203,
+            50.8149343
+          ],
+          [
+            4.6745482,
+            50.8150662
+          ],
+          [
+            4.6746512,
+            50.8150943
+          ],
+          [
+            4.6745721,
+            50.8151902
+          ],
+          [
+            4.6743314,
+            50.81511
+          ],
+          [
+            4.673774,
+            50.8150585
+          ],
+          [
+            4.6738242,
+            50.8149781
+          ],
+          [
+            4.6739697,
+            50.8149408
+          ],
+          [
+            4.6742447,
+            50.8148985
+          ],
+          [
+            4.6744231,
+            50.8149045
+          ]
+        ]
+      ]
+    },
+    "id": "way/222137187"
+  }
