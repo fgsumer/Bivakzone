@@ -70,41 +70,6 @@ class Map extends React.Component {
             },
           ],
         });
-        /*const buttonStyle = {
-          visibility() this.state.showButton ? 'visible' : 'hidden'  
-            }
-        <ButtonToolbar style={buttonStyle.visibility}>
-          <p>Do you want to allow your ip to be used for location?</p>
-          <Button
-            variant="primary"
-            onClick={e => {
-              this.setState({ allowance: true, showButton: false });
-            }}
-          >
-            Allow
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={e => {
-              this.setState({ allowance: false, showButton: false });
-            }}
-          >
-            Don't Allow
-          </Button>
-        </ButtonToolbar>;
-        */
-
-        /*
-        fetch('https://ipapi.co/json/') //If navigator.geolocation can't get the user's location then we make a get req to this api to get the location
-          .then(res => res.json())
-          .then(location => {
-            //console.log(location);
-            this.setState({
-              location: { lat: location.latitude, lng: location.longitude },
-              haveLocationOfUser: true,
-              zoom: 13,
-            });
-          }); */
       },
     );
   }
