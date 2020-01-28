@@ -5,12 +5,13 @@ import bivakzones from './bivakzones.json';
 import BivakMap from './PopupCard';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import Routing from './components/Routing.jsx';
 
 var myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
-  popupAnchor: [0, -41],
+  popupAnchor: [11, -41],
 });
 
 class Map extends React.Component {
@@ -89,9 +90,10 @@ class Map extends React.Component {
         dragging={true}
         animate={true}
         easeLinearity={0.35}
+        ref={map => (this.map = map)}
       >
         <TileLayer
-          attribution='contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
@@ -119,6 +121,7 @@ class Map extends React.Component {
             </Popup>
           </GeoJSON>
         ))}
+        <Routing coords={{ fromLat, fromLon, toLat, toLon }} itineraryReady={this.initItinerary} />
       </LeafletMap>
     );
   }
