@@ -14,6 +14,7 @@ const BivakMap=()=>{
          x = data.geometry.coordinates[0];
          y = data.geometry.coordinates[1];
     }else {
+      // find average coordinates of the polygon
          x = data.geometry.coordinates[0][0][0];
          y = data.geometry.coordinates[0][0][1];
     }
