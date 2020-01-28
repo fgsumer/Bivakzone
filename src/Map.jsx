@@ -2,7 +2,7 @@ import React from 'react';
 import L from 'leaflet';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaflet';
 import bivakzones from './bivakzones.json';
-import BivakMap from './BivakMap';
+import BivakMap from './PopupCard';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
@@ -126,8 +126,8 @@ class Map extends React.Component {
         easeLinearity={0.35}
       >
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
-            phatplus'
+          attribution='contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
+            phatplus</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {//Adjusting the marker if browser finds the location of the user to show marker, if not then not to show it

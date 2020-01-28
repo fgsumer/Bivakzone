@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Map from './Map';
-import BivakMap from './BivakMap';
+import BivakMap from './PopupCard';
 import { BrowserRouter as Router, Switch, Route /*,Link*/ } from 'react-router-dom';
 
 function App() {
