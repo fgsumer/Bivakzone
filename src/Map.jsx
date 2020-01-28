@@ -2,14 +2,10 @@ import React from 'react';
 import { Map as LeafletMap,GeoJSON, TileLayer, Marker, Popup} from 'react-leaflet';
 import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
+import {Link} from 'react-router-dom';
 import Filter from './filter';
 
 class Map extends React.Component {
-
- componentDidMount(){
-   console.log(Filter())
- }
-
     render() {
       return (
         <LeafletMap
@@ -25,10 +21,28 @@ class Map extends React.Component {
           easeLinearity={0.35}
         >
           <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+          {/* {console.log(bivakzones.features.map((bivakzone)=>{
+           return bivakzone.geometry.coordinates[0]
+          }))} */}
             
-          {   bivakzones.features.map((bivakzone)=>
-                <GeoJSON
-                  data={bivakzone}
+          {   
+          bivakzones.features
+          .map((bivak)=>{
+            if(bivak.geometry.type ==='Polygon'){
+             const firstCoordinate =bivak.geometry.coordinates[0]
+                                   .map((a)=>a[0])
+             const x = firstCoordinate.reduce((c,d)=>c+d, 0)/firstCoordinate.length;
+
+             const secondCoordinate = bivak.geometry.coordinates[0]
+                                      .map((a)=>a[1])
+             const y = secondCoordinate.reduce((c,d)=>c+d, 0)/secondCoordinate.length
+
+                console.log(x, y)
+                bivak.geometry.type ="Point"
+                bivak.geometry.coordinates =[x, y]
+            } 
+               return <GeoJSON
+                  data={bivak}
                   style={() => ({
                     color: '#4a83ec',
                     weight: 0.5,
@@ -39,11 +53,12 @@ class Map extends React.Component {
                   } 
                 >
                   <Popup>
-                    <PopupCard bivakzone={bivakzone} />
-                      <a href="/page1">{bivakzone.properties.name}</a> 
+                    {/* <PopupCard bivakzone={bivakzone} /> */}
+                    <Link to={`bivakzone/${bivak.id}`}>{bivak.properties.name}</Link>
                   </Popup>
-                </GeoJSON>
-              )
+                </GeoJSON>  
+          })
+          
           }
       
         </LeafletMap>
