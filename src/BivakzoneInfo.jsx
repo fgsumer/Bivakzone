@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { Map as LeafletMap, GeoJSON, Marker, Popup } from 'react-leaflet';
 import bivakzones from './bivakzones.json';
@@ -56,3 +57,4 @@ const BivakzoneInfo = ({ bivakzone }) => {
 };
 
 export default BivakzoneInfo;
+*/
