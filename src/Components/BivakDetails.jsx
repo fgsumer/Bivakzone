@@ -13,7 +13,6 @@ const BivakDetails=({bivak})=>{
             <li>opening_hours:{bivak.properties.opening_hours}</li>
             <li>reservation:{bivak.properties.reservation}</li> 
         </ul>
-        <h1>BivakDetails</h1>
     </Container>
     )
 };

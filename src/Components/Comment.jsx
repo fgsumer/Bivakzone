@@ -31,32 +31,32 @@ const Comment = ({bivak}) => {
 
     return (
         <Container>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group>
-                <Form.Label>Name</Form.Label>
-                <Form.Control 
-                    type="text" 
-                    name="name" 
-                    placeholder="your name"
-                    ref={register}
-                    />
-            </Form.Group>
+            {oldComments? <DisplayComment oldComments={oldComments}/>: null}     
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Form.Group>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control 
+                        type="text" 
+                        name="name" 
+                        placeholder="your name"
+                        ref={register}
+                        />
+                </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Comment</Form.Label>
-                <Form.Control 
-                    as="textarea"
-                    row="3" 
-                    name="message" 
-                    placeholder="your comment"
-                    ref={register}
-                    />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
-        {oldComments? <DisplayComment oldComments={oldComments}/>: null}       
+                <Form.Group>
+                    <Form.Label>Comment</Form.Label>
+                    <Form.Control 
+                        as="textarea"
+                        row="3" 
+                        name="message" 
+                        placeholder="your comment"
+                        ref={register}
+                        />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>     
     </Container>
     )
 
