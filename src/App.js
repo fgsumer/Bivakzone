@@ -1,22 +1,12 @@
 import React from 'react';
 import './App.css';
-import Map from './Map';
-import BivakMap from './PopupCard';
-import { BrowserRouter as Router, Switch, Route /*,Link*/ } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css'
+import Layout from './Components/Layout';
 
 function App() {
   return (
-    <div className="leaflet-container">
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <Map />
-          </Route>
-          <Route path="/page1" exact>
-            <BivakMap />
-          </Route>
-        </Switch>
-      </Router>
+    <div>
+      <Layout />
     </div>
   );
 }
