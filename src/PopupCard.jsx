@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 const PopupCard=({bivakzone})=>{
-
     return (
       <Card>
         <Card.Img className="image" variant="top" src={`${bivakzone.properties.image}`} />
