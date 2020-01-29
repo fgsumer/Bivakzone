@@ -9,12 +9,8 @@ import Menu from './Menu';
 import Map from '../Map';
 import BivakMap from './BivakMap';
 import Bivakzone from './Bivakzone';
-import { useParams } from 'react-router-dom';
-import bivakzones from '../bivakzones.json'
 
 const Layout =()=>{
-    const node = `node`;
-    const way = `way`
     return(
         <Router>
             <Row>
@@ -22,7 +18,7 @@ const Layout =()=>{
             </Row>
             <Row>
             <Switch>
-                <Route exact path="/home">
+                <Route exact path="/">
                 <Col lg={12} ><Map /></Col>
                 </Route>
                 <Route path={`/bivakzone/way/:id`} exact>
