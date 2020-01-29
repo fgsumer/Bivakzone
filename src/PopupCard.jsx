@@ -1,8 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-const BivakMap=({bivakzone})=>{
-
+const PopupCard=({bivakzone})=>{
     return (
       <Card>
         <Card.Img className="image" variant="top" src={`${bivakzone.properties.image}`} />
@@ -21,4 +20,4 @@ const BivakMap=({bivakzone})=>{
     )
 };
 
-export default BivakMap;
+export default PopupCard;
