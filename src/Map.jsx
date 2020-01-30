@@ -5,8 +5,6 @@ import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from './filter';
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
 var myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
@@ -36,9 +34,7 @@ class Map extends React.Component {
         });
       },
       () => {
-        console.log("Couldn't get the location from the browser");
         this.setState({
-          //showButton: true,
           location: { lat: 50.85, lng: 4.48 },
           haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
           zoom: 10,
