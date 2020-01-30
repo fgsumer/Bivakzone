@@ -5,10 +5,8 @@ import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from './filter';
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
-var myIcon = L.icon({
+const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
@@ -31,7 +29,7 @@ class Map extends React.Component {
       position => {
         this.setState({
           location: { lat: position.coords.latitude, lng: position.coords.longitude },
-          haveLocationOfUser: true, //when it finds the location of the user, then it sets the state' haveLocationOfUser value as true
+          haveLocationOfUser: true, //when it finds the location of the user, then it sets the haveLocationOfUser value as true
           zoom: 13,
         });
       },

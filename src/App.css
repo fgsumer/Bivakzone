@@ -1,7 +1,23 @@
 /* For mobile phones: */
+.map-page {
+  overflow-x: hidden;
+  position: relative;
+}
+
 .leaflet-container {
   width: 100%;
   height: 500px;
+  position: fixed;
+  visibility: visible;
+}
+
+.bivakzone {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  visibility: visible;
 }
 
 .markerIcon {
@@ -22,7 +38,6 @@
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   .leaflet-container {
-    position: fixed;
     padding: 0;
     margin: 0;
 
