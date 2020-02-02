@@ -1,45 +1,39 @@
-import React,{useState} from 'react';
-import Bivakzones from '../bivakzones.json';
-import '../App.css';
-import {Modal, Button} from 'react-bootstrap';
+import React,{Component} from 'react'
+ import { Drawer, Button } from 'antd'
+ class BivakzoneModal extends Component {
+   constructor(props){
+    super(props)
+     this.state= {
+   show: this.props.showModal
+   }
 
-
-const BivakzoneModal = (props) => {
-    console.log(props)
-  
-    const [show, setShow] = useState(props.showModal);
-
-    return (
-      <>
-        {/* <Button variant="primary" onClick={() => setShow(!props.showModal)}>
-          Custom Width Modal
-        </Button>
-   */}
-        <Modal
-          show={show}
-          onHide={() => setShow(false)}
-          dialogClassName="modal-90w"
-          aria-labelledby="example-custom-modal-styling-title"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-              Custom Modal Styling
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>
-              Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde
-              commodi aspernatur enim, consectetur. Cumque deleniti temporibus
-              ipsam atque a dolores quisquam quisquam adipisci possimus
-              laboriosam. Quibusdam facilis doloribus debitis! Sit quasi quod
-              accusamus eos quod. Ab quos consequuntur eaque quo rem! Mollitia
-              reiciendis porro quo magni incidunt dolore amet atque facilis ipsum
-              deleniti rem!
-            </p>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
+ }
+  componentDidMount(){
+ 
   }
+ handleOnShow=()=>{
+   this.setState({
+     show: !this.state.show
+   }, ()=>console.log("state: " + this.state.show ,"props :" + this.props.showModal))
+   this.props.modalState(this.state.show)
+  
+ }
+ 
+render(){
+  
+  return(
+      <div>
+    <button onClick={this.handleOnShow}>X</button>
+    
+    <div  style={this.state.show ? {position:"fixed", zIndex:"1", width:"30%", height:"90%"}:{display:"none"}}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus nam, natus ea iure nihil debitis corrupti impedit nobis soluta obcaecati, fugit vel ex nemo deserunt porro? Fuga voluptates excepturi laboriosam!</div>
+    </div>
 
-  export default BivakzoneModal;
+   
+      )
+  }
+  
+}
+  
+
+
+export default BivakzoneModal;

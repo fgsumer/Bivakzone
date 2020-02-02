@@ -10,6 +10,8 @@ import { render } from '@testing-library/react';
 import Map from '../Map';
 import BivakzoneModal from '../components/BivakzoneModal'
 import Bivakzones from '../bivakzones.json'
+import MainContainer from '../MainContainer'
+
 
 
   class Routers extends Component{
@@ -24,13 +26,16 @@ import Bivakzones from '../bivakzones.json'
 
         render(){
             return(
-                <Router>
+               
+                   <Router>
                 <Switch>
                   <Route exact path={["/", "/home"]} component= {Map}/>
                   <Route path={["/home/node/:bivakzoneId","/home/way/:bivakzoneId" ]} exact component = {BivakzoneModal} />
                   
                 </Switch>
               </Router>
+            
+               
             )
         }
   }
