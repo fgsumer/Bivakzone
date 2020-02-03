@@ -10,7 +10,25 @@
   opacity: 0.3;
   stroke-width: 0.5;
 }
-
-.image {
-  width: 100%;
+.errors{
+  font-size: small;
+  color: red;
 }
+.name{
+  color:#0275d8;
+  font-weight: bolder;
+  font-size:larger;
+}
+.date{
+  color:gray;
+  font-size: x-small;
+  font-weight: bolder;
+}
+.message{
+  font-family:'Times New Roman', Times, serif;
+  font-size: large;
+}
+.image-button{
+  width: 20px;
+  height: 10px;
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container} from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 const BivakDetails=({bivak})=>{
@@ -13,7 +13,6 @@ const BivakDetails=({bivak})=>{
             <li>opening_hours:{bivak.properties.opening_hours}</li>
             <li>reservation:{bivak.properties.reservation}</li> 
         </ul>
-        <h1>BivakDetails</h1>
     </Container>
     )
 };

@@ -5,15 +5,14 @@ import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaf
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from './Header/Filter';
+import Filter from './filter';
 
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 var myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
-  popupAnchor: [0, -41],
+  popupAnchor: [11, -41],
 });
 
 class Map extends React.Component {
@@ -42,41 +41,11 @@ class Map extends React.Component {
         });
       },
       () => {
-        console.log("Couldn't get the location from the browser");
         this.setState({
-          showButton: true,
-        });
-        confirmAlert({
-          title: 'Do you allow your IP to be used for determining the location?',
-          buttons: [
-            {
-              label: 'Yes',
-              onClick: () => {
-                fetch('https://ipapi.co/json/') //If navigator.geolocation can't get the user's location then we make a get req to this api to get the location
-                  .then(res => res.json())
-                  .then(location => {
-                    //console.log(location);
-                    this.setState({
-                      location: { lat: 51, lng: 5 },
-                      haveLocationOfUser: true,
-                      zoom: 13,
-                    });
-                  });
-              },
-            },
-            {
-              label: 'No',
-              onClick: () => {
-                this.setState({
-                  location: { lat: 50.85, lng: 4.48 },
-                  haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
-                  zoom: 10,
-                  allowance: false,
-                  showButton: false,
-                });
-              },
-            },
-          ],
+          location: { lat: 50.85, lng: 4.48 },
+          haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
+          zoom: 10,
+          allowance: false,
         });
       },
     );
