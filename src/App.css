@@ -8,10 +8,13 @@
 }
 .leaflet-container {
     margin:0;
-    height: 100vw;
-    width: 100vw;
+    height: 1000px;
+    width: 1000px;
     position: absolute;
     z-index: -1;
+    overflow: hidden;
+  
+  
 
   
 }
@@ -122,4 +125,4 @@
   width: 20px;
   height: 10px;
 
-
+}

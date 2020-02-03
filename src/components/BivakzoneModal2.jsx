@@ -27,13 +27,13 @@ export default class  extends Component {
     return (
 <>
   
-     <div style={this.props.style}>
+     <div  style={this.props.style}>
       
       { this.props.bivakzone && 
          (
            <>
            {console.log(this.props.bivakzone.properties)}
-        <Row tyle={{height:"50%"}}>
+        <Row  style={{height:"50%"}}>
         <Card 
          bivakzone= {this.props.bivakzone}
           style={{ width:"100%", height:"100%", border:"1xp soldi red", overflow:"hidden" }}
@@ -43,11 +43,11 @@ export default class  extends Component {
         >   
         </Card>
      </Row>
-     <Row style={{height:"max-content"}}>
-       <p style={{border:"1px solid black", height:"100px", backgroundColor:"red",padding:"2rem",  width:"100%", overflow:"hidden", height:"50%"}}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, dolor corporis perferendis reiciendis porro provident excepturi ex velit, id quidem maxime praesentium exercitationem voluptates in cumque! Pariatur earum fuga nobis?</p>
+     <Row style={{height:"40%"}}>
+       <p style={{marginTop:"2rem" ,marginLeft:".5rem",marginRight:".5rem", textAlign:"center", height:"100px",  width:"100%", height:"50%", borderRight:"1px solid blue"}}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, dolor corporis perferendis reiciendis porro provident excepturi ex velit, id quidem maxime praesentium exercitationem voluptates in cumque! Pariatur earum fuga nobis?</p>
      </Row>
       
-      <Row  style={{height:"max-content"}}>
+      <Row  style={{height:"max-content",borderTop:"1px solid blue"}}>
         <Footer properties={this.props.bivakzone.properties}></Footer>
       </Row>
        

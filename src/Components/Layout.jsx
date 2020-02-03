@@ -6,18 +6,18 @@ import Map from '../Map';
 import BivakMap from './BivakMap';
 import Bivakzone from './Bivakzone';
 import LanguageToggle from './LanguageToggle';
+import bivakzones from '../bivakzones.json'
 
-const Layout =()=>{
+const Layout =(props)=>{
+ 
     return(
         <Router>
             <Row>
                 <Col lg={12}><Menu /> </Col>
             </Row>
-            <Row>
             <Switch>
-                <Route exact path="/">
-                <Col lg={12} ><Map /></Col>
-                </Route>
+                <Route exact path="/" render= {(props)=><Map {...props} bivakzones={bivakzones.features}/>}/>
+                
                 <Route path={`/bivakzone/way/:id`} exact>
                     <Col lg={6} ><BivakMap /></Col>
                     <Col lg={6} ><Bivakzone  /></Col>
@@ -27,8 +27,8 @@ const Layout =()=>{
                     <Col lg={6} ><Bivakzone  /></Col>
                 </Route>
             </Switch>
-            </Row>
         </Router>
   )
+}
 
 export default Layout;

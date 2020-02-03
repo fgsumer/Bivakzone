@@ -1,6 +1,6 @@
 import React from 'react';
 import L from 'leaflet';
-import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
 import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
@@ -35,6 +35,8 @@ class Map extends React.Component {
       bivakzones: props.bivakzones,
       showModal:false,
       arrowDirection: false,
+      clicks:0,
+      bivakzone:null
     };
     console.log(this.state.bivakzones);
   }
@@ -52,15 +54,16 @@ class Map extends React.Component {
  }
  
  handleOnClick= (e)=>{
-   this.setState(
-     {
-     showModal: !this.state.showModal,
-     bivakzone: e.sourceTarget.feature
-     }
-   )
-  //  this.context= false;
-   console.log(e.sourceTarget)
-   console.log(this.state.showModal)
+  const prevBivId= this.state.bivakzone;
+   
+   {((e.sourceTarget.feature === prevBivId  )  ? this.setState({showModal:!this.state.showModal, bivakzone: null}) : this.setState({showModal: false,clicks: this.state.clicks + 1,bivakzone: e.sourceTarget.feature}))}
+   
+  //  this.setState({
+  //   bivakzone: e.sourceTarget.feature
+  // })
+   //  this.context= false;
+   console.log((prevBivId === e.sourceTarget.feature)  )
+   console.log(this.state.clicks)
   //  this.child.showModal()
   }
   handlArrowClick=()=>{
@@ -122,8 +125,8 @@ class Map extends React.Component {
 
   render() {
       const showStyle={
-        width:"25vw",
-        height:"60vw",
+        width:"30%",
+        height:"70%",
         background:"white",
         transition:"width 1s ease-in-out",
         overflow:"hidden",
@@ -131,7 +134,9 @@ class Map extends React.Component {
         zIndex:"1",
         border:"1 solid black",
         boxShadow:"2px 2px  rgba(0,0,0,0.5)",
-        display:"block"
+        display:"block",
+        marginLeft:"10px"
+       
       }
       const hideStyle={
         width:"0px",
@@ -140,7 +145,9 @@ class Map extends React.Component {
         transition:"width 1s ease-in-out",
         overflow:"hidden",
         float:"left",
-        zIndex:"1"
+        zIndex:"1",
+        marginLeft:"10px"
+       
       }
         let modal;
         const rightArrow = <Icon  type="right" />;
@@ -171,20 +178,22 @@ class Map extends React.Component {
         <button style={{float:"left", zIndex:"1", height:"3rem", color:"blue"}} onClick={this.handlArrowClick} className="exp_btn" >
         {this.state.arrowDirection ? leftArrow:rightArrow}
         </button>
-        <Filter callBack={this.showBivakzones}></Filter>
+        {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
+       
         <LeafletMap
           className="leaflet-container"
           center={position}
           zoom={this.state.zoom}
           maxZoom={19}
           attributionControl={true}
-          zoomControl={true}
+          zoomControl={false}
           doubleClickZoom={true}
           scrollWheelZoom={true}
           dragging={true}
           animate={true}
           easeLinearity={0.35}
         >
+          <ZoomControl position="bottomright"></ZoomControl>
           <TileLayer
             attribution='contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>'
@@ -240,6 +249,7 @@ class Map extends React.Component {
             );
           })}
         </LeafletMap>
+        
       </>
     )
   }

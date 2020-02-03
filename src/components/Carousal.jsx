@@ -40,9 +40,9 @@ export default (props)=>{
         
 
     {imgsURL.map(url=> 
-        <Carousel.Item style={{width:"100%",height:"100%", overflow:"hidden"}}>
+        <Carousel.Item style={{width:"100%",height:"200px", overflow:"hidden"}}>
                 <img 
-                    style={{overflow:"hidden", backgroundSize: "cover"}}
+                    // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
                     className="d-block w-100 h-100"
                     src={url}
                     alt={url.index + 1}
