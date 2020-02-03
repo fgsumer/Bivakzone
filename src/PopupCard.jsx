@@ -1,18 +1,17 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
-const PopupCard=({bivakzone})=>{
+const PopupCard=({bivak})=>{
     return (
       <Card>
-        <Card.Img className="image" variant="top" src={`${bivakzone.properties.image}`} />
         <Card.Body>
-        <Card.Title>{bivakzone.properties.name}</Card.Title>
+        <Card.Title>{bivak.properties.name}</Card.Title>
         <Card.Text>
           <ul>
-            <li>operator:{bivakzone.properties.operator}</li>
-            <li>openfire:{bivakzone.properties.openfire}</li>
-            <li>opening_hours:{bivakzone.properties.opening_hours}</li>
-            <li>reservation:{bivakzone.properties.reservation}</li>
+            <li>operator:{bivak.properties.operator}</li>
+            <li>openfire:{bivak.properties.openfire}</li>
+            <li>opening_hours:{bivak.properties.opening_hours}</li>
+            <li>reservation:{bivak.properties.reservation}</li>
           </ul>
         </Card.Text>
       </Card.Body>
