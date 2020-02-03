@@ -92,6 +92,7 @@ class Map extends React.Component {
               const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
               const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
+
               const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
               const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
 
@@ -117,6 +118,7 @@ class Map extends React.Component {
           })}
         </LeafletMap>
       </>
+
     );
   }
 }
