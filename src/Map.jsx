@@ -7,9 +7,9 @@ import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from './Header/Filter';
-import Filter from './filter';
 
-var myIcon = L.icon({
+
+const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
@@ -90,6 +90,7 @@ class Map extends React.Component {
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
+            phatplus</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {//Adjusting the marker if browser finds the location of the user to show marker, if not then not to show it
