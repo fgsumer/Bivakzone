@@ -1,10 +1,6 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-  } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Menu from './Menu';
 import Map from '../Map';
 import BivakMap from './BivakMap';
@@ -33,6 +29,5 @@ const Layout =()=>{
             </Row>
         </Router>
   )
-};
 
 export default Layout;
