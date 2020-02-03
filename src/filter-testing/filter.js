@@ -1,63 +1,58 @@
-module.exports = (Bivakzones, filters) => {
-    
+export default (Bivakzones, filters) => {
+  const { openfire, bicycle, toilets, fee, reservation, drinking_water, dog } = filters;
 
-
-const {openfire, bicycle, toilets, fee, motor_vehicle}= filters;
-
-
-let result= Bivakzones.features;
+  let result = Bivakzones.features;
 
   if (openfire) {
-
-    result = Bivakzones.features.filter(Bivakzone => Bivakzone.properties["openfire"] === openfire);
-    
+    result = result.filter(Bivakzone => Bivakzone.properties['openfire'] === 'yes');
   }
-  
+
   if (bicycle) {
-
-    result = Bivakzones.features.filter(Bivakzone => Bivakzone.properties["bicycle"] === bicycle);
-   
+    result = result.filter(Bivakzone => Bivakzone.properties['bicycle'] === 'yes');
   }
-  
 
   if (toilets) {
-    
-    result = Bivakzones.features.filter(Bivakzone => Bivakzone.properties["toilets"] === toilets);
-  
+    result = result.filter(Bivakzone => Bivakzone.properties['toilets'] === 'yes');
   }
-    
 
   if (fee) {
-
-    result = Bivakzones.features.filter(Bivakzone => Bivakzone.properties["fee"] === fee);
-    
-  } 
-
-  if (motor_vehicle) {
-    
-    result = Bivakzones.features.filter(Bivakzone => Bivakzone.properties["motor_vehicle"] === motor_vehicle);
-    
+    result = result.filter(Bivakzone => Bivakzone.properties['fee'] === 'yes');
   }
 
+  if (drinking_water) {
+    result = result.filter(Bivakzone => Bivakzone.properties['drinking_water'] === 'yes');
+  }
+  if (reservation) {
+    result = result.filter(Bivakzone => Bivakzone.properties['reservation'] === 'yes');
+  }
+  if (dog) {
+    result = result.filter(
+      Bivakzone =>
+        Bivakzone.properties['dog'] === 'yes' || Bivakzone.properties['dog'] === 'leashed',
+    );
+  }
+  console.log(
+    result.map(b => {
+      console.log(b.properties);
+    }),
+  );
   return result;
+};
 
-}
-    
+//   const keys = Object.keys(filters)
+//   const values= Object.values(filters)
 
-  //   const keys = Object.keys(filters)
-  //   const values= Object.values(filters)
-        
-  // console.log(keys)
-  // console.log(values)
+// console.log(keys)
+// console.log(values)
 
-  //   return Bivakzones.features
-  //   .filter((bivakzone) =>
-  //     {for (var i = 0 ; i < keys.length; i++){
-  //     bivakzone.properties[keys[i]] == values[i]
-    
-  //       }
-  //     }
-  //       ) 
-  //   }
+//   return Bivakzones.features
+//   .filter((bivakzone) =>
+//     {for (var i = 0 ; i < keys.length; i++){
+//     bivakzone.properties[keys[i]] == values[i]
+
+//       }
+//     }
+//       )
+//   }
 // the obove for loop should automate the folloing filter callback:
 //Bivakzones.features.filter(bivakzone => bivakzone.properties[key1] == 'yes', key2 == 'yes')

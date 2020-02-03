@@ -1,24 +1,22 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
-const BivakMap=({bivakzone})=>{
-
+const PopupCard=({bivak})=>{
     return (
       <Card>
-        <Card.Img className="image" variant="top" src={`${bivakzone.properties.image}`} />
         <Card.Body>
-        <Card.Title>{bivakzone.properties.name}</Card.Title>
+        <Card.Title>{bivak.properties.name}</Card.Title>
         <Card.Text>
-            <ul>
-                <li>operator:{bivakzone.properties.operator}</li>
-                <li>openfire:{bivakzone.properties.openfire}</li>
-                <li>opening_hours:{bivakzone.properties.opening_hours}</li>
-                <li>reservation:{bivakzone.properties.reservation}</li>
-            </ul>
+          <ul>
+            <li>operator:{bivak.properties.operator}</li>
+            <li>openfire:{bivak.properties.openfire}</li>
+            <li>opening_hours:{bivak.properties.opening_hours}</li>
+            <li>reservation:{bivak.properties.reservation}</li>
+          </ul>
         </Card.Text>
-        </Card.Body>
+      </Card.Body>
     </Card>
-    )
+  );
 };
 
-export default BivakMap;
+export default PopupCard;
