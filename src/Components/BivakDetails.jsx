@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container} from 'react-bootstrap';
 import {Translate} from 'react-localize-redux';
+import { Container, Button } from 'react-bootstrap';
 
 const BivakDetails=({bivak})=>{
     if (bivak.geometry.type === 'Polygon') {

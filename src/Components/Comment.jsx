@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Comment = ({bivak}) => {
     const id = bivak.id;
     const [oldComments, setOldComments]=useState(null)
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const [newComment, setNewComment]=useState(oldComments);
 
     const LinkWithText = () => (
@@ -51,8 +51,9 @@ const Comment = ({bivak}) => {
                         type="text" 
                         name="name" 
                         placeholder="your name"
-                        ref={register}
+                        ref={register({required:true})}
                         />
+                        {errors.name && <span className="errors">Name is required</span>}
                 </Form.Group>
 
                 <Form.Group>
@@ -62,8 +63,9 @@ const Comment = ({bivak}) => {
                         row="3" 
                         name="message" 
                         placeholder="your comment"
-                        ref={register}
+                        ref={register({required:true})}
                         />
+                        {errors.message && <span className="errors">Comment is required</span>}
                 </Form.Group>
                 <Button variant="primary" type="submit">
                    <Translate id="comment.submit">Submit</Translate>
