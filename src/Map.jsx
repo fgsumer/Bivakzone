@@ -1,12 +1,10 @@
 import React from 'react';
 import L from 'leaflet';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaflet';
+import Control from 'react-leaflet-control';
 import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
-import Filter from './filter';
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
 var myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
@@ -21,18 +19,18 @@ class Map extends React.Component {
     location: { lat: 51, lng: 5 },
     haveLocationOfUser: false,
     zoom: 3,
+    showLocation: false,
     allowance: false,
     //showButton: false,
   };
 
-  componentDidMount() {
-    //setting state to get the user's current location from position
-    navigator.geolocation.getCurrentPosition(
+  currentLocation = () => {
+    return navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
           location: { lat: position.coords.latitude, lng: position.coords.longitude },
           haveLocationOfUser: true, //when it finds the location of the user, then it sets the state' haveLocationOfUser value as true
-          zoom: 13,
+          zoom: 11,
         });
       },
       () => {
@@ -46,6 +44,17 @@ class Map extends React.Component {
         });
       },
     );
+  };
+
+  componentDidMount() {
+    if (!this.state.showLocation) {
+      this.setState({
+        location: { lat: 50.6, lng: 4.41 },
+        haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
+        zoom: 10,
+        allowance: false,
+      });
+    }
   }
 
   render() {
@@ -57,7 +66,9 @@ class Map extends React.Component {
         zoom={this.state.zoom}
         maxZoom={19}
         attributionControl={true}
-        zoomControl={true}
+        zoomControl={L.control.zoom({
+          position: 'bottomright',
+        })}
         doubleClickZoom={true}
         scrollWheelZoom={true}
         dragging={true}
@@ -107,6 +118,39 @@ class Map extends React.Component {
             </GeoJSON>
           );
         })}
+        <Control key={this.state.showLocation} position="topright">
+          {/* Control is used to control a component's position on map */}
+          <button
+            onClick={() => {
+              this.setState({ showLocation: true });
+              this.currentLocation();
+
+              /*
+              navigator.geolocation.getCurrentPosition(
+                position => {
+                  this.setState({
+                    location: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    haveLocationOfUser: true, //when it finds the location of the user, then it sets the state' haveLocationOfUser value as true
+                    zoom: 13,
+                  });
+                },
+                () => {
+                  console.log("Couldn't get the location from the browser");
+                  this.setState({
+                    //showButton: true,
+                    location: { lat: 50.85, lng: 4.48 },
+                    haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
+                    zoom: 10,
+                    allowance: false,
+                  });
+                },
+              );
+              */
+            }}
+          >
+            Show my location
+          </button>
+        </Control>
       </LeafletMap>
     );
   }
