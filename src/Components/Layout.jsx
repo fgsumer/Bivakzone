@@ -9,6 +9,7 @@ import Menu from './Menu';
 import Map from '../Map';
 import BivakMap from './BivakMap';
 import Bivakzone from './Bivakzone';
+import LanguageToggle from './LanguageToggle';
 
 const Layout =()=>{
     return(

@@ -1,0 +1,20 @@
+{
+    "menu": {
+      "title": ["Bivouac Zone", "Bivakzone", "Zone De Bivouac"]
+    },
+        
+   "properties" :{
+          "fire": ["Openfire","Haardvuur", "Tirer" ],
+          "operator": ["Operator", "Operator", "Opérateur"]
+        },
+
+    "comment":{
+      "name":["Name", "Naam","Nom"],
+      "message":["Comment", "Commentaar", "Ommentaire"],
+      "submit":["Submit", "Voorleggen", "Soumettre"]
+    },
+
+      "link": "Click ${ nav }!",
+      "here": "here"
+    
+  }

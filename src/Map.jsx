@@ -85,8 +85,7 @@ class Map extends React.Component {
 
             const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
             const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
-
-            console.log(x, y);
+            
             bivak.geometry.type = 'Point';
             bivak.geometry.coordinates = [x, y];
           }
@@ -101,7 +100,7 @@ class Map extends React.Component {
               })}
             >
               <Popup>
-                {/* <PopupCard bivakzone={bivakzone} /> */}
+                <PopupCard bivak={bivak} />
                 <Link to={`/bivakzone/${bivak.id}`}>{bivak.properties.name}</Link>
               </Popup>
             </GeoJSON>

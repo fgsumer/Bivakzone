@@ -3,12 +3,24 @@ import axios from 'axios';
 import { Button, Form, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import DisplayComment from './DisplayComment';
+import {Translate} from 'react-localize-redux';
+import { Link } from "react-router-dom";
+
+
 
 const Comment = ({bivak}) => {
     const id = bivak.id;
     const [oldComments, setOldComments]=useState(null)
     const { register, handleSubmit } = useForm();
     const [newComment, setNewComment]=useState(oldComments);
+
+    const LinkWithText = () => (
+        <Link to="/">
+          <Translate id="here" />
+        </Link>
+      );
+
+      
     
     useEffect(()=>{
         axios.get(`http://localhost:8000/comment/${id.replace("/", "%2F")}`)
@@ -34,7 +46,7 @@ const Comment = ({bivak}) => {
             {oldComments? <DisplayComment oldComments={oldComments}/>: null}     
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label><Translate id="comment.name">Name</Translate></Form.Label>
                     <Form.Control 
                         type="text" 
                         name="name" 
@@ -44,7 +56,7 @@ const Comment = ({bivak}) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Comment</Form.Label>
+                    <Form.Label><Translate id="comment.message">Comment</Translate></Form.Label>
                     <Form.Control 
                         as="textarea"
                         row="3" 
@@ -54,9 +66,9 @@ const Comment = ({bivak}) => {
                         />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                   <Translate id="comment.submit">Submit</Translate>
                 </Button>
-            </Form>     
+            </Form>   
     </Container>
     )
 
