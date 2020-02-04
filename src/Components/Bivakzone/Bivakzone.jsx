@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container} from 'react-bootstrap';
-import Comment from './Comment';
+import Comment from './CommentForm';
 import BivakDetails from './BivakDetails';
 import { useParams } from 'react-router-dom';
-import bivakzones from '../bivakzones.json'
+import bivakzones from '../../bivakzones.json'
 
 const Bivakzone=()=>{
     const {id}  = useParams();

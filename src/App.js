@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Layout from './components/Layout';
 import {LocalizeProvider} from 'react-localize-redux'

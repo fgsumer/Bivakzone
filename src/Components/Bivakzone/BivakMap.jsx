@@ -2,9 +2,9 @@ import React , { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Map as LeafletMap,GeoJSON, TileLayer, Marker, Popup} from 'react-leaflet';
 import { useParams } from 'react-router-dom';
-import bivakzones from '../bivakzones.json';
+import bivakzones from '../../bivakzones.json';
 import Control from 'react-leaflet-control';
-import ImageComponent from './ImageComponent.jsx';
+import ImageComponent from '../Bivakzone/ImageComponent';
 
 const BivakMap=()=>{
     const {id}  = useParams();

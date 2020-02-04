@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../App.css'
+import '../../App.css'
 import { Card,Row } from 'antd';
 import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'

@@ -1,15 +1,15 @@
 import React from 'react';
 import L from 'leaflet';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
-import bivakzones from './bivakzones.json';
+import bivakzones from '../../bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
-import Filter from './Header/Filter';
+import Filter from '../Header/Filter';
 import { Handler } from 'leaflet';
 import {Modal} from 'react-bootstrap';
-import BivakzoneModal from './components/BivakzoneModal2';
-import './App.css';
-import {ShowModalContext} from './utils/Context'
+import BivakzoneModal from '../Modal/BivakzoneModal2';
+import '../../App.css';
+import {ShowModalContext} from '../../utils/Context'
 import {Icon} from 'antd'
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';

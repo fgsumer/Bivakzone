@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Checkbox } from 'antd';
-import Bivakzones from '../bivakzones.json';
-import FilterFunc from '../filter-testing/filter';
+import Bivakzones from '../../bivakzones.json';
+import FilterFunc from '../../filter-testing/filter';
 import './header.css';
 
 const { SubMenu } = Menu;
