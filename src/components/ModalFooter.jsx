@@ -8,12 +8,12 @@ export default ({properties})=>{
     const availableStyle={
         width:"10%",
         border:"1px solid blue",
-        backgroundColor:"rgb(126, 255, 5)"
+        backgroundColor:"rgb(47, 155, 255)"
     }
    const unavailableStyle={
        width:"10%",
        opacity:"0.1",
-       border:"1px solid blue"
+       border:"1px solid rgb(47, 155, 255)"
    }
 
 
