@@ -1,8 +1,77 @@
-/* For mobile phones: */
-.leaflet-container {
-  width: 100%;
-  height: 500px;
+
+#root .root{
+    margin: 0;
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: red; */
 }
+.leaflet-container {
+    margin:0;
+    height: 1000px;
+    width: 1000px;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    
+  
+  
+
+  
+}
+.side_panel{
+    
+    width:400px;
+    height: 300px;
+    border: 1xp solid black;
+    position: fixed;
+    background-color: yellow;
+    z-index: 2;
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    position: absolute;
+}
+.exp_btn{
+    
+    height: 2rem;
+    width: 2rem;
+    /* position: relative; */
+    float: left;
+    
+}
+   #modal {
+    width:1px;
+    height:200px;
+    background:darkgoldenrod;
+    transition: width 2s;
+    /* -webkit-transition:2s;
+    -moz-transition:2s; */
+    /* position: absolute; */
+    /* right:calc(100% - 100px); */
+    overflow: hidden;
+    float: left;
+   
+    /* z-index: 2000;  */
+   } 
+
+ #modal_on_click{
+         width: 400px;
+         height:200px;
+         background:darkgoldenrod;
+         transition: width 1s ease-in-out;
+         overflow: hidden;
+         float: left;
+       
+        
+   }
+  
+  
+.image {
+    width: 100%;
+}
+/* For mobile phones: */
+
 
 .markerIcon {
   fill: #b52808;
@@ -57,4 +126,3 @@
   width: 20px;
   height: 10px;
 }
-
