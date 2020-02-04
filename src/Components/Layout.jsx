@@ -18,6 +18,7 @@ const Layout =(props)=>{
             <Switch>
                 <Route exact path="/" render= {(props)=><Map {...props} bivakzones={bivakzones.features}/>}/>
                 
+
                 <Route path={`/bivakzone/way/:id`} exact>
                     <Col lg={6} ><BivakMap /></Col>
                     <Col lg={6} ><Bivakzone  /></Col>

@@ -1,6 +1,7 @@
 import React from 'react';
 import L from 'leaflet';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
+import Control from 'react-leaflet-control';
 import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
@@ -11,11 +12,8 @@ import BivakzoneModal from './components/BivakzoneModal2';
 import './App.css';
 import {ShowModalContext} from './utils/Context'
 import {Icon} from 'antd'
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
-
-var myIcon = L.icon({
+const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
@@ -23,14 +21,15 @@ var myIcon = L.icon({
 });
 
 class Map extends React.Component {
-  //defining state to keep track of the location
   constructor(props) {
     super(props);
+      //defining state to keep track of the location
     this.state = {
       location: { lat: 51, lng: 5 },
       haveLocationOfUser: false,
       zoom: 3,
       allowance: false,
+      showLocation: false,
       showButton: false,
       bivakzones: props.bivakzones,
       showModal:false,
@@ -41,13 +40,11 @@ class Map extends React.Component {
     console.log(this.state.bivakzones);
   }
   
-  // eslint-disable-next-line no-useless-constructor
-  
+  // eslint-disable-next-line no-useless-constructor  
  
  showModalFunc=(modalState)=>{
    this.setState(
-     {
-     
+     {     
      showModal: modalState
      }
    )
@@ -73,38 +70,21 @@ class Map extends React.Component {
     },()=>{console.log(this.state.arrowDirection)})
   }
 
- handleOnClose= ()=>{
+  handleOnClose= ()=>{
   this.setState({
     ...this.state,
     showModal: !this.state.showModal
   })
  
-}
+  }
 
-
-
-
-    
-      
-      
-            
-                  
-                 
-              
-             
-
-
-
-
-
-  componentDidMount() {
-    //setting state to get the user's current location from position
-    navigator.geolocation.getCurrentPosition(
+  currentLocation = () => {
+    return navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
           location: { lat: position.coords.latitude, lng: position.coords.longitude },
           haveLocationOfUser: true, //when it finds the location of the user, then it sets the state' haveLocationOfUser value as true
-          zoom: 13,
+          zoom: 11,
         });
       },
       () => {
@@ -116,6 +96,17 @@ class Map extends React.Component {
         });
       },
     );
+  };
+
+  componentDidMount() {
+    if (!this.state.showLocation) {
+      this.setState({
+        location: { lat: 50.6, lng: 4.41 },
+        haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
+        zoom: 10,
+        allowance: false,
+      });
+    }
   }
   showBivakzones = a => {
     this.setState({
@@ -135,9 +126,9 @@ class Map extends React.Component {
         border:"1 solid black",
         boxShadow:"2px 2px  rgba(0,0,0,0.5)",
         display:"block",
-        marginLeft:"10px"
-       
+        marginLeft:"10px"       
       }
+      
       const hideStyle={
         width:"0px",
         height:"200px",
@@ -146,17 +137,16 @@ class Map extends React.Component {
         overflow:"hidden",
         float:"left",
         zIndex:"1",
-        marginLeft:"10px"
-       
+        marginLeft:"10px"       
       }
-        let modal;
-        const rightArrow = <Icon  type="right" />;
-     const leftArrow =<Icon  type="left" />
-    // if (this.state.showModal){
-    //     return  
-    //     }
-        modal= 
-       
+      
+      let modal;
+      const rightArrow = <Icon  type="right" />;
+      const leftArrow =<Icon  type="left" />
+      // if (this.state.showModal){
+      //     return  
+      //     }
+      modal=        
         <BivakzoneModal  
         style={this.state.showModal ? hideStyle:showStyle}
         // className={this.state.showModal ? "modal_on_click":"modal"}
@@ -167,12 +157,11 @@ class Map extends React.Component {
         bivakzone={this.state.bivakzone}
         showModal={this.state.showModal}
         >
-
         </BivakzoneModal>
 
-    const position = [this.state.location.lat, this.state.location.lng];
-    return (
-      <>
+       const position = [this.state.location.lat, this.state.location.lng];
+       return (      
+       <>
         {modal}
   
         <button style={{float:"left", zIndex:"1", height:"3rem", color:"blue"}} onClick={this.handlArrowClick} className="exp_btn" >
@@ -195,11 +184,11 @@ class Map extends React.Component {
         >
           <ZoomControl position="bottomright"></ZoomControl>
           <TileLayer
-            attribution='contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {//Adjusting the marker if browser finds the location of the user to show marker, if not then not to show it
+          {//Adjusting the location marker if browser finds the location of the user to show marker, if not then not to show it
           this.state.haveLocationOfUser ? (
             <Marker position={position} icon={myIcon} className="markerIcon">
               <Popup>You are here</Popup>
@@ -218,8 +207,8 @@ class Map extends React.Component {
 
               bivak.geometry.type = 'Point';
               bivak.geometry.coordinates = [x, y];
-            }
-            return (
+           }
+           return (
               <GeoJSON
                 data={bivak}
                 style={() => ({
@@ -248,11 +237,23 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-        </LeafletMap>
+          <Control key={this.state.showLocation} position="topright">
+          {/* Control is used to control a component's position on map */}
+          <button
+            onClick={() => {
+              this.setState({ showLocation: true });
+              this.currentLocation();
+                               
+            }}
+          >
+            Show my location
+          </button>
+        </Control>
+      </LeafletMap>
         
-      </>
+    </>
     )
   }
-  }
+
 
 export default Map;
