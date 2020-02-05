@@ -13,6 +13,9 @@ import {ShowModalContext} from '../../utils/Context'
 import {Icon} from 'antd'
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import  Controllers from '../../controllers/controllers.js' 
+
+const Leaflet =window.L;
 
 
 var myIcon = L.icon({
@@ -36,9 +39,10 @@ class Map extends React.Component {
       showModal:false,
       arrowDirection: false,
       clicks:0,
-      bivakzone:null
+      bivakzone:null,
+      markerPosition: {}
     };
-    console.log(this.state.bivakzones);
+    
   }
   
   // eslint-disable-next-line no-useless-constructor
@@ -58,19 +62,25 @@ class Map extends React.Component {
    
    {((e.sourceTarget.feature === prevBivId  )  ? this.setState({showModal:!this.state.showModal, bivakzone: null}) : this.setState({showModal: false,clicks: this.state.clicks + 1,bivakzone: e.sourceTarget.feature}))}
    
+   this.setState({
+     ...this.state,
+     markerPosition:e.latlng
+   })
+     
+  
   //  this.setState({
   //   bivakzone: e.sourceTarget.feature
   // })
    //  this.context= false;
-   console.log((prevBivId === e.sourceTarget.feature)  )
-   console.log(this.state.clicks)
+  
+   
   //  this.child.showModal()
   }
   handlArrowClick=()=>{
     this.setState({
       showModal: !this.state.showModal,
       arrowDirection: !this.state.arrowDirection
-    },()=>{console.log(this.state.arrowDirection)})
+    })
   }
 
  handleOnClose= ()=>{
@@ -85,7 +95,7 @@ class Map extends React.Component {
 
 
     
-      
+
       
             
                   
@@ -124,6 +134,7 @@ class Map extends React.Component {
   };
 
   render() {
+    
       const showStyle={
         width:"30%",
         height:"70%",
@@ -171,6 +182,9 @@ class Map extends React.Component {
         </BivakzoneModal>
 
     const position = [this.state.location.lat, this.state.location.lng];
+    
+
+     const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
       <>
         {modal}
@@ -181,6 +195,8 @@ class Map extends React.Component {
         {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
        
         <LeafletMap
+         
+          bounds={bounds}
           className="leaflet-container"
           center={position}
           zoom={this.state.zoom}
@@ -209,15 +225,18 @@ class Map extends React.Component {
           )}
           {this.state.bivakzones.map(bivak => {
             if (bivak.geometry.type === 'Polygon') {
-              const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
-              const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
 
-              const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
-              const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
+              // const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
+              // const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
+
+              // const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
+              // const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
+              bivak.geometry.coordinates = Controllers.centroid(bivak.geometry.coordinates);
               bivak.geometry.type = 'Point';
-              bivak.geometry.coordinates = [x, y];
+            
+              
             }
             return (
               <GeoJSON
@@ -243,7 +262,7 @@ class Map extends React.Component {
               >
                 <Popup>
                   {/* <PopupCard bivakzone={bivakzone} /> */}
-                  <Link to={`/bivakzone/${bivak.id}`}>{bivak.properties.name}</Link>
+              <Link to={`/home/${bivak.id}`}>{bivak.properties.name}{bivak.geometry.type}</Link>
                 </Popup>
               </GeoJSON>
             );

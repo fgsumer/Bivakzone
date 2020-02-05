@@ -11,7 +11,7 @@ const ImageComponent=({data, setShowImage})=>{
     const {image, image1, image2} = data.properties;
     const arryOfImages=[image, image1, image2].filter((img)=>img !== undefined);
     
-    console.log(arryOfImages)
+    
 
     if(arryOfImages.length === 0){
         return (

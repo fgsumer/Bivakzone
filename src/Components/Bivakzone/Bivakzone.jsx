@@ -5,16 +5,17 @@ import BivakDetails from './BivakDetails';
 import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json'
 
-const Bivakzone=()=>{
-    const {id}  = useParams();
-    const bivakzone = bivakzones.features.filter((bivakzone)=> bivakzone.id ===`node/${id}` || bivakzone.id === `way/${id}`);
+const Bivakzone=(props)=>{
+    const {id}  = props;
+  
+    const bivak = bivakzones.features.find((bivakzone)=> bivakzone.id === id);
 
-    const bivak = bivakzone[0];
+  
 
     return (
       <Container>
         <BivakDetails  bivak={bivak}/>
-        <Comment  bivak={bivak}/>
+        <Comment id={id} bivak={bivak}/>
       </Container>
     )
 };

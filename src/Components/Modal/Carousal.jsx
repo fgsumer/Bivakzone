@@ -19,18 +19,17 @@ export default (props)=>{
     let image="image";
  
     if (bivakzone){
-        console.log(bivakzone)
+       
        
         let propertiesKeys= Object.keys(bivakzone.properties);
-        console.log(propertiesKeys)
+      
        
             
     
             
      imgsKeyArr= propertiesKeys.filter((p) => {if(p.includes(image)){ return p}})
       imgsKeyArr.map((key)=>imgsURL.push(bivakzone.properties[key]) )
-      console.log(imgsKeyArr)
-      console.log(imgsURL)
+     
      
     
       return (

@@ -22,12 +22,12 @@ class Filter extends Component {
   }
   componentDidMount() {}
   handleClick = e => {
-    console.log('click ', e);
+    
   };
 
   handleFilterClick = () => {
     filtredBivs = FilterFunc(Bivakzones, this.state);
-    console.log(filtredBivs);
+    
     this.props.callBack(filtredBivs);
   };
   handleOnChange = e => {

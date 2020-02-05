@@ -7,6 +7,7 @@ import BivakMap from './Bivakzone/BivakMap';
 import Bivakzone from './Bivakzone/Bivakzone';
 import LanguageToggle from './languages/LanguageToggle';
 import bivakzones from '../bivakzones.json'
+import Single from './Bivakzone/Index'
 
 const Layout =(props)=>{
  
@@ -17,15 +18,8 @@ const Layout =(props)=>{
             </Row>
             <Switch>
                 <Route exact path="/" render= {(props)=><Map {...props} bivakzones={bivakzones.features}/>}/>
+                <Route path={["/home/node/:bivakzoneId","/home/way/:bivakzoneId" ]} exact component = {Single} />
                 
-                <Route path={`/bivakzone/way/:id`} exact>
-                    <Col lg={6} ><BivakMap /></Col>
-                    <Col lg={6} ><Bivakzone  /></Col>
-                </Route>
-                <Route path={`/bivakzone/node/:id`} exact>
-                    <Col lg={6} ><BivakMap /></Col>
-                    <Col lg={6} ><Bivakzone  /></Col>
-                </Route>
             </Switch>
         </Router>
   )

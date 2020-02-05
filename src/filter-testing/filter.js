@@ -31,11 +31,6 @@ export default (Bivakzones, filters) => {
         Bivakzone.properties['dog'] === 'yes' || Bivakzone.properties['dog'] === 'leashed',
     );
   }
-  console.log(
-    result.map(b => {
-      console.log(b.properties);
-    }),
-  );
   return result;
 };
 

@@ -6,32 +6,33 @@ import bivakzones from '../../bivakzones.json';
 import Control from 'react-leaflet-control';
 import ImageComponent from '../Bivakzone/ImageComponent';
 
-const BivakMap=()=>{
-    const {id}  = useParams();
-    const bivakzone = bivakzones.features.filter((bivakzone)=> bivakzone.id ===`node/${id}`|| bivakzone.id === `way/${id}`);
-    const data = bivakzone[0];
+const BivakMap=(props)=>{
+    const {id}= props;
+   
+    const bivakzone = bivakzones.features.find((bivakzone)=> bivakzone.id === id );
     let x= 0, y=0;
     const [showImage , setShowImage] = useState(false)
 
     const handleClick =()=>{
       setShowImage(true)
+      console.log("clicked")
     }
 
     useEffect(()=>{
       console.log(showImage)
     })
-  
-    if(data.geometry.type==='Point'){
-         x = data.geometry.coordinates[0];
-         y = data.geometry.coordinates[1];
+
+    if(bivakzone.geometry.type==='Point'){
+         x = bivakzone.geometry.coordinates[0];
+         y = bivakzone.geometry.coordinates[1];
     }else {
       // find average coordinates of the polygon
-         x = data.geometry.coordinates[0][0][0];
-         y = data.geometry.coordinates[0][0][1];
+         x = bivakzone.geometry.coordinates[0][0][0];
+         y = bivakzone.geometry.coordinates[0][0][1];
     }
 
     if(showImage){
-      return <ImageComponent data={data} setShowImage={setShowImage}/>
+      return <ImageComponent data={bivakzone} setShowImage={setShowImage}/>
     }
      else{
        return (
@@ -49,7 +50,7 @@ const BivakMap=()=>{
            >
              <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
                    <GeoJSON
-                     data={data}
+                     data={bivakzone}
                      style={() => ({
                        color: '#4a83ec',
                        weight: 0.5,
@@ -60,14 +61,14 @@ const BivakMap=()=>{
                      } 
                    >
                      <Popup>
-                       {data.properties.name}
+                       {bivakzone.properties.name}
                      </Popup>
                      <Control position="topright" >
                       <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
                         <i class="far fa-images"></i>
                       </Button>
                       <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
-                        <i class="fas fa-globe-americas"></i>
+                        <i class="fas fa-globe-europe"></i>
                       </Button>
                    </Control>
                    </GeoJSON>

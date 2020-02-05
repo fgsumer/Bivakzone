@@ -14,7 +14,7 @@ import React,{Component} from 'react'
  handleOnShow=()=>{
    this.setState({
      show: !this.state.show
-   }, ()=>console.log("state: " + this.state.show ,"props :" + this.props.showModal))
+   })
    this.props.modalState(this.state.show)
   
  }
