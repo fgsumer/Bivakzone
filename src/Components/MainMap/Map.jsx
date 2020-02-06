@@ -3,7 +3,7 @@ import L from 'leaflet';
 import {GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl} from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import {Link} from 'react-router-dom';
-import BivakzoneModal from '../Modal/BivakzoneModal2';
+import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
 import {Icon} from 'antd'
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -32,7 +32,6 @@ class Map extends React.Component {
             bivakzones: props.bivakzones,
             showModal: false,
             arrowDirection: false,
-            clicks: 0,
             bivakzone: null,
             markerPosition: {}
         };
@@ -50,14 +49,17 @@ class Map extends React.Component {
     handleOnClick = e => {
         const prevBivId = this.state.bivakzone;
 
-        {
-            e.sourceTarget.feature === prevBivId
-                ? this.setState({showModal: !this.state.showModal, bivakzone: null})
-                : this.setState({
-                    showModal: false,
-                    clicks: this.state.clicks + 1,
-                    bivakzone: e.sourceTarget.feature,
-                });
+        if (e.sourceTarget.feature === prevBivId) {
+            this.setState({
+                showModal: false,
+                bivakzone: null
+            })
+        }
+        else {
+            this.setState({
+                showModal: true,
+                bivakzone: e.sourceTarget.feature,
+            })
         }
 
         this.setState({
@@ -65,7 +67,8 @@ class Map extends React.Component {
             markerPosition: e.latlng
         })
     };
-    handlArrowClick = () => {
+
+    handleArrowClick = () => {
         this.setState(
             {
                 showModal: !this.state.showModal,
@@ -80,7 +83,7 @@ class Map extends React.Component {
     handleOnClose = () => {
         this.setState({
             ...this.state,
-            showModal: !this.state.showModal,
+            showModal: false,
         });
     };
 
@@ -123,8 +126,8 @@ class Map extends React.Component {
 
     render() {
         const showStyle = {
-            width: '30%',
-            height: '70%',
+            width: '30vw',
+            height: '100vh',
             background: 'white',
             transition: 'width 1s ease-in-out',
             overflow: 'hidden',
@@ -151,9 +154,8 @@ class Map extends React.Component {
         const rightArrow = <Icon type="right"/>;
         const leftArrow = <Icon type="left"/>;
         modal = (
-            <BivakzoneModal
-                style={this.state.showModal ? hideStyle : showStyle}
-                // className={this.state.showModal ? "modal_on_click":"modal"}
+            <BivakZoneModal
+                style={this.state.showModal ?  showStyle : hideStyle}
                 modalState={this.showModalFunc}
                 handleOpen={this.handleOnClick}
                 onRef={ref => (this.child = ref)}
@@ -171,7 +173,7 @@ class Map extends React.Component {
 
                 <button
                     style={{float: 'left', zIndex: '1', height: '3rem', color: 'blue'}}
-                    onClick={this.handlArrowClick}
+                    onClick={this.handleArrowClick}
                     className="exp_btn"
                 >
                     {this.state.arrowDirection ? leftArrow : rightArrow}
