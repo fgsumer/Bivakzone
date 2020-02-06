@@ -128,8 +128,9 @@ class Map extends React.Component {
         const showStyle = {
             width: '30vw',
             height: '100vh',
+            transform: 'translateX(0)',
             background: 'white',
-            transition: 'width 1s ease-in-out',
+            transition: 'transform 1s ease-in-out',
             overflow: 'hidden',
             float: 'left',
             zIndex: '1',
@@ -140,10 +141,11 @@ class Map extends React.Component {
         };
 
         const hideStyle = {
-            width: '0px',
-            height: '200px',
-            backGround: 'blue',
-            transition: 'width 1s ease-in-out',
+            width: '30vw',
+            height: '100vh',
+            transform: 'translateX(-100vw)',
+            background: 'white',
+            transition: 'transform 1s ease-in-out',
             overflow: 'hidden',
             float: 'left',
             zIndex: '1',
