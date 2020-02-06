@@ -127,7 +127,7 @@ class Map extends React.Component {
     render() {
         const showStyle = {
             width: '30vw',
-            height: '100vh',
+            height: '92vh',
             background: 'white',
             transition: 'width 1s ease-in-out',
             overflow: 'hidden',
@@ -139,7 +139,7 @@ class Map extends React.Component {
 
         const hideStyle = {
             width: '0',
-            height: '100vh',
+            height: '92vh',
             background: 'white',
             transition: 'width 1s ease-in-out',
             overflow: 'hidden',

@@ -8,8 +8,8 @@
 
 .leaflet-container {
     margin: 0;
-    height: 1000px;
-    width: 1000px;
+    height: 92vh;
+    width: 100vw;
     position: absolute;
     z-index: -1;
     overflow: hidden;
