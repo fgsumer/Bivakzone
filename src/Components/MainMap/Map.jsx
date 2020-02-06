@@ -5,6 +5,7 @@ import Control from 'react-leaflet-control';
 import {Link} from 'react-router-dom';
 import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
+import './Map.css';
 import {Icon} from 'antd'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js'
@@ -31,7 +32,6 @@ class Map extends React.Component {
             showButton: false,
             bivakzones: props.bivakzones,
             showModal: false,
-            arrowDirection: false,
             bivakzone: null,
             markerPosition: {}
         };
@@ -128,28 +128,22 @@ class Map extends React.Component {
         const showStyle = {
             width: '30vw',
             height: '100vh',
-            transform: 'translateX(0)',
             background: 'white',
-            transition: 'transform 1s ease-in-out',
+            transition: 'width 1s ease-in-out',
             overflow: 'hidden',
-            float: 'left',
             zIndex: '1',
             border: '1 solid black',
-            boxShadow: '2px 2px  rgba(0,0,0,0.5)',
+            boxShadow: '2px 2px rgba(0,0,0,0.5)',
             display: 'block',
-            marginLeft: '10px',
         };
 
         const hideStyle = {
-            width: '30vw',
+            width: '0',
             height: '100vh',
-            transform: 'translateX(-100vw)',
             background: 'white',
-            transition: 'transform 1s ease-in-out',
+            transition: 'width 1s ease-in-out',
             overflow: 'hidden',
-            float: 'left',
             zIndex: '1',
-            marginLeft: '10px',
         };
 
         let modal;
@@ -171,15 +165,15 @@ class Map extends React.Component {
         const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
         return (
             <>
-                {modal}
-
-                <button
-                    style={{float: 'left', zIndex: '1', height: '3rem', color: 'blue'}}
-                    onClick={this.handleArrowClick}
-                    className="exp_btn"
-                >
-                    {this.state.arrowDirection ? leftArrow : rightArrow}
-                </button>
+                <section className={'sidepanel'}>
+                    {modal}
+                    <button
+                        onClick={this.handleArrowClick}
+                        className="sidepanel_btn"
+                    >
+                        {this.state.showModal ? leftArrow : rightArrow}
+                    </button>
+                </section>
                 {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
 
                 <LeafletMap

@@ -1,49 +1,24 @@
-
-#root .root{
+#root .root {
     margin: 0;
     /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: red; */
 }
+
 .leaflet-container {
-    margin:0;
+    margin: 0;
     height: 1000px;
     width: 1000px;
     position: absolute;
     z-index: -1;
     overflow: hidden;
-    
-  
-  
+}
 
-  
-}
-.side_panel{
-    
-    width:400px;
-    height: 300px;
-    border: 1xp solid black;
-    position: fixed;
-    background-color: yellow;
-    z-index: 2;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; */
-    position: absolute;
-}
-.exp_btn{
-    
-    height: 2rem;
-    width: 2rem;
-    /* position: relative; */
-    float: left;
-    
-}
-   #modal {
-    width:1px;
-    height:200px;
-    background:darkgoldenrod;
+#modal {
+    width: 1px;
+    height: 200px;
+    background: darkgoldenrod;
     transition: width 2s;
     /* -webkit-transition:2s;
     -moz-transition:2s; */
@@ -51,78 +26,86 @@
     /* right:calc(100% - 100px); */
     overflow: hidden;
     float: left;
-   
-    /* z-index: 2000;  */
-   } 
 
- #modal_on_click{
-         width: 400px;
-         height:200px;
-         background:darkgoldenrod;
-         transition: width 1s ease-in-out;
-         overflow: hidden;
-         float: left;
-       
-        
-   }
-  
-  
+    /* z-index: 2000;  */
+}
+
+#modal_on_click {
+    width: 400px;
+    height: 200px;
+    background: darkgoldenrod;
+    transition: width 1s ease-in-out;
+    overflow: hidden;
+    float: left;
+
+
+}
+
+
 .image {
     width: 100%;
 }
+
 /* For mobile phones: */
 
 
 .markerIcon {
-  fill: #b52808;
-  stroke: #b52808;
-  opacity: 0.3;
-  stroke-width: 0.5;
+    fill: #b52808;
+    stroke: #b52808;
+    opacity: 0.3;
+    stroke-width: 0.5;
 }
 
 
 .selector {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.selector > li {
-  display: inline-block;
-  padding: 0 0.5rem;
-}
-.selector button {
-  background-color: #eee;
-  box-shadow: none;
-  border: 1px solid #ccc;
-  padding: 10px 10px;
-  border-radius: 4px;
-  min-width: 100px;
-  transition: all 0.3s ease-out;
-}
-.selector button.active {
-  color: #61dafb;
-  background-color: #20232a; 
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.errors{
-  font-size: small;
-  color: red;
+.selector > li {
+    display: inline-block;
+    padding: 0 0.5rem;
 }
-.name{
-  color:#0275d8;
-  font-weight: bolder;
-  font-size:larger;
+
+.selector button {
+    background-color: #eee;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    border-radius: 4px;
+    min-width: 100px;
+    transition: all 0.3s ease-out;
 }
-.date{
-  color:gray;
-  font-size: x-small;
-  font-weight: bolder;
+
+.selector button.active {
+    color: #61dafb;
+    background-color: #20232a;
 }
-.message{
-  font-family:'Times New Roman', Times, serif;
-  font-size: large;
+
+.errors {
+    font-size: small;
+    color: red;
 }
-.image-button{
-  width: 20px;
-  height: 10px;
+
+.name {
+    color: #0275d8;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.date {
+    color: gray;
+    font-size: x-small;
+    font-weight: bolder;
+}
+
+.message {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.image-button {
+    width: 20px;
+    height: 10px;
 }
