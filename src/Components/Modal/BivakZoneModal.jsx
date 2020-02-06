@@ -4,6 +4,7 @@ import {Card, Row} from 'antd';
 import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'
 import './BivakZoneModal.css';
+import {Link} from "react-router-dom";
 
 class BivakZoneModal extends Component {
 
@@ -23,12 +24,11 @@ class BivakZoneModal extends Component {
         return (
             <>
 
-                <div style={this.props.style} className={'bivak_modal'}>
+                <article style={this.props.style} className={'bivak_modal'}>
 
                     {this.props.bivakzone &&
                     (
                         <>
-
                             <Row style={{height: "50%"}}>
                                 <Card
                                     bivakzone={this.props.bivakzone}
@@ -39,29 +39,19 @@ class BivakZoneModal extends Component {
                                 >
                                 </Card>
                             </Row>
-                            <Row style={{height: "40%"}}>
-                                <p style={{
-                                    marginTop: "2rem",
-                                    marginLeft: ".5rem",
-                                    marginRight: ".5rem",
-                                    textAlign: "center",
-                                    width: "100%",
-                                    height: "50%",
-                                    borderRight: "1px solid blue"
-                                }}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, dolor corporis
-                                    perferendis reiciendis porro provident excepturi ex velit, id quidem maxime
-                                    praesentium exercitationem voluptates in cumque! Pariatur earum fuga nobis?</p>
+
+                            <Row>
+                                <Link to={`/home/${this.props.bivakzone.id}`}><h1>{this.props.bivakzone.properties.name}</h1></Link>
                             </Row>
 
                             <Row style={{height: "max-content", borderTop: "1px solid rgb(47, 155, 255)"}}>
                                 <Footer properties={this.props.bivakzone.properties}></Footer>
                             </Row>
-
                         </>
                     )
                     }
                     {!this.props.bivakzone && (<h1>nothingness</h1>)}
-                </div>
+                </article>
             </>
         );
     }

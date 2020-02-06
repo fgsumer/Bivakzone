@@ -209,7 +209,7 @@ class Map extends React.Component {
                             >
                                 <Popup>
                                     {/* <PopupCard bivakzone={bivakzone} /> */}
-                                    <Link to={`/home/${bivak.id}`}>{bivak.properties.name}{bivak.geometry.type}</Link>
+                                    {bivak.properties.name}{bivak.geometry.type}
                                 </Popup>
                             </GeoJSON>
                         );
