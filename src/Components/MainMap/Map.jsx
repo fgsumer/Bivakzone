@@ -125,25 +125,11 @@ class Map extends React.Component {
     };
 
     render() {
-        const showStyle = {
-            width: '30vw',
-            height: '92vh',
-            background: 'white',
-            transition: 'width 1s ease-in-out',
-            overflow: 'hidden',
-            zIndex: '1',
-            border: '1 solid black',
-            boxShadow: '2px 2px rgba(0,0,0,0.5)',
-            display: 'block',
-        };
+        const showStyle = {};
 
         const hideStyle = {
             width: '0',
-            height: '92vh',
-            background: 'white',
-            transition: 'width 1s ease-in-out',
-            overflow: 'hidden',
-            zIndex: '1',
+            transform: 'translateX(-30vw)'
         };
 
         let modal;
@@ -165,19 +151,7 @@ class Map extends React.Component {
         const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
         return (
             <>
-                <section className={'sidepanel'}>
-                    {modal}
-                    <button
-                        onClick={this.handleArrowClick}
-                        className="sidepanel_btn"
-                    >
-                        {this.state.showModal ? leftArrow : rightArrow}
-                    </button>
-                </section>
-                {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
-
                 <LeafletMap
-
                     bounds={bounds}
                     className="leaflet-container"
                     center={position}
@@ -256,6 +230,16 @@ class Map extends React.Component {
                             />
                         </button>
                     </Control>
+                    <section className={'sidepanel'}>
+                        {modal}
+                        <button
+                            onClick={this.handleArrowClick}
+                            className="sidepanel_btn"
+                        >
+                            {this.state.showModal ? leftArrow : rightArrow}
+                        </button>
+                    </section>
+                    {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
                 </LeafletMap>
             </>
         );

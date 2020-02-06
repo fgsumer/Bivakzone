@@ -3,6 +3,7 @@ import '../../App.css'
 import {Card, Row} from 'antd';
 import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'
+import './BivakZoneModal.css';
 
 class BivakZoneModal extends Component {
 
@@ -22,7 +23,7 @@ class BivakZoneModal extends Component {
         return (
             <>
 
-                <div style={this.props.style}>
+                <div style={this.props.style} className={'bivak_modal'}>
 
                     {this.props.bivakzone &&
                     (

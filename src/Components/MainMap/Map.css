@@ -1,5 +1,6 @@
 .sidepanel {
     position: absolute;
+    z-index: 400;
 }
 
 .sidepanel_btn {
@@ -9,4 +10,13 @@
     position: absolute;
     top: 0;
     right: -2rem;
+    background: white;
+}
+
+@media screen and (max-width: 770px) {
+
+    .sidepanel {
+        bottom: 0;
+    }
+
 }
