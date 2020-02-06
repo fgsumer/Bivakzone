@@ -1,0 +1,22 @@
+.sidepanel {
+    position: absolute;
+    z-index: 400;
+}
+
+.sidepanel_btn {
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    background: white;
+}
+
+@media screen and (max-width: 770px) {
+
+    .sidepanel {
+        bottom: 0;
+    }
+
+}
