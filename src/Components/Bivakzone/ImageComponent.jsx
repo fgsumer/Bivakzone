@@ -1,6 +1,6 @@
 import React from 'react';
 import {Carousel, Button, Container } from 'react-bootstrap';
-import noImage from '../assets/images/n.png'
+
 
 const ImageComponent=({data, setShowImage})=>{
     const handleClick =()=>{
@@ -11,7 +11,7 @@ const ImageComponent=({data, setShowImage})=>{
     const {image, image1, image2} = data.properties;
     const arryOfImages=[image, image1, image2].filter((img)=>img !== undefined);
     
-    console.log(arryOfImages)
+    
 
     if(arryOfImages.length === 0){
         return (
@@ -20,7 +20,7 @@ const ImageComponent=({data, setShowImage})=>{
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        src={noImage}
+                        src="/images/n.png"
                         alt="First slide"
                         />
                     <Carousel.Caption>

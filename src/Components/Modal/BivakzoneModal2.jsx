@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../App.css'
+import '../../App.css'
 import { Card,Row } from 'antd';
 import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'
@@ -32,7 +32,7 @@ export default class  extends Component {
       { this.props.bivakzone && 
          (
            <>
-           {console.log(this.props.bivakzone.properties)}
+          
         <Row  style={{height:"50%"}}>
         <Card 
          bivakzone= {this.props.bivakzone}

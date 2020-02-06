@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react'
 import {Carousel} from 'react-bootstrap'
-import Bivakzones from '../bivakzones.json'
+import Bivakzones from '../../bivakzones.json'
+import Controllers from '../../controllers/controllers'
 
 
 export default (props)=>{
@@ -14,32 +15,33 @@ export default (props)=>{
       setIndex(selectedIndex);
     };
 
-    let imgsURL=[];
-    let imgsKeyArr=[];
-    let image="image";
+    
  
     if (bivakzone){
-        console.log(bivakzone)
        
-        let propertiesKeys= Object.keys(bivakzone.properties);
-        console.log(propertiesKeys)
-       
-            
-    
-            
-     imgsKeyArr= propertiesKeys.filter((p) => {if(p.includes(image)){ return p}})
-      imgsKeyArr.map((key)=>imgsURL.push(bivakzone.properties[key]) )
-      console.log(imgsKeyArr)
-      console.log(imgsURL)
+       const imgsURL= Controllers.imageExtractor(bivakzone);
+       console.log(imgsURL)
+        
      
     
       return (
       
         <Carousel style={{width:"100%",height:"100%", border:"1px solid black", overflow:"hidden"}} activeIndex={index} onSelect={handleSelect}>
           
+        { 
+        imgsURL.length === 0 ?  <Carousel.Item style={{width:"100%",height:"200px", overflow:"hidden"}}>
+                <img 
+                    // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
+                    className="d-block w-100 h-100"
+                    src="images/n.png"
+                    alt=""
+                    />
+        </Carousel.Item> 
+        :
         
+    
+    imgsURL.map(url=> 
 
-    {imgsURL.map(url=> 
         <Carousel.Item style={{width:"100%",height:"200px", overflow:"hidden"}}>
                 <img 
                     // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
@@ -49,10 +51,13 @@ export default (props)=>{
                     />
         </Carousel.Item>
     )
-    }
     
-        </Carousel>
-      );
+    
+       
+  }
+   </Carousel>
+     
+     )
     
     }else{
         return <h1>Nothingness</h1>

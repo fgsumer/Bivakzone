@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Checkbox } from 'antd';
-import Bivakzones from '../bivakzones.json';
-import FilterFunc from '../filter-testing/filter';
+import Bivakzones from '../../bivakzones.json';
+import Controllers from '../../controllers/controllers'
 import './header.css';
 
 const { SubMenu } = Menu;
@@ -22,13 +22,14 @@ class Filter extends Component {
   }
   componentDidMount() {}
   handleClick = e => {
-    console.log('click ', e);
+    
   };
 
   handleFilterClick = () => {
-    filtredBivs = FilterFunc(Bivakzones, this.state);
-    console.log(filtredBivs);
+    filtredBivs = Controllers.filter(Bivakzones, this.state);
+    
     this.props.callBack(filtredBivs);
+    console.log(filtredBivs)
   };
   handleOnChange = e => {
     this.setState({

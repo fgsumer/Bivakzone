@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { withLocalize, Translate } from 'react-localize-redux';
-import globalTranslations from '../data/language.json';
-import { renderToStaticMarkup } from 'react-dom/server';
-import LanguageToggle from './LanguageToggle.jsx';
+import {Navbar, Nav}  from 'react-bootstrap';
+import {withLocalize, Translate} from 'react-localize-redux';
+import globalTranslations from '../languages/data/language.json';
+import { renderToStaticMarkup } from "react-dom/server";
+import LanguageToggle from '../languages/LanguageToggle';
 
 class Menu extends React.Component {
   constructor(props) {

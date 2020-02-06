@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 
 
-const Comment = ({bivak}) => {
-    const id = bivak.id;
+const Comment = ({id}) => {
+    
     const [oldComments, setOldComments]=useState(null)
     const { register, handleSubmit, errors } = useForm();
     const [newComment, setNewComment]=useState(oldComments);

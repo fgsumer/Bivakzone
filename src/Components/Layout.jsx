@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Menu from './Menu';
-import Map from '../Map';
-import BivakMap from './BivakMap';
-import Bivakzone from './Bivakzone';
-import LanguageToggle from './LanguageToggle';
+import Menu from './Header/Menu';
+import Map from './MainMap/Map';
+import BivakMap from './Bivakzone/BivakMap';
+import Bivakzone from './Bivakzone/Bivakzone';
+import LanguageToggle from './languages/LanguageToggle';
 import bivakzones from '../bivakzones.json'
+import Single from './Bivakzone/Index'
 
 const Layout =(props)=>{
  
@@ -17,16 +18,7 @@ const Layout =(props)=>{
             </Row>
             <Switch>
                 <Route exact path="/" render= {(props)=><Map {...props} bivakzones={bivakzones.features}/>}/>
-                
-
-                <Route path={`/bivakzone/way/:id`} exact>
-                    <Col lg={6} ><BivakMap /></Col>
-                    <Col lg={6} ><Bivakzone  /></Col>
-                </Route>
-                <Route path={`/bivakzone/node/:id`} exact>
-                    <Col lg={6} ><BivakMap /></Col>
-                    <Col lg={6} ><Bivakzone  /></Col>
-                </Route>
+                <Route path={["/home/node/:bivakzoneId","/home/way/:bivakzoneId" ]} exact component = {Single} />
             </Switch>
         </Router>
   )

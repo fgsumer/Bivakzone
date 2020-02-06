@@ -1,28 +1,25 @@
 import React from 'react';
 import L from 'leaflet';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
+import bivakzones from '../../bivakzones.json';
 import Control from 'react-leaflet-control';
-import bivakzones from './bivakzones.json';
 import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
-import Filter from './Header/Filter';
+import Filter from '../Header/Filter';
 import { Handler } from 'leaflet';
-import { Modal } from 'react-bootstrap';
-import BivakzoneModal from './components/BivakzoneModal2';
-import './App.css';
-import { ShowModalContext } from './utils/Context';
-import { Icon } from 'antd';
-import IconLocation from './assets/images/location.svg';
+import {Modal} from 'react-bootstrap';
+import BivakzoneModal from '../Modal/BivakzoneModal2';
+import '../../App.css';
+import {ShowModalContext} from '../../utils/Context'
+import {Icon} from 'antd'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import  Controllers from '../../controllers/controllers.js'
+
+const Leaflet = window.L;
 
 const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
-  iconSize: [45, 41],
-  iconAnchor: [12.5, 41],
-  popupAnchor: [11, -41],
-});
-
-const LocIcon = L.icon({
-  iconUrl: './assets/images/location.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
   popupAnchor: [11, -41],
@@ -44,8 +41,9 @@ class Map extends React.Component {
       arrowDirection: false,
       clicks: 0,
       bivakzone: null,
+      markerPosition: {}
     };
-    console.log(this.state.bivakzones);
+
   }
 
   // eslint-disable-next-line no-useless-constructor
@@ -69,13 +67,10 @@ class Map extends React.Component {
           });
     }
 
-    //  this.setState({
-    //   bivakzone: e.sourceTarget.feature
-    // })
-    //  this.context= false;
-    console.log(prevBivId === e.sourceTarget.feature);
-    console.log(this.state.clicks);
-    //  this.child.showModal()
+    this.setState({
+      ...this.state,
+      markerPosition:e.latlng
+    })
   };
   handlArrowClick = () => {
     this.setState(
@@ -178,8 +173,9 @@ class Map extends React.Component {
     );
 
     const position = [this.state.location.lat, this.state.location.lng];
+    const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
-      <>
+        <>
         {modal}
 
         <button
@@ -192,6 +188,8 @@ class Map extends React.Component {
         {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
 
         <LeafletMap
+
+          bounds={bounds}
           className="leaflet-container"
           center={position}
           zoom={this.state.zoom}
@@ -220,14 +218,10 @@ class Map extends React.Component {
           )}
           {this.state.bivakzones.map(bivak => {
             if (bivak.geometry.type === 'Polygon') {
-              const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
-              const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
-              const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
-              const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
-
+              bivak.geometry.coordinates = Controllers.centroid(bivak.geometry.coordinates);
               bivak.geometry.type = 'Point';
-              bivak.geometry.coordinates = [x, y];
+
             }
             return (
               <GeoJSON
@@ -252,7 +246,7 @@ class Map extends React.Component {
               >
                 <Popup>
                   {/* <PopupCard bivakzone={bivakzone} /> */}
-                  <Link to={`/bivakzone/${bivak.id}`}>{bivak.properties.name}</Link>
+              <Link to={`/home/${bivak.id}`}>{bivak.properties.name}{bivak.geometry.type}</Link>
                 </Popup>
               </GeoJSON>
             );
@@ -270,7 +264,7 @@ class Map extends React.Component {
                 alt="Location button"
                 width="30px"
                 height="30px"
-              ></img>
+              />
             </button>
           </Control>
         </LeafletMap>

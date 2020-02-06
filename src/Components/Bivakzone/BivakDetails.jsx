@@ -3,13 +3,14 @@ import {Translate} from 'react-localize-redux';
 import { Container, Button } from 'react-bootstrap';
 
 const BivakDetails=({bivak})=>{
+  console.log(bivak.geometry.type)
     if (bivak.geometry.type === 'Polygon') {
       const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
       const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
       const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
       const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
-      
+        
       bivak.geometry.type = 'Point';
       bivak.geometry.coordinates = [x, y];
     }
