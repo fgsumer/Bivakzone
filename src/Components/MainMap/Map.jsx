@@ -227,15 +227,9 @@ class Map extends React.Component {
           {this.state.bivakzones.map(bivak => {
             if (bivak.geometry.type === 'Polygon') {
 
-              const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
-              const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
-
-
-              // const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
-              // const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
               bivak.geometry.coordinates = Controllers.centroid(bivak.geometry.coordinates);
               bivak.geometry.type = 'Point';
-              bivak.geometry.coordinates = [x, y];
+
             }
             return (
               <GeoJSON
