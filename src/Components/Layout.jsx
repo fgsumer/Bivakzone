@@ -19,7 +19,6 @@ const Layout =(props)=>{
             <Switch>
                 <Route exact path="/" render= {(props)=><Map {...props} bivakzones={bivakzones.features}/>}/>
                 <Route path={["/home/node/:bivakzoneId","/home/way/:bivakzoneId" ]} exact component = {Single} />
-                
             </Switch>
         </Router>
   )
