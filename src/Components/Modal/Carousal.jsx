@@ -20,6 +20,7 @@ export default (props)=>{
     if (bivakzone){
        
        const imgsURL= Controllers.imageExtractor(bivakzone);
+       console.log(imgsURL)
         
      
     
@@ -27,9 +28,20 @@ export default (props)=>{
       
         <Carousel style={{width:"100%",height:"100%", border:"1px solid black", overflow:"hidden"}} activeIndex={index} onSelect={handleSelect}>
           
+        { 
+        imgsURL.length === 0 ?  <Carousel.Item style={{width:"100%",height:"200px", overflow:"hidden"}}>
+                <img 
+                    // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
+                    className="d-block w-100 h-100"
+                    src="images/n.png"
+                    alt=""
+                    />
+        </Carousel.Item> 
+        :
         
+    
+    imgsURL.map(url=> 
 
-    {imgsURL.map(url=> 
         <Carousel.Item style={{width:"100%",height:"200px", overflow:"hidden"}}>
                 <img 
                     // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
@@ -39,10 +51,13 @@ export default (props)=>{
                     />
         </Carousel.Item>
     )
-    }
     
-        </Carousel>
-      );
+    
+       
+  }
+   </Carousel>
+     
+     )
     
     }else{
         return <h1>Nothingness</h1>
