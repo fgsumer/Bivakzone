@@ -15,19 +15,11 @@ import {Icon} from 'antd'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import  Controllers from '../../controllers/controllers.js'
-import IconLocation from './assets/images/location.svg';
 
 const Leaflet = window.L;
 
 const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
-  iconSize: [45, 41],
-  iconAnchor: [12.5, 41],
-  popupAnchor: [11, -41],
-});
-
-const LocIcon = L.icon({
-  iconUrl: './assets/images/location.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
   popupAnchor: [11, -41],
@@ -272,7 +264,7 @@ class Map extends React.Component {
                 alt="Location button"
                 width="30px"
                 height="30px"
-              ></img>
+              />
             </button>
           </Control>
         </LeafletMap>
