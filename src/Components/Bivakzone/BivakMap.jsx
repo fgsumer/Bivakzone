@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import {Button, Col, Row} from 'react-bootstrap';
 import { Map as LeafletMap,GeoJSON, TileLayer, Marker, Popup} from 'react-leaflet';
 import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json';
@@ -36,44 +36,48 @@ const BivakMap=(props)=>{
     }
      else{
        return (
-           <LeafletMap
-             center={[y, x]}
-             zoom={13}
-             maxZoom={19}
-             attributionControl={true}
-             zoomControl={true}
-             doubleClickZoom={true}
-             scrollWheelZoom={true}
-             dragging={true}
-             animate={true}
-             easeLinearity={0.35}
-           >
-             <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
-                   <GeoJSON
-                     data={bivakzone}
-                     style={() => ({
-                       color: '#4a83ec',
-                       weight: 0.5,
-                       fillColor: "#1a1d62",
-                       fillOpacity: 1,
-                       }
-                       )
-                     } 
+           <Row>
+               <Col lg={12}>
+                   <LeafletMap
+                     center={[y, x]}
+                     zoom={13}
+                     maxZoom={19}
+                     attributionControl={true}
+                     zoomControl={true}
+                     doubleClickZoom={true}
+                     scrollWheelZoom={true}
+                     dragging={true}
+                     animate={true}
+                     easeLinearity={0.35}
                    >
-                     <Popup>
-                       {bivakzone.properties.name}
-                     </Popup>
-                     <Control position="topright" >
-                      <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
-                        <i class="far fa-images"></i>
-                      </Button>
-                      <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
-                        <i class="fas fa-globe-europe"></i>
-                      </Button>
-                   </Control>
-                   </GeoJSON>
-         
-           </LeafletMap>
+                     <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+                           <GeoJSON
+                             data={bivakzone}
+                             style={() => ({
+                               color: '#4a83ec',
+                               weight: 0.5,
+                               fillColor: "#1a1d62",
+                               fillOpacity: 1,
+                               }
+                               )
+                             }
+                           >
+                             <Popup>
+                               {bivakzone.properties.name}
+                             </Popup>
+                             <Control position="topright" >
+                              <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
+                                <i class="far fa-images"></i>
+                              </Button>
+                              <Button variant="primary" className="btn-lg ml-5" onClick={handleClick}>
+                                <i class="fas fa-globe-europe"></i>
+                              </Button>
+                           </Control>
+                           </GeoJSON>
+
+                   </LeafletMap>
+               </Col>
+           </Row>
          )
      }
 };
