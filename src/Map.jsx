@@ -12,9 +12,17 @@ import BivakzoneModal from './components/BivakzoneModal2';
 import './App.css';
 import { ShowModalContext } from './utils/Context';
 import { Icon } from 'antd';
+import IconLocation from './assets/images/location.svg';
 
 const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
+  iconSize: [45, 41],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [11, -41],
+});
+
+const LocIcon = L.icon({
+  iconUrl: './assets/images/location.svg',
   iconSize: [45, 41],
   iconAnchor: [12.5, 41],
   popupAnchor: [11, -41],
@@ -198,8 +206,8 @@ class Map extends React.Component {
         >
           <ZoomControl position="bottomright"></ZoomControl>
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icon made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
-            phatplus</a>'
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
+            phatplus</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> flaticon.com</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {//Adjusting the location marker if browser finds the location of the user to show marker, if not then not to show it
@@ -249,7 +257,7 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="topright">
+          <Control key={this.state.showLocation} position="bottomright">
             {/* Control is used to control a component's position on map */}
             <button
               onClick={() => {
@@ -257,7 +265,12 @@ class Map extends React.Component {
                 this.currentLocation();
               }}
             >
-              Show my location
+              <img
+                src={'/Icons/location.png'}
+                alt="Location button"
+                width="30px"
+                height="30px"
+              ></img>
             </button>
           </Control>
         </LeafletMap>
