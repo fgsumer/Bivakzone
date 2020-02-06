@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react'
 import {Carousel} from 'react-bootstrap'
 import Bivakzones from '../../bivakzones.json'
+import Controllers from '../../controllers/controllers'
 
 
 export default (props)=>{
@@ -14,22 +15,12 @@ export default (props)=>{
       setIndex(selectedIndex);
     };
 
-    let imgsURL=[];
-    let imgsKeyArr=[];
-    let image="image";
+    
  
     if (bivakzone){
        
-       
-        let propertiesKeys= Object.keys(bivakzone.properties);
-      
-       
-            
-    
-            
-     imgsKeyArr= propertiesKeys.filter((p) => {if(p.includes(image)){ return p}})
-      imgsKeyArr.map((key)=>imgsURL.push(bivakzone.properties[key]) )
-     
+       const imgsURL= Controllers.imageExtractor(bivakzone);
+        
      
     
       return (
