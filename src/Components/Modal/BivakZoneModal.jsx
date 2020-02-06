@@ -5,6 +5,7 @@ import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'
 import './BivakZoneModal.css';
 import {Link} from "react-router-dom";
+import Filter from "./Filter";
 
 class BivakZoneModal extends Component {
 
@@ -50,7 +51,11 @@ class BivakZoneModal extends Component {
                         </>
                     )
                     }
-                    {!this.props.bivakzone && (<h1>nothingness</h1>)}
+                    {!this.props.bivakzone &&
+                        (
+                            <Filter callBack={this.props.onFilterChangeCallback} />
+                        )
+                    }
                 </article>
             </>
         );

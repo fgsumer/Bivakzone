@@ -118,9 +118,9 @@ class Map extends React.Component {
         }
     }
 
-    showBivakzones = a => {
+    updateBivakZones = (bivakzones) => {
         this.setState({
-            bivakzones: a,
+            bivakzones
         });
     };
 
@@ -144,6 +144,7 @@ class Map extends React.Component {
                 handleClose={this.handleOnClose}
                 bivakzone={this.state.bivakzone}
                 showModal={this.state.showModal}
+                onFilterChangeCallback={this.updateBivakZones}
             />
         );
 
