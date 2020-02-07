@@ -7,14 +7,12 @@ import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from '../Header/Filter';
 import { Handler } from 'leaflet';
-import {Modal} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import BivakzoneModal from '../Modal/BivakzoneModal2';
 import '../../App.css';
-import {ShowModalContext} from '../../utils/Context'
-import {Icon} from 'antd'
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
-import  Controllers from '../../controllers/controllers.js'
+import { ShowModalContext } from '../../utils/Context';
+import { Icon } from 'antd';
+import Controllers from '../../controllers/controllers.js';
 
 const Leaflet = window.L;
 
@@ -41,9 +39,9 @@ class Map extends React.Component {
       arrowDirection: false,
       clicks: 0,
       bivakzone: null,
-      markerPosition: {}
+      markerPosition: {},
+      filter: true,
     };
-
   }
 
   // eslint-disable-next-line no-useless-constructor
@@ -69,8 +67,8 @@ class Map extends React.Component {
 
     this.setState({
       ...this.state,
-      markerPosition:e.latlng
-    })
+      markerPosition: e.latlng,
+    });
   };
   handlArrowClick = () => {
     this.setState(
@@ -153,12 +151,12 @@ class Map extends React.Component {
       marginLeft: '10px',
     };
 
-    let modal;
     const rightArrow = <Icon type="right" />;
     const leftArrow = <Icon type="left" />;
     // if (this.state.showModal){
     //     return
     //     }
+    let modal;
     modal = (
       <BivakzoneModal
         style={this.state.showModal ? hideStyle : showStyle}
@@ -175,20 +173,8 @@ class Map extends React.Component {
     const position = [this.state.location.lat, this.state.location.lng];
     const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
-        <>
-        {modal}
-
-        <button
-          style={{ float: 'left', zIndex: '1', height: '3rem', color: 'blue' }}
-          onClick={this.handlArrowClick}
-          className="exp_btn"
-        >
-          {this.state.arrowDirection ? leftArrow : rightArrow}
-        </button>
-        {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
-
+      <>
         <LeafletMap
-
           bounds={bounds}
           className="leaflet-container"
           center={position}
@@ -203,6 +189,21 @@ class Map extends React.Component {
           easeLinearity={0.35}
         >
           <ZoomControl position="bottomright"></ZoomControl>
+
+          <Control key={this.state.filter} position="topleft">
+            <Filter callBack={this.showBivakzones}></Filter>
+
+            {modal}
+
+            <button
+              style={{ float: 'left', height: '3rem', color: 'blue' }}
+              onClick={this.handlArrowClick}
+              className="exp_btn"
+            >
+              {this.state.arrowDirection ? leftArrow : rightArrow}
+            </button>
+          </Control>
+
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> flaticon.com</a>'
@@ -218,10 +219,8 @@ class Map extends React.Component {
           )}
           {this.state.bivakzones.map(bivak => {
             if (bivak.geometry.type === 'Polygon') {
-
               bivak.geometry.coordinates = Controllers.centroid(bivak.geometry.coordinates);
               bivak.geometry.type = 'Point';
-
             }
             return (
               <GeoJSON
@@ -246,7 +245,10 @@ class Map extends React.Component {
               >
                 <Popup>
                   {/* <PopupCard bivakzone={bivakzone} /> */}
-              <Link to={`/home/${bivak.id}`}>{bivak.properties.name}{bivak.geometry.type}</Link>
+                  <Link to={`/home/${bivak.id}`}>
+                    {bivak.properties.name}
+                    {bivak.geometry.type}
+                  </Link>
                 </Popup>
               </GeoJSON>
             );
@@ -259,14 +261,14 @@ class Map extends React.Component {
                 this.currentLocation();
               }}
             >
-              <img
-                src={'/Icons/location.png'}
-                alt="Location button"
-                width="30px"
-                height="30px"
-              />
+              <img src={'/Icons/location.png'} alt="Location button" width="30px" height="30px" />
             </button>
           </Control>
+          {/*
+          <Control key={this.state.filter} position="topleft">
+            <Filter callBack={this.showBivakzones}></Filter>
+          </Control>
+          */}
         </LeafletMap>
       </>
     );
