@@ -37,6 +37,7 @@
     
     width: 93vw;
     height: 18vh;
+    top: 7vh;
     left: 1rem;
     position: relative;
     background: white;
@@ -49,9 +50,10 @@
 
     }
     .bivak_modal_mobile_show{
-    
+       
         width: 93vw;
-        height:40vh;
+        height: 48vh;
+        top: 13vh;
         left: 1rem;
         position: relative;
         background: white;

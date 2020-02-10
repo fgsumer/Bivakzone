@@ -237,7 +237,7 @@ class Map extends React.Component {
                         {modal}
                         <button
                             onClick={this.handleArrowClick}
-                            className="sidepanel_btn"
+                            className={this.state.showModal? "sidepanel_btn_clicked":"sidepanel_btn_unclicked"}
                         >
                             {this.state.showModal ? leftArrow : rightArrow}
                         </button>
@@ -252,7 +252,7 @@ class Map extends React.Component {
                         />
                         <button
                             onClick={this.handleArrowClick}
-                            className="sidepanel_btn_2"
+                            className={this.state.showModal? "sidepanel_btn_2_clicked":"sidepanel_btn_2_unclicked"}
                         >
                             {this.state.showModal ? leftArrow : rightArrow}
                         </button>
