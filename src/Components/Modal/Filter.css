@@ -1,31 +1,24 @@
-.icons {
-  width: 30%;
-  padding-left: 0.5rem;
-  margin: 0;
-
-  /* box-shadow: 0 2px 3px #ccc; */
-
-  text-align: left;
-  float: left;
-  list-style-type: none;
-}
 .icon {
-  height: 1.5rem;
+  height: 2rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
-.item {
-  width: 100%;
-  list-style-type: none;
-  align-items: left;
+.listItem {
+  list-style: none;
+  font-size: 1rem;
 }
+
 .checkbox {
   padding-left: 0;
   align-items: left;
 }
 
-.menubutton {
-  height: 3rem;
-  cursor: pointer;
+body {
+  color: #0e3958;
+  background-color: #e6ecec;
+}
+h3 {
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
 }

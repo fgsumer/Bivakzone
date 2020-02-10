@@ -25,7 +25,7 @@ class Menu extends React.Component {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">
-          <img src="Alternative-1.png" alt="logo" style={{ height: '2.3rem' }} />
+          <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
           {/* <Translate id="menu.title">Bivouac Zone</Translate> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
