@@ -53,13 +53,17 @@
         bottom: 0;
         
     }
-    .sidepanel_btn{
+    .sidepanel_btn_unclicked{
         top: 92vh;
         right: -2rem;
         z-index: 3;
         display: none;
 
     }
+    .sidepanel_btn_clicked{
+        display: none;
+    }
+
     .sidepanel_btn_2_unclicked{
         transform: rotate(-90deg);
         top: 1vh;
