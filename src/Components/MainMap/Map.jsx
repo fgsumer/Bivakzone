@@ -153,7 +153,7 @@ class Map extends React.Component {
         return (
             <>
                 <LeafletMap
-                    bounds={bounds}
+                    //bounds={bounds}
                     className="leaflet-container"
                     center={position}
                     zoom={this.state.zoom}
