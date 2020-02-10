@@ -2,8 +2,8 @@ import React from 'react';
 import L from 'leaflet';
 import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
-import { Link } from 'react-router-dom';
-import Filter from '../Header/Filter';
+import Filter from '../Filter/Filter';
+import '../Filter/Filter.css';
 
 import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
@@ -65,6 +65,7 @@ class Map extends React.Component {
     this.setState({
       ...this.state,
       markerPosition: e.latlng,
+      filter: false,
     });
   };
 
@@ -134,7 +135,7 @@ class Map extends React.Component {
 
     const rightArrow = <Icon type="right" />;
     const leftArrow = <Icon type="left" />;
-    modal = (
+    let modal = (
       <BivakZoneModal
         style={this.state.showModal ? showStyle : hideStyle}
         modalState={this.showModalFunc}
@@ -145,6 +146,12 @@ class Map extends React.Component {
         showModal={this.state.showModal}
         onFilterChangeCallback={this.updateBivakZones}
       />
+    );
+
+    let filterModal = (
+      <Control key={this.state.filter} position="topleft">
+        <Filter callBack={this.updateBivakZones}></Filter>
+      </Control>
     );
 
     const position = [this.state.location.lat, this.state.location.lng];
@@ -166,20 +173,6 @@ class Map extends React.Component {
           easeLinearity={0.35}
         >
           <ZoomControl position="bottomright"></ZoomControl>
-
-          {/* <Control key={this.state.filter} position="topleft">
-            <Filter callBack={this.showBivakzones}></Filter>
-
-            {modal}
-
-            <button
-              style={{ float: 'left', height: '3rem', color: 'blue' }}
-              onClick={this.handlArrowClick}
-              className="exp_btn"
-            >
-              {this.state.arrowDirection ? leftArrow : rightArrow}
-            </button>
-          </Control> */}
 
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
@@ -239,11 +232,14 @@ class Map extends React.Component {
               <img src={'/Icons/location.png'} alt="Location button" width="30px" height="30px" />
             </button>
           </Control>
+
           <section className={'sidepanel'}>
-            {modal}
+            {this.state.filter ? filterModal : modal}
+
+            {/* {modal}
             <button onClick={this.handleArrowClick} className="sidepanel_btn">
               {this.state.showModal ? leftArrow : rightArrow}
-            </button>
+            </button> */}
           </section>
           {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
         </LeafletMap>

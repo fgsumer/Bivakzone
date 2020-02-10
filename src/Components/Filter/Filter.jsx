@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Menu, Checkbox, Icon, Button } from 'antd';
 import Bivakzones from '../../bivakzones.json';
 import Controllers from '../../controllers/controllers';
-import './header.css';
 
 const { SubMenu } = Menu;
 let filtredBivs;
@@ -57,6 +56,7 @@ class Filter extends Component {
           }
         >
           <SubMenu
+            className="submenu"
             onTitleClick={this.handleClick}
             mode="horizontal"
             title={

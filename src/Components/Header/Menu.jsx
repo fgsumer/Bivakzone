@@ -30,7 +30,6 @@ class Menu extends React.Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/filter">Filter</Nav.Link>
             <Nav.Link href="/favorite">Favorites</Nav.Link>
             <LanguageToggle />
           </Nav>
@@ -39,5 +38,7 @@ class Menu extends React.Component {
     );
   }
 }
+
+console.log(withLocalize(Menu));
 
 export default withLocalize(Menu);
