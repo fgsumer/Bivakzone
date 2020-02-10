@@ -24,7 +24,7 @@ class BivakZoneModal extends Component {
         return (
             <>
 
-                <article  className={'bivak_modal_mobile'}>
+                <article  className={this.props.className}>
 
                     {this.props.bivakzone &&
                     (

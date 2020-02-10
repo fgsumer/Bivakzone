@@ -11,6 +11,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js'
 import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile'
 
+
 const Leaflet = window.L;
 
 const myIcon = L.icon({
@@ -132,6 +133,7 @@ class Map extends React.Component {
             width: '0',
             transform: 'translateX(-30vw)'
         };
+        
 
         let modal;
         const rightArrow = <Icon type="right"/>;
@@ -239,14 +241,15 @@ class Map extends React.Component {
                         >
                             {this.state.showModal ? leftArrow : rightArrow}
                         </button>
-                        <BivakzoneModalMobile   
-                        style={this.state.showModal ?  showStyle : hideStyle}
+                        <BivakzoneModalMobile 
+                        className={this.state.showModal ?  "bivak_modal_mobile_show" : "bivak_modal_mobile_hide" }  
                         modalState={this.showModalFunc}
                         handleOpen={this.handleOnClick}
                         onRef={ref => (this.child = ref)}
                         handleClose={this.handleOnClose}
                         bivakzone={this.state.bivakzone}
-                        showModal={this.state.showModal}/>
+                        
+                        />
                         <button
                             onClick={this.handleArrowClick}
                             className="sidepanel_btn_2"
