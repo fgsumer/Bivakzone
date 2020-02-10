@@ -12,11 +12,49 @@
     right: -2rem;
     background: white;
 }
+.sidepanel_btn{
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    background: white;
+}
+
+.sidepanel_btn_2{
+
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    background: white;
+    display: none;
+    transform: rotate(-90deg);
+    height: 3rem;
+
+}
 
 @media screen and (max-width: 770px) {
 
     .sidepanel {
         bottom: 0;
+        
+    }
+    .sidepanel_btn{
+        top: 92vh;
+        right: -2rem;
+        z-index: 3;
+
+    }
+    .sidepanel_btn_2{
+
+        display: block;
+        left: 50vw;
+
+    
     }
 
 }

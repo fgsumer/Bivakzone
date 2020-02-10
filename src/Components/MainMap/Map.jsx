@@ -9,6 +9,7 @@ import './Map.css';
 import {Icon} from 'antd'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js'
+import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile'
 
 const Leaflet = window.L;
 
@@ -235,6 +236,20 @@ class Map extends React.Component {
                         <button
                             onClick={this.handleArrowClick}
                             className="sidepanel_btn"
+                        >
+                            {this.state.showModal ? leftArrow : rightArrow}
+                        </button>
+                        <BivakzoneModalMobile   
+                        style={this.state.showModal ?  showStyle : hideStyle}
+                        modalState={this.showModalFunc}
+                        handleOpen={this.handleOnClick}
+                        onRef={ref => (this.child = ref)}
+                        handleClose={this.handleOnClose}
+                        bivakzone={this.state.bivakzone}
+                        showModal={this.state.showModal}/>
+                        <button
+                            onClick={this.handleArrowClick}
+                            className="sidepanel_btn_2"
                         >
                             {this.state.showModal ? leftArrow : rightArrow}
                         </button>
