@@ -1,16 +1,13 @@
 import React from 'react';
 import L from 'leaflet';
-import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
-import bivakzones from '../../bivakzones.json';
+import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
-import PopupCard from './PopupCard';
 import { Link } from 'react-router-dom';
 import Filter from '../Header/Filter';
-import { Handler } from 'leaflet';
-import { Modal } from 'react-bootstrap';
-import BivakzoneModal from '../Modal/BivakzoneModal2';
+
+import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
-import { ShowModalContext } from '../../utils/Context';
+import './Map.css';
 import { Icon } from 'antd';
 import Controllers from '../../controllers/controllers.js';
 
@@ -36,8 +33,6 @@ class Map extends React.Component {
       showButton: false,
       bivakzones: props.bivakzones,
       showModal: false,
-      arrowDirection: false,
-      clicks: 0,
       bivakzone: null,
       markerPosition: {},
       filter: true,
@@ -55,14 +50,16 @@ class Map extends React.Component {
   handleOnClick = e => {
     const prevBivId = this.state.bivakzone;
 
-    {
-      e.sourceTarget.feature === prevBivId
-        ? this.setState({ showModal: !this.state.showModal, bivakzone: null })
-        : this.setState({
-            showModal: false,
-            clicks: this.state.clicks + 1,
-            bivakzone: e.sourceTarget.feature,
-          });
+    if (e.sourceTarget.feature === prevBivId) {
+      this.setState({
+        showModal: false,
+        bivakzone: null,
+      });
+    } else {
+      this.setState({
+        showModal: true,
+        bivakzone: e.sourceTarget.feature,
+      });
     }
 
     this.setState({
@@ -70,7 +67,8 @@ class Map extends React.Component {
       markerPosition: e.latlng,
     });
   };
-  handlArrowClick = () => {
+
+  handleArrowClick = () => {
     this.setState(
       {
         showModal: !this.state.showModal,
@@ -85,7 +83,7 @@ class Map extends React.Component {
   handleOnClose = () => {
     this.setState({
       ...this.state,
-      showModal: !this.state.showModal,
+      showModal: false,
     });
   };
 
@@ -114,60 +112,39 @@ class Map extends React.Component {
       this.setState({
         location: { lat: 50.6, lng: 4.41 },
         haveLocationOfUser: false, //making it false not to show the marker if user doesn't want his location to be used
-        zoom: 10,
+        zoom: 9,
         allowance: false,
       });
     }
   }
-  showBivakzones = a => {
+
+  updateBivakZones = bivakzones => {
     this.setState({
-      bivakzones: a,
+      bivakzones,
     });
   };
 
   render() {
-    const showStyle = {
-      width: '30%',
-      height: '70%',
-      background: 'white',
-      transition: 'width 1s ease-in-out',
-      overflow: 'hidden',
-      float: 'left',
-      zIndex: '1',
-      border: '1 solid black',
-      boxShadow: '2px 2px  rgba(0,0,0,0.5)',
-      display: 'block',
-      marginLeft: '10px',
-    };
+    const showStyle = {};
 
     const hideStyle = {
-      width: '0px',
-      height: '200px',
-      backGround: 'blue',
-      transition: 'width 1s ease-in-out',
-      overflow: 'hidden',
-      float: 'left',
-      zIndex: '1',
-      marginLeft: '10px',
+      width: '0',
+      transform: 'translateX(-30vw)',
     };
 
     const rightArrow = <Icon type="right" />;
     const leftArrow = <Icon type="left" />;
-    // if (this.state.showModal){
-    //     return
-    //     }
-    let modal;
     modal = (
-      <BivakzoneModal
-        style={this.state.showModal ? hideStyle : showStyle}
-        // className={this.state.showModal ? "modal_on_click":"modal"}
+      <BivakZoneModal
+        style={this.state.showModal ? showStyle : hideStyle}
         modalState={this.showModalFunc}
         handleOpen={this.handleOnClick}
         onRef={ref => (this.child = ref)}
         handleClose={this.handleOnClose}
         bivakzone={this.state.bivakzone}
         showModal={this.state.showModal}
-      ></BivakzoneModal>
+        onFilterChangeCallback={this.updateBivakZones}
+      />
     );
 
     const position = [this.state.location.lat, this.state.location.lng];
@@ -175,7 +152,7 @@ class Map extends React.Component {
     return (
       <>
         <LeafletMap
-          bounds={bounds}
+          //bounds={bounds} //this is malfunctioning zoom >> better to fix this if needed
           className="leaflet-container"
           center={position}
           zoom={this.state.zoom}
@@ -190,7 +167,7 @@ class Map extends React.Component {
         >
           <ZoomControl position="bottomright"></ZoomControl>
 
-          <Control key={this.state.filter} position="topleft">
+          {/* <Control key={this.state.filter} position="topleft">
             <Filter callBack={this.showBivakzones}></Filter>
 
             {modal}
@@ -202,7 +179,7 @@ class Map extends React.Component {
             >
               {this.state.arrowDirection ? leftArrow : rightArrow}
             </button>
-          </Control>
+          </Control> */}
 
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
@@ -245,15 +222,13 @@ class Map extends React.Component {
               >
                 <Popup>
                   {/* <PopupCard bivakzone={bivakzone} /> */}
-                  <Link to={`/home/${bivak.id}`}>
-                    {bivak.properties.name}
-                    {bivak.geometry.type}
-                  </Link>
+                  {bivak.properties.name}
+                  {bivak.geometry.type}
                 </Popup>
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="bottomright">
+          <Control key={this.state.showLocation} position="topright">
             {/* Control is used to control a component's position on map */}
             <button
               onClick={() => {
@@ -264,11 +239,13 @@ class Map extends React.Component {
               <img src={'/Icons/location.png'} alt="Location button" width="30px" height="30px" />
             </button>
           </Control>
-          {/*
-          <Control key={this.state.filter} position="topleft">
-            <Filter callBack={this.showBivakzones}></Filter>
-          </Control>
-          */}
+          <section className={'sidepanel'}>
+            {modal}
+            <button onClick={this.handleArrowClick} className="sidepanel_btn">
+              {this.state.showModal ? leftArrow : rightArrow}
+            </button>
+          </section>
+          {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
         </LeafletMap>
       </>
     );
