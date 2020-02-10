@@ -1,24 +1,21 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import BivakMap from './BivakMap';
 import Bivakzone from './Bivakzone';
-import { Container, Row, Col } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import {Col} from 'react-bootstrap';
 
+class Single extends Component {
 
+    id = this.props.location.pathname.split("/").slice(2).slice(-5).join("/");
 
- class Single extends Component{
+    render() {
 
-   id =  this.props.location.pathname.split("/").slice(2).slice(-5).join("/");
+        return (
 
-    render () {
-    
-         return (
-
-    <> 
-        <Col lg={6} ><BivakMap id={this.id} /></Col>
-        <Col lg={6} ><Bivakzone id={this.id} /></Col>
-    </>
-    )}
-} 
+            <>
+                <Bivakzone id={this.id}/>
+            </>
+        )
+    }
+}
 
 export default Single 
