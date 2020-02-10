@@ -12,7 +12,7 @@ const Bivakzone = props => {
   const bivak = bivakzones.features.find(bivakzone => bivakzone.id === id);
 
   return (
-    <div style={{ backgroundColor: '#EBEAEC' }}>
+    <div style={{ backgroundColor: '#EBEAEC', height: '100%' }}>
       <BivakDetails bivak={bivak} />
       <Comment id={id} bivak={bivak} />
     </div>

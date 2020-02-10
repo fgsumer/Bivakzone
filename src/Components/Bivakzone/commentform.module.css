@@ -1,0 +1,26 @@
+.comment {
+}
+.form {
+  margin: 2rem;
+  padding: 0.7rem;
+  border-radius: 20px;
+  /* float: left; */
+  /* width: 90%; */
+}
+.formItems {
+  background-color: #d9d9da;
+  border-bottom: solid #bbbabc;
+}
+.button {
+  background-color: #156d84;
+  border: none;
+  float: right;
+  padding: 0.8rem;
+  width: 25%;
+}
+.button:hover {
+  background-color: #0e4958;
+}
+.hh1 {
+  color: #535354;
+}

@@ -20,9 +20,9 @@ const BivakDetails = ({ bivak }) => {
     <Row>
       <Col lg={12}>
         <article className={styles.detail}>
-          <h1 className={styles.hh1}>
+          <h2 className={styles.hh2}>
             {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)}
-          </h1>
+          </h2>
           {console.log(bivak.properties)}
           {console.log(bivak.geometry)}
           <p className={styles.paragraph}>
@@ -32,7 +32,7 @@ const BivakDetails = ({ bivak }) => {
                 <li>reservation:{bivak.properties.reservation}</li>
                 <li>location:{bivak.geometry.coordinates[0]},{bivak.geometry.coordinates[1]}</li> */}
             {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)} is
-            operated by {bivak.properties.operator}
+            operated by {bivak.properties.operator}.
             {bivak.properties.openfire === 'yes'
               ? ' Small campfire allowed under normal weather conditions (no dry period or strong winds) but only at the specifically designated place, not elsewhere. '
               : null}
