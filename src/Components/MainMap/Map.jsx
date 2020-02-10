@@ -169,7 +169,7 @@ class Map extends React.Component {
                     animate={true}
                     easeLinearity={0.35}
                 >
-                    <ZoomControl position="bottomright"></ZoomControl>
+                    <ZoomControl position={window.visualViewport.height < 700 ? "topright":"bottomright"}></ZoomControl>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> flaticon.com</a>'

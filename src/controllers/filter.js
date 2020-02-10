@@ -9,9 +9,8 @@ const filters ={
 
 
 const filter=function (bivakzone,filters){
-console.log(bivakzone)
  const entries=  Object.entries(bivakzone.properties).reduce((acc,val)=> val,0,{})
-  console.log(entries)
+
 }
 
 const pounds = [11, 21, 16, 19, 46, 29, 46, 19, 21];

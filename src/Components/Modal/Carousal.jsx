@@ -19,9 +19,7 @@ export default (props) => {
     if (bivakzone) {
 
         const imgsURL = Controllers.imageExtractor(bivakzone);
-        console.log(imgsURL)
-
-
+       
         return (
 
             <Carousel style={{width: "100%", height: "100%", border: "1px solid black", overflow: "hidden"}}

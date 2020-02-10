@@ -3,7 +3,6 @@ import moment from 'moment';
 import {Card} from 'react-bootstrap'
 
 const DisplayComment =({oldComments})=>{
-    console.log(oldComments)
     return(
         <Card>
             <Card.Header as="h3">Comments</Card.Header>

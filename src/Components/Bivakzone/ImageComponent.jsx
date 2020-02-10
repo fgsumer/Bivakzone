@@ -5,7 +5,6 @@ import {Carousel, Button, Container } from 'react-bootstrap';
 const ImageComponent=({data, setShowImage})=>{
     const handleClick =()=>{
         setShowImage(false)
-        console.log('clicked')
       }
 
     const {image, image1, image2} = data.properties;
