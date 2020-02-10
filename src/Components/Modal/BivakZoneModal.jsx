@@ -31,7 +31,7 @@ class BivakZoneModal extends Component {
                   style={{
                     width: '100%',
                     height: '100%',
-                    border: '1xp soldi red',
+                    border: '1xp solid red',
                     overflow: 'hidden',
                   }}
                   cover={<BivakCarousel bivakzone={this.props.bivakzone} />}
