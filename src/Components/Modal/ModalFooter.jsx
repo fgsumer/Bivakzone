@@ -4,7 +4,7 @@ export default ({ properties }) => {
   const { bicycle, openfire, fee, toilets, dog, drinking_water, reservation } = properties;
   const availableStyle = {
     width: '10%',
-    border: '1px solid blue',
+    // border: '1px solid blue',
     backgroundColor: 'rgb(47, 155, 255)',
   };
   const unavailableStyle = {
