@@ -1,0 +1,17 @@
+.detail {
+  /* background-color: #cfd2d9; */
+  background-color: F5F4F56;
+  margin: 2rem;
+  padding: 1rem;
+  box-shadow: 5px 5px 5px 5px #d0cfd1;
+  border-radius: 20px;
+}
+.hh1 {
+  color: #2a2a2a;
+}
+.paragraph {
+  color: #535354;
+}
+.link {
+  color: #535354;
+}

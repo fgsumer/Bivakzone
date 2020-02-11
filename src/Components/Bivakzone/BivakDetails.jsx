@@ -1,71 +1,55 @@
 import React from 'react';
-import {Translate} from 'react-localize-redux';
-import { Container, Table, Card, ListGroup } from 'react-bootstrap';
+import { Translate } from 'react-localize-redux';
+import { Container, Button, Row, Col } from 'react-bootstrap';
+import styles from './bivakdetails.module.css';
 
-const BivakDetails=({bivak})=>{
-    if (bivak.geometry.type === 'Polygon') {
-      const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
-      const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
+const BivakDetails = ({ bivak }) => {
+  console.log(bivak.geometry.type);
+  if (bivak.geometry.type === 'Polygon') {
+    const firstCoordinate = bivak.geometry.coordinates[0].map(a => a[0]);
+    const x = firstCoordinate.reduce((c, d) => c + d, 0) / firstCoordinate.length;
 
-      const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
-      const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
-      
-      bivak.geometry.type = 'Point';
-      bivak.geometry.coordinates = [x, y];
-    }
-    let {openfire, bicycle, fee,dog, drinking_water, reservation, opening_hours, maxstay,operator, phone, name, toilets} = bivak.properties;
+    const secondCoordinate = bivak.geometry.coordinates[0].map(a => a[1]);
+    const y = secondCoordinate.reduce((c, d) => c + d, 0) / secondCoordinate.length;
 
-    // Object.keys(bivak.properties).forEach((key)=>{
-    //   console.log(key)
-    //   console.log(key)
-    //   if(!key){
-    //     key = 'no information'
-    //   }
-    // })
-    return (
-      <Container>
-        <h4>{name}</h4>
-       <p className="fas fa-map-marker-alt mr-2">:{bivak.geometry.coordinates[0]},{bivak.geometry.coordinates[1]}</p> 
-        <Card style={{ width: '100%' }}>
-          <Table striped bordered hover>
-              <tbody>
-                <tr>
-                  <td>Accessible by <img src="/Icons/bicycle.png" alt="bicycle icon" className="icon" />?</td>
-                  <td>{bicycle}</td>
-                </tr>
-                <tr>
-                  <td>Is <img src="/Icons/campfire.png" alt="campfire icon" className="icon" /> Allowed? </td>
-                  <td>{openfire}</td>
-                </tr>
-                <tr>
-                  <td>Is there <img src="/Icons/toilet.png" alt="toilet icon" className="icon" /> ?</td>
-                  <td>{toilets}</td>
-                </tr>
-                <tr>
-                  <td>Is there drinkable <img src="/Icons/noun_Water_2496699.png" alt="water icon" className="icon" />? </td>
-                  <td>{drinking_water}</td>
-                </tr>
-                <tr>
-                  <td>Fee <img src="/Icons/free.png" alt="no fee icon" className="icon" /> ?</td>
-                  <td>{fee}</td>
-                </tr>
-                <tr>
-                  <td>Is <img src="/Icons/reservation.png" alt="reservation" className="icon" />Required? </td>
-                  <td>{reservation}</td>
-                </tr>
-                <tr>
-                  <td>Is <img src="/Icons/dog.png" alt="reservation" className="icon" /> allowed ?</td>
-                  <td>{dog}</td>
-                </tr>
-                <tr>
-                  <td>Opening Hours</td>
-                  <td>{opening_hours}</td>
-                </tr>
-              </tbody>
-            </Table>
-        </Card>
-    </Container>
-    )
+    bivak.geometry.type = 'Point';
+    bivak.geometry.coordinates = [x, y];
+  }
+
+  return (
+    <Row>
+      <Col lg={12}>
+        <article className={styles.detail}>
+          <h2 className={styles.hh2}>
+            {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)}
+          </h2>
+          {console.log(bivak.properties)}
+          {console.log(bivak.geometry)}
+          <p className={styles.paragraph}>
+            {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)} is
+            operated by {bivak.properties.operator}.
+            {bivak.properties.openfire === 'yes'
+              ? ' Small campfire allowed under normal weather conditions (no dry period or strong winds) but only at the specifically designated place, not elsewhere. '
+              : null}
+            {bivak.properties.openfire === 'no'
+              ? ' and campfire is not allowed in this bivac zone. '
+              : null}
+            It is for maximum {bivak.properties.capacity} people and maximum for{' '}
+            {bivak.properties.maxtents} tents.
+            <p>
+              <br />
+              <a className={styles.link} href={bivak.properties.website}>
+                Learn More &#8594;{' '}
+              </a>
+            </p>
+            {/* <span>
+            location:{bivak.geometry.coordinates[0]},{bivak.geometry.coordinates[1]}
+          </span> */}
+          </p>
+        </article>
+      </Col>
+    </Row>
+  );
 };
 
 export default BivakDetails;
