@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import '../../App.css'
-import {Card, Row} from 'antd';
+import {Card, Row, Col} from 'antd';
 import BivakCarousel from './Carousal'
 import Footer from './ModalFooter'
 import './BivakZoneModal.css';
@@ -44,7 +44,7 @@ class BivakZoneModal extends Component {
                     (
                         <>
                             <Row style={{height: "50%"}}>
-                                <FavoriteButton refresh={this.refreshSate} bivakzone = {this.props.bivakzone}/>
+                               
                                 <Card
                                     bivakzone={this.props.bivakzone}
                                     style={{width: "100%", height: "100%", border: "1xp soldi red", overflow: "hidden"}}
@@ -52,10 +52,17 @@ class BivakZoneModal extends Component {
                                         <BivakCarousel bivakzone={this.props.bivakzone}/>
                                     }
                                 >
-                                   <Link to={`/home/${this.props.bivakzone.id}`}><h1>{this.props.bivakzone.properties.name}</h1></Link>
+                                   
                                 </Card>
                             </Row>
-
+                            <Row>
+                                <Col>
+                                <Link to={`/home/${this.props.bivakzone.id}`}><h1>{this.props.bivakzone.properties.name}</h1></Link>
+                                </Col>
+                                <Col>
+                                <FavoriteButton refresh={this.refreshSate} bivakzone = {this.props.bivakzone}/>
+                                </Col>
+                            </Row>
                             <Row style={{height: "max-content", borderTop: "1px solid rgb(47, 155, 255)"}}>
                                 <Footer properties={this.props.bivakzone.properties}></Footer>
                             </Row>
