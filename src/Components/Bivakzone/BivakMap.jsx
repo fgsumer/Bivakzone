@@ -15,12 +15,8 @@ const BivakMap=(props)=>{
 
     const handleClick =()=>{
       setShowImage(true)
-      console.log("clicked")
+    
     }
-
-    useEffect(()=>{
-      console.log(showImage)
-    })
 
     if(bivakzone.geometry.type==='Point'){
          x = bivakzone.geometry.coordinates[0];

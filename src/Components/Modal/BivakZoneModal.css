@@ -8,7 +8,21 @@
     z-index: 1;
     box-shadow: 2px 2px rgba(0,0,0,0.5);
     display: block;
+    position: relative;
 }
+
+/* .bivak_modal_mobile{
+    width: 30vw;
+    height: 92vh;
+    background: white;
+    transform: translateX(0vw);
+    transition: transform 1s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 2px 2px rgba(0,0,0,0.5);
+    display: none;
+
+} */
 
 @media screen and (max-width: 770px) {
 
@@ -16,6 +30,40 @@
         width: 100vw;
         height: auto;
         transition: none;
+        display: none;
     }
+
+    .bivak_modal_mobile_hide{
+    
+    width: 93vw;
+    height: 18vh;
+    top: 7vh;
+    left: 1rem;
+    position: relative;
+    background: white;
+    transform: translateX(0vw);
+    transition: transform 1s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 2px 2px rgba(0,0,0,0.5);
+    display: block;
+
+    }
+    .bivak_modal_mobile_show{
+       
+        width: 93vw;
+        height: 48vh;
+        top: 13vh;
+        left: 1rem;
+        position: relative;
+        background: white;
+        transform: translateX(0vw);
+        transition: transform 1s ease-in-out;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 2px 2px rgba(0,0,0,0.5);
+        display: block;
+    
+        }
 
 }
