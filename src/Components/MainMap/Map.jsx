@@ -8,6 +8,7 @@ import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
 import './Map.css';
 import Controllers from '../../controllers/controllers.js';
+import { Icon } from 'antd';
 
 // const Leaflet = window.L;
 
@@ -34,6 +35,8 @@ class Map extends React.Component {
       bivakzone: null,
       markerPosition: {},
       filter: true,
+      prevBivId: null,
+      clicked: false,
     };
   }
 
@@ -46,17 +49,20 @@ class Map extends React.Component {
   };
 
   handleOnClick = e => {
-    const prevBivId = this.state.bivakzone;
     console.log(e.sourceTarget.feature);
-    if (e.sourceTarget.feature === prevBivId) {
+    console.log(this.state.bivakzone);
+    if (e.sourceTarget.feature === this.state.bivakzone) {
       this.setState({
         showModal: false,
         filter: true,
         bivakzone: null,
       });
-    } else if (e.sourceTarget.feature !== prevBivId) {
+    } else {
+      console.log('!!!bivakzone marker clicked for the first time');
+      this.props.setShowFilter(false);
       this.setState({
         filter: false,
+        clicked: true,
         showModal: true,
         bivakzone: e.sourceTarget.feature,
         location: {
@@ -66,6 +72,8 @@ class Map extends React.Component {
         zoom: 10,
       });
     }
+
+    console.log('state', this.state);
 
     this.setState({
       ...this.state,
@@ -133,6 +141,9 @@ class Map extends React.Component {
     this.setState({
       showModal: false,
       filter: true,
+      bivakzone: null,
+      prevBivId: null,
+      clicked: false,
     });
   };
 
@@ -142,7 +153,6 @@ class Map extends React.Component {
     if (this.props.showFilter) {
       // to show filter ad search when we click the search button on header:
       if (!this.state.filter) {
-        //to prevent infinite loop
         this.showFilterOnMenuClick();
       }
     }
@@ -154,6 +164,8 @@ class Map extends React.Component {
       transform: 'translateX(-30vw)',
     };
 
+    const rightArrow = <Icon type="right" />;
+    const leftArrow = <Icon type="left" />;
     let modal = (
       <BivakZoneModal
         style={this.state.showModal ? showStyle : hideStyle}
@@ -255,11 +267,9 @@ class Map extends React.Component {
 
           <section className={'sidepanel'}>
             {this.state.filter ? filterAndSearchModal : modal}
-
-            {/* {modal}
             <button onClick={this.handleArrowClick} className="sidepanel_btn">
               {this.state.showModal ? leftArrow : rightArrow}
-            </button> */}
+            </button>
           </section>
           {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
         </LeafletMap>

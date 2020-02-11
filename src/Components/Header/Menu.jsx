@@ -34,7 +34,9 @@ class Menu extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link
               onClick={() => {
-                this.props.setShowFilter(true);
+                {
+                  this.props.setShowFilter(true);
+                }
               }}
             >
               Search

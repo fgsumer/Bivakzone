@@ -27,7 +27,12 @@ const Layout = props => {
                   exact
                   path="/"
                   render={props => (
-                    <Map {...props} bivakzones={bivakzones.features} showFilter={showFilter} />
+                    <Map
+                      {...props}
+                      bivakzones={bivakzones.features}
+                      showFilter={showFilter}
+                      setShowFilter={setShowFilter}
+                    />
                   )}
                 />
                 <Route

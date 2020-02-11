@@ -8,16 +8,19 @@ import { Link } from 'react-router-dom';
 import Filter from './Filter';
 
 class BivakZoneModal extends Component {
-  // state= {
-  //   slide:false,
-  //   arrowDirection: false
-  // };
-  // handleOnClick= ()=>{
-  //   this.setState({
-  //       slide: !this.state.slide,
-  //       arrowDirection: !this.state.arrowDirection
-  //   },()=>console.log(this.state.slide))
-  // }
+  state = {
+    slide: false,
+    arrowDirection: false,
+  };
+  handleOnClick = () => {
+    this.setState(
+      {
+        slide: !this.state.slide,
+        arrowDirection: !this.state.arrowDirection,
+      },
+      () => console.log(this.state.slide),
+    );
+  };
   render() {
     const { Meta } = Card;
     return (
