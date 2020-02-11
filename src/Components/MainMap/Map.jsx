@@ -7,10 +7,9 @@ import Filter from '../Filter/Filter';
 import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
 import './Map.css';
-import { Icon } from 'antd';
 import Controllers from '../../controllers/controllers.js';
 
-const Leaflet = window.L;
+// const Leaflet = window.L;
 
 const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
@@ -143,6 +142,7 @@ class Map extends React.Component {
     if (this.props.showFilter) {
       // to show filter ad search when we click the search button on header:
       if (!this.state.filter) {
+        //to prevent infinite loop
         this.showFilterOnMenuClick();
       }
     }
@@ -154,8 +154,6 @@ class Map extends React.Component {
       transform: 'translateX(-30vw)',
     };
 
-    const rightArrow = <Icon type="right" />;
-    const leftArrow = <Icon type="left" />;
     let modal = (
       <BivakZoneModal
         style={this.state.showModal ? showStyle : hideStyle}
@@ -177,7 +175,7 @@ class Map extends React.Component {
     );
 
     const position = [this.state.location.lat, this.state.location.lng];
-    const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
+    // const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
       <>
         <LeafletMap
