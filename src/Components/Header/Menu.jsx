@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { withLocalize, Translate } from 'react-localize-redux';
+import {Navbar, Nav}  from 'react-bootstrap';
+import {withLocalize, Translate} from 'react-localize-redux';
 import globalTranslations from '../languages/data/language.json';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToStaticMarkup } from "react-dom/server";
 import LanguageToggle from '../languages/LanguageToggle';
 
 class Menu extends React.Component {
@@ -26,7 +26,8 @@ class Menu extends React.Component {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">
           <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
-          {/* <Translate id="menu.title">Bivouac Zone</Translate> */}
+          <Translate id="menu.title">Bivouac Zone</Translate>
+
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
