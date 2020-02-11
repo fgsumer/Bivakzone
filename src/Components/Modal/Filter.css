@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .icon {
   height: 2rem;
   padding-left: 0.5rem;
@@ -22,3 +23,36 @@ h3 {
   padding-top: 2rem;
   padding-bottom: 1.5rem;
 }
+=======
+.icons {
+  width: 30%;
+  padding-left: 0.5rem;
+  margin: 0;
+
+  /* box-shadow: 0 2px 3px #ccc; */
+
+  text-align: left;
+  float: left;
+  list-style-type: none;
+}
+.icon {
+  height: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.item {
+  width: 100%;
+  list-style-type: none;
+  align-items: left;
+}
+.checkbox {
+  padding-left: 0;
+  align-items: left;
+}
+
+.menubutton {
+  height: 3rem;
+  cursor: pointer;
+}
+>>>>>>> 8f2a08fc0703c4adc50c1e7f80d343e492b0e920

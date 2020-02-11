@@ -1,20 +1,92 @@
 .sidepanel {
-  position: absolute;
-  z-index: 400;
+    position: absolute;
+    z-index: 400;
+    width: min-content;
 }
 
-.sidepanel_btn {
-  height: 2rem;
-  width: 2rem;
-  float: left;
-  position: absolute;
-  top: 0;
-  right: -2rem;
-  background: white;
+.sidepanel_btn_unclicked {
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: 10rem;
+    background: white;
+}
+.sidepanel_btn_clicked {
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    background: white;
+}
+
+.sidepanel_btn{
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    top: 0;
+    right: -2rem;
+    background: white;
+}
+
+.sidepanel_btn_2{
+
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    background: white;
+    display: none;
+    transform: rotate(-90deg);
+    height: 3rem;
+
 }
 
 @media screen and (max-width: 770px) {
-  .sidepanel {
-    bottom: 0;
-  }
+
+    .sidepanel {
+        bottom: 0;
+        
+    }
+    .sidepanel_btn_unclicked{
+        top: 92vh;
+        right: -2rem;
+        z-index: 3;
+        display: none;
+
+    }
+    .sidepanel_btn_clicked{
+        display: none;
+    }
+
+    .sidepanel_btn_2_unclicked{
+        transform: rotate(-90deg);
+        top: 1vh;
+        display: block;
+        left: 50vw;
+        position: absolute;
+        height: 4rem;
+        border-bottom: none;
+        border-radius: 30%;   
+        background-color: white;
+    }
+    .sidepanel_btn_2_clicked{
+
+    background-color: white;
+    transform: rotate(-90deg);
+        display: block;
+        left: 50vw;
+        position: absolute;
+        top:7vh;
+        height: 4rem;
+        border-bottom: none;
+        border-radius: 30%;
+
+
+}
 }
