@@ -3,7 +3,6 @@ import L from 'leaflet';
 import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import Filter from '../Filter/Filter';
-import '../Filter/Filter.css';
 
 import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
@@ -49,23 +48,29 @@ class Map extends React.Component {
 
   handleOnClick = e => {
     const prevBivId = this.state.bivakzone;
-
+    console.log(e.sourceTarget.feature);
     if (e.sourceTarget.feature === prevBivId) {
       this.setState({
         showModal: false,
+        filter: true,
         bivakzone: null,
       });
-    } else {
+    } else if (e.sourceTarget.feature !== prevBivId) {
       this.setState({
+        filter: false,
         showModal: true,
         bivakzone: e.sourceTarget.feature,
+        location: {
+          lat: e.sourceTarget.feature.geometry.coordinates[1],
+          lng: e.sourceTarget.feature.geometry.coordinates[0],
+        },
+        zoom: 10,
       });
     }
 
     this.setState({
       ...this.state,
       markerPosition: e.latlng,
-      filter: false,
     });
   };
 
@@ -125,7 +130,23 @@ class Map extends React.Component {
     });
   };
 
+  showFilterOnMenuClick = () => {
+    this.setState({
+      showModal: false,
+      filter: true,
+    });
+  };
+
   render() {
+    console.log('takes prop from menu', this.props.showFilter);
+
+    if (this.props.showFilter) {
+      // to show filter ad search when we click the search button on header:
+      if (!this.state.filter) {
+        this.showFilterOnMenuClick();
+      }
+    }
+
     const showStyle = {};
 
     const hideStyle = {
@@ -148,8 +169,9 @@ class Map extends React.Component {
       />
     );
 
-    let filterModal = (
+    let filterAndSearchModal = (
       <Control key={this.state.filter} position="topleft">
+        <h2>Search</h2>
         <Filter callBack={this.updateBivakZones}></Filter>
       </Control>
     );
@@ -172,7 +194,7 @@ class Map extends React.Component {
           animate={true}
           easeLinearity={0.35}
         >
-          <ZoomControl position="bottomright"></ZoomControl>
+          <ZoomControl position="topright"></ZoomControl>
 
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
@@ -234,7 +256,7 @@ class Map extends React.Component {
           </Control>
 
           <section className={'sidepanel'}>
-            {this.state.filter ? filterModal : modal}
+            {this.state.filter ? filterAndSearchModal : modal}
 
             {/* {modal}
             <button onClick={this.handleArrowClick} className="sidepanel_btn">

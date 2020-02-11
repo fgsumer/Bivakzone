@@ -4,6 +4,7 @@ import { withLocalize, Translate } from 'react-localize-redux';
 import globalTranslations from '../languages/data/language.json';
 import { renderToStaticMarkup } from 'react-dom/server';
 import LanguageToggle from '../languages/LanguageToggle';
+import Map from '../MainMap/Map.jsx';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -31,15 +32,20 @@ class Menu extends React.Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/favorite">Favorites</Nav.Link>
-            <LanguageToggle />
+            <Nav.Link
+              onClick={() => {
+                this.props.setShowFilter(true);
+              }}
+            >
+              Search
+            </Nav.Link>
+            <Nav.Link>Favorites</Nav.Link>
+            {/* <LanguageToggle /> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     );
   }
 }
-
-console.log(withLocalize(Menu));
 
 export default withLocalize(Menu);

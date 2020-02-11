@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Menu from './Header/Menu';
@@ -8,13 +8,14 @@ import Single from './Bivakzone/Index';
 import './Layout.css';
 
 const Layout = props => {
+  const [showFilter, setShowFilter] = useState();
   return (
     <Router>
       <Container className={'layout'} fluid={true}>
         <header className={'layout_header'}>
           <Row noGutters={true}>
             <Col lg={12}>
-              <Menu />
+              <Menu setShowFilter={setShowFilter} />
             </Col>
           </Row>
         </header>
@@ -25,7 +26,9 @@ const Layout = props => {
                 <Route
                   exact
                   path="/"
-                  render={props => <Map {...props} bivakzones={bivakzones.features} />}
+                  render={props => (
+                    <Map {...props} bivakzones={bivakzones.features} showFilter={showFilter} />
+                  )}
                 />
                 <Route
                   path={['/home/node/:bivakzoneId', '/home/way/:bivakzoneId']}
