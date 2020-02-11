@@ -12,14 +12,17 @@
   border-bottom: solid #bbbabc;
 }
 .button {
-  background-color: #156d84;
+  /* background-color: #156d84; */
+  background-color: #6c7983;
+  box-shadow: 2px 2px 2px 2px #d0cfd1;
   border: none;
   float: right;
   padding: 0.8rem;
   width: 25%;
+  margin-bottom: 3rem;
 }
 .button:hover {
-  background-color: #0e4958;
+  background-color: #38434c;
 }
 .hh1 {
   color: #535354;

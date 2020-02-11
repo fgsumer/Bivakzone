@@ -12,6 +12,14 @@ const Comment = ({ id }) => {
   const { register, handleSubmit, errors } = useForm();
   const [newComment, setNewComment] = useState(oldComments);
 
+  const commentGetter = () => {
+    axios
+      .get(`http://localhost:8000/comment/${id.replace('/', '%2F')}`)
+      .then(comments => setOldComments(comments))
+      .catch(err => console.log(err));
+  };
+  commentGetter();
+
   const LinkWithText = () => (
     <Link to="/">
       <Translate id="here" />
@@ -19,10 +27,7 @@ const Comment = ({ id }) => {
   );
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/comment/${id.replace('/', '%2F')}`)
-      .then(comments => setOldComments(comments))
-      .catch(err => console.log(err));
+    commentGetter();
   }, [newComment]);
 
   const onSubmit = ({ name, message }, e) => {
