@@ -10,6 +10,10 @@ import FavoriteButton from './FavoriteButton';
 import FavoriteLists from './FavoriteLists';
 
 class BivakZoneModal extends Component {
+   constructor(props){
+       super(props)
+       this.state={}
+   }
 
     // state= {
     //   slide:false,
@@ -21,6 +25,13 @@ class BivakZoneModal extends Component {
     //       arrowDirection: !this.state.arrowDirection
     //   },()=>console.log(this.state.slide))
     // }
+    refreshSate=(favsState)=>{
+           
+        if(favsState){
+            this.forceUpdate()
+        }
+
+    }
     render() {
 
         const {Meta} = Card;
@@ -33,7 +44,7 @@ class BivakZoneModal extends Component {
                     (
                         <>
                             <Row style={{height: "50%"}}>
-                                <FavoriteButton bivakzone = {this.props.bivakzone}/>
+                                <FavoriteButton refresh={this.refreshSate} bivakzone = {this.props.bivakzone}/>
                                 <Card
                                     bivakzone={this.props.bivakzone}
                                     style={{width: "100%", height: "100%", border: "1xp soldi red", overflow: "hidden"}}

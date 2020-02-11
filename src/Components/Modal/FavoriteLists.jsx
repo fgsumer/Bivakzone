@@ -15,7 +15,7 @@ const FavoriteLists = ()=>{
     </Card>
        ) 
     }
-
+        
     return(
         <Card style={{ width: '20rem' }}>
             <Card.Header>Favorite Bivakzones</Card.Header>
