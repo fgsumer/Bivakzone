@@ -9,7 +9,7 @@ import './Map.css';
 import { Icon } from 'antd';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js';
-// import { cursorTo } from 'readline';
+import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 
 const Leaflet = window.L;
 
@@ -131,7 +131,6 @@ class Map extends React.Component {
       transform: 'translateX(-30vw)',
     };
 
-    // const styleForCurrentLocationItem = { bottom: '50vh' };
     let modal;
     const rightArrow = <Icon type="right" />;
     const leftArrow = <Icon type="left" />;
@@ -153,7 +152,7 @@ class Map extends React.Component {
     return (
       <>
         <LeafletMap
-          bounds={bounds}
+          //bounds={bounds}
           className="leaflet-container"
           center={position}
           zoom={this.state.zoom}
@@ -166,7 +165,9 @@ class Map extends React.Component {
           animate={true}
           easeLinearity={0.35}
         >
-          <ZoomControl position="bottomright"></ZoomControl>
+          <ZoomControl
+            position={window.visualViewport.height < 700 ? 'topright' : 'bottomright'}
+          ></ZoomControl>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & Icons made by <a href="https://www.flaticon.com/authors/phatplus" title="phatplus">
             phatplus</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> flaticon.com</a>'
@@ -233,7 +234,28 @@ class Map extends React.Component {
           </Control>
           <section className={'sidepanel'}>
             {modal}
-            <button onClick={this.handleArrowClick} className="sidepanel_btn">
+            <button
+              onClick={this.handleArrowClick}
+              className={this.state.showModal ? 'sidepanel_btn_clicked' : 'sidepanel_btn_unclicked'}
+            >
+              {this.state.showModal ? leftArrow : rightArrow}
+            </button>
+            <BivakzoneModalMobile
+              className={
+                this.state.showModal ? 'bivak_modal_mobile_show' : 'bivak_modal_mobile_hide'
+              }
+              modalState={this.showModalFunc}
+              handleOpen={this.handleOnClick}
+              onRef={ref => (this.child = ref)}
+              handleClose={this.handleOnClose}
+              bivakzone={this.state.bivakzone}
+            />
+            <button
+              onClick={this.handleArrowClick}
+              className={
+                this.state.showModal ? 'sidepanel_btn_2_clicked' : 'sidepanel_btn_2_unclicked'
+              }
+            >
               {this.state.showModal ? leftArrow : rightArrow}
             </button>
           </section>

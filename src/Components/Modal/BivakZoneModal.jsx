@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { Card, Row } from 'antd';
+import { Card, Row, Col } from 'antd';
 import BivakCarousel from './Carousal';
 import Footer from './ModalFooter';
 import './BivakZoneModal.css';
 import { Link } from 'react-router-dom';
 import Filter from './Filter';
+import FavoriteButton from './FavoriteButton';
+import FavoriteLists from './FavoriteLists';
 
 class BivakZoneModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   // state= {
   //   slide:false,
   //   arrowDirection: false
@@ -18,6 +25,11 @@ class BivakZoneModal extends Component {
   //       arrowDirection: !this.state.arrowDirection
   //   },()=>console.log(this.state.slide))
   // }
+  refreshSate = favsState => {
+    if (favsState) {
+      this.forceUpdate();
+    }
+  };
   render() {
     const { Meta } = Card;
     return (
@@ -31,19 +43,22 @@ class BivakZoneModal extends Component {
                   style={{
                     width: '100%',
                     height: '100%',
-                    border: '1xp solid red',
+                    border: '1xp soldi red',
                     overflow: 'hidden',
                   }}
                   cover={<BivakCarousel bivakzone={this.props.bivakzone} />}
                 ></Card>
               </Row>
-
               <Row>
-                <Link to={`/home/${this.props.bivakzone.id}`}>
-                  <h1>{this.props.bivakzone.properties.name}</h1>
-                </Link>
+                <Col>
+                  <Link to={`/home/${this.props.bivakzone.id}`}>
+                    <h1>{this.props.bivakzone.properties.name}</h1>
+                  </Link>
+                </Col>
+                <Col>
+                  <FavoriteButton refresh={this.refreshSate} bivakzone={this.props.bivakzone} />
+                </Col>
               </Row>
-
               <Row style={{ height: 'max-content', borderTop: '1px solid rgb(47, 155, 255)' }}>
                 <Footer properties={this.props.bivakzone.properties}></Footer>
               </Row>

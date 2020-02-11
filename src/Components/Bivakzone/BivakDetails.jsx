@@ -26,11 +26,6 @@ const BivakDetails = ({ bivak }) => {
           {console.log(bivak.properties)}
           {console.log(bivak.geometry)}
           <p className={styles.paragraph}>
-            {/* <li><Translate id="properties.operator">operator</Translate>:{bivak.properties.operator}</li>
-                <li><Translate id="properties.fire">openfire</Translate>{bivak.properties.openfire}</li>
-                <li>opening_hours:{bivak.properties.opening_hours}</li>
-                <li>reservation:{bivak.properties.reservation}</li>
-                <li>location:{bivak.geometry.coordinates[0]},{bivak.geometry.coordinates[1]}</li> */}
             {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)} is
             operated by {bivak.properties.operator}.
             {bivak.properties.openfire === 'yes'

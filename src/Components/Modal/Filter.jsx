@@ -40,14 +40,14 @@ class Filter extends Component {
       <Container>
         <Row>
           <Col lg={12}>
-            <h3>Filter bivaczones through: </h3>
-            <ul className="listItem">
+            <h3>Filters</h3>
+            <ul className="item">
               <li>
                 <Checkbox id="bicycle" onChange={this.handleOnChange}>
                   <span>
                     <img src="/Icons/bicycle.png" alt="bicycle icon" className="icon" />
                   </span>
-                  accessibility by bike
+                  Accesible by bike
                 </Checkbox>
               </li>
               <li>
@@ -55,7 +55,7 @@ class Filter extends Component {
                   <span>
                     <img src="/Icons/campfire.png" alt="campfire icon" className="icon" />
                   </span>
-                  campfires allowed
+                  Fire
                 </Checkbox>
               </li>
               <li>
@@ -63,7 +63,7 @@ class Filter extends Component {
                   <span>
                     <img src="/Icons/drinking_water.png" alt="water icon" className="icon" />{' '}
                   </span>
-                  drinkable Water
+                  Drinkable Water
                 </Checkbox>
               </li>
               <li>
@@ -71,7 +71,15 @@ class Filter extends Component {
                   <span>
                     <img src="/Icons/toilet.png" alt="toilet icon" className="icon" />
                   </span>
-                  toilet
+                  Toilet
+                </Checkbox>
+              </li>
+              <li>
+                <Checkbox id="fee" onChange={this.handleOnChange}>
+                  <span>
+                    <img src="/Icons/free.png" alt="no fee icon" className="icon" />
+                  </span>
+                  No Fee
                 </Checkbox>
               </li>
               <li>
@@ -79,24 +87,15 @@ class Filter extends Component {
                   <span>
                     <img src="/Icons/reservation.png" alt="reservation" className="icon" />
                   </span>
-                  reservation required
+                  Reservation required
                 </Checkbox>
               </li>
-              <li>
-                <Checkbox id="fee" onChange={this.handleOnChange}>
-                  <span>
-                    <img src="/Icons/fee.png" alt="no fee icon" className="icon" />
-                  </span>
-                  no fee
-                </Checkbox>
-              </li>
-
               <li>
                 <Checkbox id="dog" onChange={this.handleOnChange}>
                   <span>
                     <img src="/Icons/dog.png" alt="reservation" className="icon" />
                   </span>
-                  dog is allowed
+                  Dog is allowed
                 </Checkbox>
               </li>
             </ul>
