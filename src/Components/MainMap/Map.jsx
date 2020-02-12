@@ -188,6 +188,7 @@ class Map extends React.Component {
 
         <button
           onClick={this.handleArrowClick}
+          style={{ visibility: this.state.bivakzone === null ? 'hidden' : 'visible' }}
           className={this.state.showModal ? 'sidepanel_btn_clicked' : 'sidepanel_btn_unclicked'}
         >
           {this.state.showModal ? leftArrow : rightArrow}
@@ -296,6 +297,7 @@ class Map extends React.Component {
 
           <section className={'sidepanel'}>
             {this.state.filter ? filterAndSearchModal : modal}
+
             <BivakzoneModalMobile
               className={
                 this.state.showModal ? 'bivak_modal_mobile_show' : 'bivak_modal_mobile_hide'
@@ -308,6 +310,7 @@ class Map extends React.Component {
             />
             <button
               onClick={this.handleArrowClick}
+              style={{ visibility: this.state.bivakzone === null ? 'hidden' : 'visible' }}
               className={
                 this.state.showModal ? 'sidepanel_btn_2_clicked' : 'sidepanel_btn_2_unclicked'
               }
