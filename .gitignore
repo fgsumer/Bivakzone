@@ -5,7 +5,10 @@
 /.pnp
 .pnp.js
 
+.env
+
 /public/Icons/React App_files
+.vscode/
 
 package-lock.json
 
@@ -29,3 +32,4 @@ yarn-error.log*
 
 /package-lock.json
 /yarn.lock
+node_modules*
