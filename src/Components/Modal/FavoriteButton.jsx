@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {Button} from 'react-bootstrap';
 
-const FavoriteButton = ({bivakzone,refresh})=>{
+const FavoriteButton = ({bivakzone})=>{
     
     
     const initialValue=()=> JSON.parse(localStorage.getItem('favourites'));
     console.log(initialValue())
     const [store, setStore]= useState(initialValue);
-    console.log(store)
+    
     let exist
       if (store.length > 1){
            exist = store.find((fav)=> fav.id === bivakzone.id);
@@ -30,20 +30,20 @@ const FavoriteButton = ({bivakzone,refresh})=>{
             storage.splice(toRemove, 1);
             localStorage.setItem('favourites', JSON.stringify(storage));
             setStore(storage);
-            refresh(store);
+            
          }else{
              storage.push(bivakzone);
              console.log('new bivakzone');
              localStorage.setItem('favourites', JSON.stringify(storage));
              setStore(storage);
-             refresh(store)
+             
          }
          }else{//No favourites in local storage, so add new
             const favArray= [];
             favArray.push(bivakzone);
             localStorage.setItem('favourites', JSON.stringify(favArray));
             console.log('favorite created and added');
-            refresh(store)
+            
         }
     }
  
@@ -66,7 +66,7 @@ const FavoriteButton = ({bivakzone,refresh})=>{
         }];
       localStorage.setItem('favourites', JSON.stringify(defaultArr) )
       setStore(JSON.parse(localStorage.getItem('favourites')))
-      refresh(store)
+      
     }
 
     return(
