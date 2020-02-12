@@ -186,7 +186,10 @@ class Map extends React.Component {
           onFilterChangeCallback={this.updateBivakZones}
         />
 
-        <button onClick={this.handleArrowClick} className="sidepanel_btn">
+        <button
+          onClick={this.handleArrowClick}
+          className={this.state.showModal ? 'sidepanel_btn_clicked' : 'sidepanel_btn_unclicked'}
+        >
           {this.state.showModal ? leftArrow : rightArrow}
         </button>
       </div>
@@ -293,6 +296,24 @@ class Map extends React.Component {
 
           <section className={'sidepanel'}>
             {this.state.filter ? filterAndSearchModal : modal}
+            <BivakzoneModalMobile
+              className={
+                this.state.showModal ? 'bivak_modal_mobile_show' : 'bivak_modal_mobile_hide'
+              }
+              modalState={this.showModalFunc}
+              handleOpen={this.handleOnClick}
+              onRef={ref => (this.child = ref)}
+              handleClose={this.handleOnClose}
+              bivakzone={this.state.bivakzone}
+            />
+            <button
+              onClick={this.handleArrowClick}
+              className={
+                this.state.showModal ? 'sidepanel_btn_2_clicked' : 'sidepanel_btn_2_unclicked'
+              }
+            >
+              {this.state.showModal ? leftArrow : rightArrow}
+            </button>
           </section>
           {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
         </LeafletMap>
