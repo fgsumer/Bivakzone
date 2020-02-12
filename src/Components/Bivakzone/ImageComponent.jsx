@@ -76,7 +76,6 @@ const ImageComponent=({bivak})=>{
 
     }
 
-
 };
 
 export default ImageComponent;
