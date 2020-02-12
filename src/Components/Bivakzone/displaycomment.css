@@ -1,0 +1,36 @@
+.division {
+  margin-bottom: 5rem;
+}
+.speech {
+  font-style: italic;
+  position: relative;
+  margin-top: 1.5rem;
+  margin-left: 10%;
+  font-family: arial;
+  font-size: 1rem;
+  background: #6c7983;
+  color: #dee1e3;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 300px;
+  height: 100px;
+  border-right: 5px solid #3f4c56;
+}
+
+.speech:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 25px;
+  border-width: 15px 15px 0 0;
+  border-style: solid;
+  border-color: #6c7983 transparent;
+}
+.commentedBy {
+  float: right;
+  font-style: normal;
+}
+.commentDate {
+  font-size: 0.7rem;
+  font-style: normal;
+}
