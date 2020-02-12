@@ -1,0 +1,44 @@
+.filterField {
+  opacity: 1;
+  color: #0e3958;
+  background-color: #d2ecec;
+  padding: 2vh 2vh;
+  margin: 2vh 2vh;
+  padding-bottom: 0%;
+  position: relative;
+  margin-left: 0%;
+  padding-left: 0%;
+  left: -1vh;
+  margin-top: 0%;
+  top: -1.3vh;
+}
+
+.icon {
+  height: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.listItem {
+  float: left;
+  list-style: none;
+  font-size: 1rem;
+}
+
+.item {
+  float: left;
+}
+
+.checkbox {
+  padding-left: 0;
+  align-items: left;
+}
+
+.listButton {
+  border-radius: 5px;
+}
+
+h3 {
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+}

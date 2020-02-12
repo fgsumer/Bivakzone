@@ -47,47 +47,13 @@ const Comment = ({ id }) => {
   };
 
   return (
-    //     <Row>
-    //         <Col lg={12}>
-    //             {oldComments ? <DisplayComment oldComments={oldComments}/> : null}
-    //             <Form onSubmit={handleSubmit(onSubmit)}>
-    //                 <Form.Group>
-    //                     <Form.Label><Translate id="comment.name">Name</Translate></Form.Label>
-    //                     <Form.Control
-    //                         type="text"
-    //                         name="name"
-    //                         placeholder="your name"
-    //                         ref={register({required: true})}
-    //                     />
-    //                     {errors.name && <span className="errors">Name is required</span>}
-    //                 </Form.Group>
-
-    //                 <Form.Group>
-    //                     <Form.Label><Translate id="comment.message">Comment</Translate></Form.Label>
-    //                     <Form.Control
-    //                         as="textarea"
-    //                         row="3"
-    //                         name="message"
-    //                         placeholder="your comment"
-    //                         ref={register({required: true})}
-    //                     />
-    //                     {errors.message && <span className="errors">Comment is required</span>}
-    //                 </Form.Group>
-    //                 <Button variant="primary" type="submit">
-    //                     <Translate id="comment.submit">Submit</Translate>
-    //                 </Button>
-    //             </Form>
-    //         </Col>
-    //     </Row>
-    // )
-
     <Row>
       <Col lg={12}>
         <article className={styles.form}>
           {oldComments ? <DisplayComment oldComments={oldComments} /> : null}
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
-              <h4 className={styles.h11}>Leave you comment!</h4>
+              <h4 className={styles.h11}>Leave your comment/feedback!</h4>
               <Form.Label>
                 <Translate id="comment.name">Name * </Translate>
               </Form.Label>
@@ -124,3 +90,37 @@ const Comment = ({ id }) => {
 };
 
 export default Comment;
+
+//     <Row>
+//         <Col lg={12}>
+//             {oldComments ? <DisplayComment oldComments={oldComments}/> : null}
+//             <Form onSubmit={handleSubmit(onSubmit)}>
+//                 <Form.Group>
+//                     <Form.Label><Translate id="comment.name">Name</Translate></Form.Label>
+//                     <Form.Control
+//                         type="text"
+//                         name="name"
+//                         placeholder="your name"
+//                         ref={register({required: true})}
+//                     />
+//                     {errors.name && <span className="errors">Name is required</span>}
+//                 </Form.Group>
+
+//                 <Form.Group>
+//                     <Form.Label><Translate id="comment.message">Comment</Translate></Form.Label>
+//                     <Form.Control
+//                         as="textarea"
+//                         row="3"
+//                         name="message"
+//                         placeholder="your comment"
+//                         ref={register({required: true})}
+//                     />
+//                     {errors.message && <span className="errors">Comment is required</span>}
+//                 </Form.Group>
+//                 <Button variant="primary" type="submit">
+//                     <Translate id="comment.submit">Submit</Translate>
+//                 </Button>
+//             </Form>
+//         </Col>
+//     </Row>
+// )
