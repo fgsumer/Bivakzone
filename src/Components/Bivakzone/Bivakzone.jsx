@@ -1,10 +1,9 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import Comment from './CommentForm';
 import BivakDetails from './BivakDetails';
-import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json';
-import BivakMap from './BivakMap';
+import ImageComponent from './ImageComponent';
 
 const Bivakzone = props => {
   const { id } = props;
@@ -12,10 +11,13 @@ const Bivakzone = props => {
   const bivak = bivakzones.features.find(bivakzone => bivakzone.id === id);
 
   return (
-    <div style={{ backgroundColor: '#EBEAEC', height: '100%' }}>
-      <BivakDetails bivak={bivak} />
-      <Comment id={id} bivak={bivak} />
-    </div>
+      <Row style={{ backgroundColor: '#EBEAEC', height: '100%' }}>
+           <Col lg={4}>
+             <ImageComponent  bivak={bivak}/>
+            </Col>
+          <Col lg={4} className="mt-4"><BivakDetails  bivak={bivak}/></Col>
+          <Col lg={4} className="mt-4"><Comment id={id} bivak={bivak}/></Col>
+      </Row>
   );
 };
 

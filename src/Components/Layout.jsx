@@ -6,6 +6,7 @@ import Map from './MainMap/Map';
 import bivakzones from '../bivakzones.json'
 import Single from './Bivakzone/Index'
 import './Layout.css';
+import FavoriteLists from './Modal/FavoriteLists';
 
 const Layout =(props)=>{
  
@@ -25,6 +26,7 @@ const Layout =(props)=>{
                             <Switch>
                                 <Route exact path="/" render= {(props)=> <Map {...props} bivakzones={bivakzones.features}/>}/>
                                 <Route path={["/home/node/:bivakzoneId","/home/way/:bivakzoneId" ]} exact component = {Single} />
+                                <Route exact path="/favorite" component={FavoriteLists}/>
                             </Switch>
                         </Col>
                     </Row>

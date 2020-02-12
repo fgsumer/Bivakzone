@@ -69,12 +69,6 @@
 }
 
 .selector button {
-    background-color: #eee;
-    box-shadow: none;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    border-radius: 4px;
-    min-width: 100px;
     transition: all 0.3s ease-out;
 }
 

@@ -114,7 +114,7 @@ const Comment = ({ id }) => {
               {errors.message && <span className="errors">Comment is required</span>}
             </Form.Group>
             <Button className={styles.button} variant="primary" type="submit">
-              Post Comment
+              Post
             </Button>
           </Form>
         </article>

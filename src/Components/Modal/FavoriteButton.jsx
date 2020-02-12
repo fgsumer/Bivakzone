@@ -3,8 +3,11 @@ import { Button } from 'react-bootstrap';
 
 const FavoriteButton = ({ bivakzone, refresh }) => {
   const initialValue = () => JSON.parse(localStorage.getItem('favourites'));
+  const initialValue2 = [bivakzone];
   const [store, setStore] = useState(initialValue);
-  console.log(store);
+ if(!store){
+   setStore(initialValue2)
+ }
   let exist;
 
   if (store) {
@@ -26,13 +29,13 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
         storage.splice(toRemove, 1);
         localStorage.setItem('favourites', JSON.stringify(storage));
         setStore(storage);
-        refresh(store);
+        //refresh(store);
       } else {
         storage.push(bivakzone);
         console.log('new bivakzone');
         localStorage.setItem('favourites', JSON.stringify(storage));
         setStore(storage);
-        refresh(store);
+        //refresh(store);
       }
     } else {
       //No favourites in local storage, so add new
@@ -51,10 +54,8 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
 
   return (
     <>
-      <Button variant={exist ? 'warning' : 'success'} onClick={handleClick}>
-        <i class="fas fa-star"></i>
-      </Button>
-      <Button onClick={handleFav}>Remove favorite</Button>
+      <Button variant={exist ? 'warning' : 'success'} onClick={handleClick} className="fas fa-star m-2" />
+      {/* <Button onClick={handleFav}>Remove favorite</Button> */}
     </>
   );
 };
