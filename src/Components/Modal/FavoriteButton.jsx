@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-const FavoriteButton = ({ bivakzone, refresh }) => {
-  const initialValue = () => JSON.parse(localStorage.getItem('favourites'));
-  const initialValue2 = [bivakzone];
-  const [store, setStore] = useState(initialValue);
- if(!store){
-   setStore(initialValue2)
- }
-  let exist;
+const FavoriteButton = ({ bivakzone }) => {
+  let defaultArr = [
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: '',
+        coordinates: [[]],
+      },
+      id: '',
+    },
+  ];
+  if (JSON.parse(localStorage.getItem('favourites')) === null) {
+    localStorage.setItem('favourites', JSON.stringify(defaultArr));
+  }
 
-  if (store) {
+  const initialValue = () => JSON.parse(localStorage.getItem('favourites'));
+  console.log(initialValue());
+  const [store, setStore] = useState(initialValue || defaultArr);
+
+  let exist;
+  if (store.length > 1) {
     exist = store.find(fav => fav.id === bivakzone.id);
   }
 
@@ -20,7 +32,7 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
     localStorage.setItem('favourites', JSON.stringify(store));
   }, [store]);
   const handleClick = () => {
-    if (localStorage.getItem('favourites')) {
+    if (typeof localStorage.getItem('favourites')) {
       //If there are favourites
       const storage = JSON.parse(localStorage['favourites']);
       const existed = storage.find(fav => fav.id === bivakzone.id);
@@ -29,13 +41,11 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
         storage.splice(toRemove, 1);
         localStorage.setItem('favourites', JSON.stringify(storage));
         setStore(storage);
-        //refresh(store);
       } else {
         storage.push(bivakzone);
         console.log('new bivakzone');
         localStorage.setItem('favourites', JSON.stringify(storage));
         setStore(storage);
-        //refresh(store);
       }
     } else {
       //No favourites in local storage, so add new
@@ -43,13 +53,12 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
       favArray.push(bivakzone);
       localStorage.setItem('favourites', JSON.stringify(favArray));
       console.log('favorite created and added');
-      refresh(store);
     }
   };
 
   const handleFav = () => {
-    localStorage.clear();
-    refresh(store);
+    localStorage.setItem('favourites', JSON.stringify(defaultArr));
+    setStore(JSON.parse(localStorage.getItem('favourites')));
   };
 
   return (
@@ -59,5 +68,4 @@ const FavoriteButton = ({ bivakzone, refresh }) => {
     </>
   );
 };
-
 export default FavoriteButton;

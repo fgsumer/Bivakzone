@@ -5,30 +5,21 @@ import BivakCarousel from './Carousal';
 import Footer from './ModalFooter';
 import './BivakZoneModal.css';
 import { Link } from 'react-router-dom';
-import Filter from './Filter';
 import FavoriteButton from './FavoriteButton';
-import FavoriteLists from './FavoriteLists';
 
 class BivakZoneModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  // state= {
-  //   slide:false,
-  //   arrowDirection: false
-  // };
-  // handleOnClick= ()=>{
-  //   this.setState({
-  //       slide: !this.state.slide,
-  //       arrowDirection: !this.state.arrowDirection
-  //   },()=>console.log(this.state.slide))
-  // }
-  refreshSate = favsState => {
-    if (favsState) {
-      this.forceUpdate();
-    }
+  state = {
+    slide: false,
+    arrowDirection: false,
+  };
+  handleOnClick = () => {
+    this.setState(
+      {
+        slide: !this.state.slide,
+        arrowDirection: !this.state.arrowDirection,
+      },
+      () => console.log(this.state.slide),
+    );
   };
   render() {
     const { Meta } = Card;
@@ -64,11 +55,9 @@ class BivakZoneModal extends Component {
               </Row>
             </>
           )}
-          {!this.props.bivakzone && <Filter callBack={this.props.onFilterChangeCallback} />}
         </article>
       </>
     );
   }
 }
-
 export default BivakZoneModal;

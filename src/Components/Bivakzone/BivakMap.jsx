@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json';
 import Control from 'react-leaflet-control';
-import ImageComponent from '../Bivakzone/ImageComponent';
+import ImageComponent from './ImageComponent';
 
 const BivakMap = props => {
   const { id } = props;
@@ -16,12 +16,7 @@ const BivakMap = props => {
 
   const handleClick = () => {
     setShowImage(true);
-    console.log('clicked');
   };
-
-  useEffect(() => {
-    console.log(showImage);
-  });
 
   if (bivakzone.geometry.type === 'Point') {
     x = bivakzone.geometry.coordinates[0];
