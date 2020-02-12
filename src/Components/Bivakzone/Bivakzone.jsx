@@ -15,8 +15,8 @@ const Bivakzone = props => {
            <Col lg={4}>
              <ImageComponent  bivak={bivak}/>
             </Col>
-          <Col lg={4} className="mt-4"><BivakDetails  bivak={bivak}/></Col>
-          <Col lg={4} className="mt-4"><Comment id={id} bivak={bivak}/></Col>
+          <Col lg={4} className="mt-5"><BivakDetails  bivak={bivak}/></Col>
+          <Col lg={4} className="mt-3"><Comment id={id} bivak={bivak}/></Col>
       </Row>
   );
 };

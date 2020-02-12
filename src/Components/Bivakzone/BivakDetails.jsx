@@ -11,31 +11,31 @@ const BivakDetails=({bivak})=>{
           <Table striped bordered hover>
               <tbody>
                 <tr>
-                  <td>Accessible by Bicycle?</td>
+                  <td>Accessible by <b>Bicycle</b>?</td>
                   <td>{bicycle}</td>
                 </tr>
                 <tr>
-                  <td>Is Camp-fire Allowed? </td>
+                  <td>Is <b>Camp-fire</b> Allowed? </td>
                   <td>{openfire}</td>
                 </tr>
                 <tr>
-                  <td>Is there a toilet ?</td>
+                  <td>Is there a <b>toilet</b> ?</td>
                   <td>{toilets}</td>
                 </tr>
                 <tr>
-                  <td>Is there drinkable water? </td>
+                  <td>Is there <b>drinkable water </b>? </td>
                   <td>{drinking_water}</td>
                 </tr>
                 <tr>
-                  <td>Should I have to pay?</td>
+                  <td>Should I have to <b>pay</b>?</td>
                   <td>{fee}</td>
                 </tr>
                 <tr>
-                  <td>Is reservation Required? </td>
+                  <td>Is <b>reservation</b> Required? </td>
                   <td>{reservation}</td>
                 </tr>
                 <tr>
-                  <td>Is it dog allowed ?</td>
+                  <td>Is it <b>dog</b> allowed ?</td>
                   <td>{dog}</td>
                 </tr>
                 <tr>

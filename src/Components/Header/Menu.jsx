@@ -24,38 +24,32 @@ class Menu extends React.Component {
     };
   }
 
+  handleClick =() => {
+      if (this.state.filterClicked) {
+        this.props.setShowFilter(false);
+        this.setState({
+          filterClicked: false,
+        });
+      } else {
+        this.props.setShowFilter(true);
+        this.setState({
+          filterClicked: true,
+        });
+      }
+  }
+
+
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
           <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link
-              onClick={() => {
-                {
-                  if (this.state.filterClicked) {
-                    this.props.setShowFilter(false);
-                    this.setState({
-                      filterClicked: false,
-                    });
-                  } else {
-                    this.props.setShowFilter(true);
-                    this.setState({
-                      filterClicked: true,
-                    });
-                  }
-                }
-              }}
-            >
-              Search
-            </Nav.Link>
+          <Nav>
+            <Nav.Link onClick={this.handleClick}>Search</Nav.Link>
             <Nav.Link href="/favorite">Favorites</Nav.Link>
           </Nav>
             <LanguageToggle />
-        </Navbar.Collapse>
       </Navbar>
     );
   }
