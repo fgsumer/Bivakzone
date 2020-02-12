@@ -1,6 +1,6 @@
 import React from 'react';
-import L from 'leaflet';
-import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
+import L, { circleMarker } from 'leaflet';
+import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl,CircleMarker } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import { Link } from 'react-router-dom';
 import BivakZoneModal from '../Modal/BivakZoneModal';
@@ -10,8 +10,20 @@ import { Icon } from 'antd';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js';
 import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const Leaflet = window.L;
+
+let markerdefault =  L.icon({
+  iconUrl:'Icons/costum-marker.png',
+  shadowUrl: iconShadow,
+  iconSize: [24, 30],
+  iconAnchor: [12, 30],
+
+});
+L.Marker.prototype.options.icon = markerdefault;
+
+
 
 const myIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
@@ -106,6 +118,7 @@ class Map extends React.Component {
     );
   };
 
+ 
   componentDidMount() {
     if (!this.state.showLocation) {
       this.setState({
@@ -124,6 +137,8 @@ class Map extends React.Component {
   };
 
   render() {
+   
+
     const showStyle = {};
 
     const hideStyle = {
@@ -146,7 +161,12 @@ class Map extends React.Component {
         onFilterChangeCallback={this.updateBivakZones}
       />
     );
-
+   const  style={
+      color: 'green',
+      weight: 1,
+      fillColor: 'green',
+      fillOpacity: 1,
+       }
     const position = [this.state.location.lat, this.state.location.lng];
     const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
@@ -175,7 +195,7 @@ class Map extends React.Component {
           />
           {//Adjusting the location marker if browser finds the location of the user to show marker, if not then not to show it
           this.state.haveLocationOfUser ? (
-            <Marker position={position} icon={myIcon} className="markerIcon">
+            <Marker  position={position} icon={myIcon} className="markerIcon">
               <Popup>You are here</Popup>
             </Marker>
           ) : (
@@ -189,12 +209,7 @@ class Map extends React.Component {
             return (
               <GeoJSON
                 data={bivak}
-                style={() => ({
-                  color: '#4a83ec',
-                  weight: 0.5,
-                  fillColor: '#1a1d62',
-                  fillOpacity: 1,
-                })}
+                style={function(){return style} }
                 onMouseOver={e => {
                   e.target.openPopup();
                 }}
@@ -206,6 +221,7 @@ class Map extends React.Component {
                 onClick={e => {
                   this.handleOnClick(e);
                 }}
+               icon={markerdefault} 
               >
                 <Popup>
                   {/* <PopupCard bivakzone={bivakzone} /> */}
@@ -232,7 +248,7 @@ class Map extends React.Component {
             />
             {/* {this.state.showModal ? styleForCurrentLocationItem : null} */}
           </Control>
-          <section className={'sidepanel'}>
+          <section className='sidepanel'>
             {modal}
             <button
               onClick={this.handleArrowClick}
@@ -259,7 +275,7 @@ class Map extends React.Component {
               {this.state.showModal ? leftArrow : rightArrow}
             </button>
           </section>
-          {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
+        
         </LeafletMap>
       </>
     );

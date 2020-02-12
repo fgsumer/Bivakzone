@@ -1,6 +1,6 @@
 .bivak_modal {
   width: 30vw;
-  height: 92vh;
+  height: 50vh;
   background: white;
   transform: translateX(0vw);
   transition: transform 1s ease-in-out;

@@ -1,25 +1,26 @@
 .sidepanel {
   position: absolute;
   z-index: 400;
-  width: min-content;
+  width: max-content;
 }
 
+
 .sidepanel_btn_unclicked {
-  height: 2rem;
+  height: 4rem;
   width: 2rem;
   float: left;
   position: absolute;
   top: 0;
-  right: 10rem;
+  right: 28vw;
   background: white;
 }
 .sidepanel_btn_clicked {
-  height: 2rem;
+  height: 4rem;
   width: 2rem;
   float: left;
   position: absolute;
   top: 0;
-  right: -2rem;
+  right: -2vw;
   background: white;
 }
 
