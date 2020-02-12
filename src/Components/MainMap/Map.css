@@ -4,6 +4,13 @@
   width: max-content;
 }
 
+.location-button {
+  background: transparent;
+  border: transparent;
+  margin: 0%;
+  padding: 0%;
+  margin-bottom: -1vh;
+}
 
 .sidepanel_btn_unclicked {
   height: 4rem;

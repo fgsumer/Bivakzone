@@ -1,10 +1,8 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import Comment from './CommentForm';
 import BivakDetails from './BivakDetails';
-import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json';
-import BivakMap from './BivakMap';
+
 
 const Bivakzone = props => {
   const { id } = props;

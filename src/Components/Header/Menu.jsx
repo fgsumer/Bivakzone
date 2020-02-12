@@ -19,6 +19,9 @@ class Menu extends React.Component {
     });
 
     this.props.addTranslation(globalTranslations);
+    this.state = {
+      filterClicked: false,
+    };
   }
 
   render() {
@@ -26,15 +29,33 @@ class Menu extends React.Component {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">
           <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
-          <Translate id="menu.title">Bivouac Zone</Translate>
+          
 
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/filter">Filter</Nav.Link>
-            <Nav.Link href="/favorite">Favorites</Nav.Link>
-            <LanguageToggle />
+          <Nav.Link
+              onClick={() => {
+                
+                  if (this.state.filterClicked) {
+                    this.props.setShowFilter(false);
+                    this.setState({
+                      filterClicked: false,
+                    });
+                  } else {
+                    this.props.setShowFilter(true);
+                    this.setState({
+                      filterClicked: true,
+                    });
+                  }
+                }
+              }
+            >
+              Search
+            </Nav.Link>
+            <Nav.Link>Favorites</Nav.Link>
+            {/* <LanguageToggle /> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

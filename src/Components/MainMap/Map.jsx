@@ -12,7 +12,7 @@ import Controllers from '../../controllers/controllers.js';
 import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-const Leaflet = window.L;
+
 
 let markerdefault =  L.icon({
   iconUrl:'Icons/costum-marker.png',
@@ -47,6 +47,9 @@ class Map extends React.Component {
       showModal: false,
       bivakzone: null,
       markerPosition: {},
+      filter: true,
+      prevBivId: null,
+      clicked: false,
     };
   }
 
@@ -59,17 +62,26 @@ class Map extends React.Component {
   };
 
   handleOnClick = e => {
-    const prevBivId = this.state.bivakzone;
+    
 
-    if (e.sourceTarget.feature === prevBivId) {
+    if (e.sourceTarget.feature === this.state.bivakzone) {
       this.setState({
         showModal: false,
+        filter: true,
         bivakzone: null,
       });
     } else {
+      this.props.setShowFilter(false);
       this.setState({
+        filter: false,
+        clicked: true,
         showModal: true,
         bivakzone: e.sourceTarget.feature,
+        location: {
+          lat: e.sourceTarget.feature.geometry.coordinates[1],
+          lng: e.sourceTarget.feature.geometry.coordinates[0],
+        },
+        zoom: 9,
       });
     }
 
@@ -137,6 +149,18 @@ class Map extends React.Component {
   };
 
   render() {
+
+    if (this.props.showFilter) {
+      // to show filter ad search when we click the search button on header:
+      if (!this.state.filter) {
+        this.showFilterOnMenuClick();
+      }
+    } else if (this.props.showFilter === false) {
+      if (this.state.filter)
+        this.setState({
+          filter: false,
+        });
+    }
    
 
     const showStyle = {};
@@ -168,7 +192,7 @@ class Map extends React.Component {
       fillOpacity: 1,
        }
     const position = [this.state.location.lat, this.state.location.lng];
-    const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
+    // const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
       <>
         <LeafletMap
@@ -231,8 +255,18 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="bottomright">
+          
+          <Control key={this.state.showLocation} position="bottomright"
+                   position={window.visualViewport.height < 700 ? 'topright' : 'bottomright'}
+          >
             {/* Control is used to control a component's position on map */}
+            <button
+              className="location-button"
+              onClick={() => {
+                this.setState({ showLocation: true });
+                this.currentLocation();
+              }}
+            >
             <img
               onClick={() => {
                 this.setState({ showLocation: true });
@@ -247,8 +281,10 @@ class Map extends React.Component {
               title="detect my current location"
             />
             {/* {this.state.showModal ? styleForCurrentLocationItem : null} */}
+          </button>
           </Control>
-          <section className='sidepanel'>
+         
+          <section className={'sidepanel'}>
             {modal}
             <button
               onClick={this.handleArrowClick}
@@ -266,8 +302,10 @@ class Map extends React.Component {
               handleClose={this.handleOnClose}
               bivakzone={this.state.bivakzone}
             />
+
             <button
               onClick={this.handleArrowClick}
+              style={{ visibility: this.state.bivakzone === null ? 'hidden' : 'visible' }}
               className={
                 this.state.showModal ? 'sidepanel_btn_2_clicked' : 'sidepanel_btn_2_unclicked'
               }

@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/public/Icons/React App_files
+
 package-lock.json
 
 # testing
