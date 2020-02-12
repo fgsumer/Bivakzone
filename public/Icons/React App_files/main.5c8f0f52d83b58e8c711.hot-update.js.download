@@ -1,0 +1,390 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/Components/MainMap/Map.jsx":
+/*!****************************************!*\
+  !*** ./src/Components/MainMap/Map.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-leaflet */ "./node_modules/react-leaflet/es/index.js");
+/* harmony import */ var react_leaflet_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-leaflet-control */ "./node_modules/react-leaflet-control/dist/control.js");
+/* harmony import */ var react_leaflet_control__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_leaflet_control__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Filter_Filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Filter/Filter */ "./src/Components/Filter/Filter.jsx");
+/* harmony import */ var _Modal_BivakZoneModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Modal/BivakZoneModal */ "./src/Components/Modal/BivakZoneModal.jsx");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../App.css */ "./src/App.css");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Map_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Map.css */ "./src/Components/MainMap/Map.css");
+/* harmony import */ var _Map_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_Map_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _controllers_controllers_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controllers/controllers.js */ "./src/controllers/controllers.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/index.js");
+var _jsxFileName = "E:\\Study-WEb-Design\\Hack-your-future\\project OPENSTREETMAP\\BootCamp-Bivakzone\\src\\Components\\MainMap\\Map.jsx";
+
+
+
+
+
+
+
+
+
+ // const Leaflet = window.L;
+
+const myIcon = leaflet__WEBPACK_IMPORTED_MODULE_1___default.a.icon({
+  iconUrl: 'https://image.flaticon.com/icons/svg/1271/1271831.svg',
+  iconSize: [45, 41],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [11, -41]
+});
+
+class Map extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(props) {
+    super(props); //defining state to keep track of the location
+
+    this.showModalFunc = modalState => {
+      this.setState({
+        showModal: modalState
+      });
+    };
+
+    this.handleOnClick = e => {
+      //console.log(e.sourceTarget.feature);
+      //console.log(this.state.bivakzone);
+      if (e.sourceTarget.feature === this.state.bivakzone) {
+        this.setState({
+          showModal: false,
+          filter: true,
+          bivakzone: null
+        });
+      } else {
+        //console.log('!!!bivakzone marker clicked for the first time');
+        this.props.setShowFilter(false);
+        this.setState({
+          filter: false,
+          clicked: true,
+          showModal: true,
+          bivakzone: e.sourceTarget.feature,
+          location: {
+            lat: e.sourceTarget.feature.geometry.coordinates[1],
+            lng: e.sourceTarget.feature.geometry.coordinates[0]
+          },
+          zoom: 10
+        });
+      } //console.log('state', this.state);
+
+
+      this.setState({ ...this.state,
+        markerPosition: e.latlng
+      });
+    };
+
+    this.handleArrowClick = () => {
+      this.setState({
+        showModal: !this.state.showModal,
+        arrowDirection: !this.state.arrowDirection
+      }, () => {//console.log(this.state.arrowDirection);
+      });
+    };
+
+    this.handleOnClose = () => {
+      this.setState({ ...this.state,
+        showModal: false
+      });
+    };
+
+    this.currentLocation = () => {
+      return navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          location: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          },
+          haveLocationOfUser: true,
+          //when it finds the location of the user, then it sets the state' haveLocationOfUser value as true
+          zoom: 11
+        });
+      }, () => {
+        this.setState({
+          location: {
+            lat: 50.85,
+            lng: 4.48
+          },
+          haveLocationOfUser: false,
+          //making it false not to show the marker if user doesn't want his location to be used
+          zoom: 10,
+          allowance: false
+        });
+      });
+    };
+
+    this.updateBivakZones = bivakzones => {
+      this.setState({
+        bivakzones
+      });
+    };
+
+    this.showFilterOnMenuClick = () => {
+      this.setState({
+        showModal: false,
+        filter: true,
+        bivakzone: null,
+        prevBivId: null,
+        clicked: false
+      });
+    };
+
+    this.state = {
+      location: {
+        lat: 51,
+        lng: 5
+      },
+      haveLocationOfUser: false,
+      zoom: 3,
+      allowance: false,
+      showLocation: false,
+      showButton: false,
+      bivakzones: props.bivakzones,
+      showModal: false,
+      bivakzone: null,
+      markerPosition: {},
+      filter: true,
+      prevBivId: null,
+      clicked: false
+    };
+  } // eslint-disable-next-line no-useless-constructor
+
+
+  componentDidMount() {
+    if (!this.state.showLocation) {
+      this.setState({
+        location: {
+          lat: 50.6,
+          lng: 4.41
+        },
+        haveLocationOfUser: false,
+        //making it false not to show the marker if user doesn't want his location to be used
+        zoom: 9,
+        allowance: false
+      });
+    }
+  }
+
+  render() {
+    console.log('takes prop from menu', this.props.showFilter);
+
+    if (this.props.showFilter) {
+      // to show filter ad search when we click the search button on header:
+      if (!this.state.filter) {
+        this.showFilterOnMenuClick();
+      }
+    }
+
+    const showStyle = {};
+    const hideStyle = {
+      width: '0',
+      transform: 'translateX(-30vw)'
+    };
+    const rightArrow = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_9__["Icon"], {
+      type: "right",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 167
+      },
+      __self: this
+    });
+    const leftArrow = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_9__["Icon"], {
+      type: "left",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 168
+      },
+      __self: this
+    });
+    let modal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 170
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal_BivakZoneModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      style: this.state.showModal ? showStyle : hideStyle,
+      modalState: this.showModalFunc,
+      handleOpen: this.handleOnClick,
+      onRef: ref => this.child = ref,
+      handleClose: this.handleOnClose,
+      bivakzone: this.state.bivakzone,
+      showModal: this.state.showModal,
+      onFilterChangeCallback: this.updateBivakZones,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 171
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: this.handleArrowClick,
+      className: "sidepanel_btn",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 181
+      },
+      __self: this
+    }, this.state.showModal ? leftArrow : rightArrow));
+    const filterAndSearchModal = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet_control__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      key: this.state.filter,
+      position: "topleft",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 188
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Filter_Filter__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      callBack: this.updateBivakZones,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 189
+      },
+      __self: this
+    }));
+    const position = [this.state.location.lat, this.state.location.lng]; // const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["Map"] //bounds={bounds} //this is malfunctioning zoom >> better to fix this if needed
+    , {
+      className: "leaflet-container",
+      center: position,
+      zoom: this.state.zoom,
+      maxZoom: 19,
+      attributionControl: true,
+      zoomControl: false,
+      doubleClickZoom: true,
+      scrollWheelZoom: true,
+      dragging: true,
+      animate: true,
+      easeLinearity: 0.35,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 197
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["ZoomControl"], {
+      position: window.visualViewport.height < 700 ? 'topright' : 'bottomright',
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 211
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["TileLayer"], {
+      attribution: "\xA9 <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors & Icons made by <a href=\"https://www.flaticon.com/authors/phatplus\" title=\"phatplus\"> phatplus</a>, <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\"> flaticon.com</a>",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 215
+      },
+      __self: this
+    }), //Adjusting the location marker if browser finds the location of the user to show marker, if not then not to show it
+    this.state.haveLocationOfUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+      position: position,
+      icon: myIcon,
+      className: "markerIcon",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 222
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["Popup"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 223
+      },
+      __self: this
+    }, "You are here")) : '', this.state.bivakzones.map(bivak => {
+      if (bivak.geometry.type === 'Polygon') {
+        bivak.geometry.coordinates = _controllers_controllers_js__WEBPACK_IMPORTED_MODULE_8__["default"].centroid(bivak.geometry.coordinates);
+        bivak.geometry.type = 'Point';
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["GeoJSON"], {
+        data: bivak,
+        style: () => ({
+          color: '#4a83ec',
+          weight: 0.5,
+          fillColor: '#1a1d62',
+          fillOpacity: 1
+        }),
+        onMouseOver: e => {
+          e.target.openPopup();
+        },
+        onMouseOut: e => {
+          setTimeout(() => {
+            e.target.closePopup();
+          }, 5000);
+        },
+        onClick: e => {
+          this.handleOnClick(e);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 234
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_2__["Popup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 254
+        },
+        __self: this
+      }, bivak.properties.name, bivak.geometry.type));
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_leaflet_control__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      key: this.state.showLocation,
+      position: "topright",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 262
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "location-button",
+      onClick: () => {
+        this.setState({
+          showLocation: true
+        });
+        this.currentLocation();
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 264
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: '/Icons/location.png',
+      alt: "Location button",
+      width: "30px",
+      height: "30px",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 271
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      className: 'sidepanel',
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 275
+      },
+      __self: this
+    }, this.state.filter ? filterAndSearchModal : modal)));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Map);
+
+/***/ })
+
+})
+//# sourceMappingURL=main.5c8f0f52d83b58e8c711.hot-update.js.map

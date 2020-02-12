@@ -15,7 +15,7 @@ const Layout = props => {
         <header className={'layout_header'}>
           <Row noGutters={true}>
             <Col lg={12}>
-              <Menu setShowFilter={setShowFilter} />
+              <Menu setShowFilter={setShowFilter} showFilter={showFilter} />
             </Col>
           </Row>
         </header>

@@ -9,7 +9,6 @@ import '../../App.css';
 import './Map.css';
 import Controllers from '../../controllers/controllers.js';
 import { Icon } from 'antd';
-import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 
 // const Leaflet = window.L;
 
@@ -50,6 +49,8 @@ class Map extends React.Component {
   };
 
   handleOnClick = e => {
+    //console.log(e.sourceTarget.feature);
+    //console.log(this.state.bivakzone);
     if (e.sourceTarget.feature === this.state.bivakzone) {
       this.setState({
         showModal: false,
@@ -72,6 +73,8 @@ class Map extends React.Component {
       });
     }
 
+    //console.log('state', this.state);
+
     this.setState({
       ...this.state,
       markerPosition: e.latlng,
@@ -85,7 +88,7 @@ class Map extends React.Component {
         arrowDirection: !this.state.arrowDirection,
       },
       () => {
-        //console.log(this.state.arrowDirection);
+        console.log(this.state.arrowDirection);
       },
     );
   };
@@ -145,13 +148,18 @@ class Map extends React.Component {
   };
 
   render() {
-    //console.log('takes prop from menu', this.props.showFilter);
+    console.log('takes prop from menu', this.props.showFilter);
 
     if (this.props.showFilter) {
       // to show filter ad search when we click the search button on header:
       if (!this.state.filter) {
         this.showFilterOnMenuClick();
       }
+    } else if (this.props.showFilter === false) {
+      if (this.state.filter)
+        this.setState({
+          filter: false,
+        });
     }
 
     const showStyle = {};
@@ -164,21 +172,26 @@ class Map extends React.Component {
     const rightArrow = <Icon type="right" />;
     const leftArrow = <Icon type="left" />;
     let modal = (
-      <BivakZoneModal
-        style={this.state.showModal ? showStyle : hideStyle}
-        modalState={this.showModalFunc}
-        handleOpen={this.handleOnClick}
-        onRef={ref => (this.child = ref)}
-        handleClose={this.handleOnClose}
-        bivakzone={this.state.bivakzone}
-        showModal={this.state.showModal}
-        onFilterChangeCallback={this.updateBivakZones}
-      />
+      <div>
+        <BivakZoneModal
+          style={this.state.showModal ? showStyle : hideStyle}
+          modalState={this.showModalFunc}
+          handleOpen={this.handleOnClick}
+          onRef={ref => (this.child = ref)}
+          handleClose={this.handleOnClose}
+          bivakzone={this.state.bivakzone}
+          showModal={this.state.showModal}
+          onFilterChangeCallback={this.updateBivakZones}
+        />
+
+        <button onClick={this.handleArrowClick} className="sidepanel_btn">
+          {this.state.showModal ? leftArrow : rightArrow}
+        </button>
+      </div>
     );
 
-    let filterAndSearchModal = (
+    const filterAndSearchModal = (
       <Control key={this.state.filter} position="topleft">
-        <h2>Search</h2>
         <Filter callBack={this.updateBivakZones}></Filter>
       </Control>
     );
@@ -252,46 +265,21 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="bottomright">
+          <Control key={this.state.showLocation} position="topright">
             {/* Control is used to control a component's position on map */}
-            <img
-              src={'/Icons/location.png'}
-              alt="Location button"
-              width="30px"
-              height="30px"
+            <button
+              className="location-button"
               onClick={() => {
                 this.setState({ showLocation: true });
                 this.currentLocation();
               }}
-            ></img>
+            >
+              <img src={'/Icons/location.png'} alt="Location button" width="30px" height="30px" />
+            </button>
           </Control>
 
           <section className={'sidepanel'}>
             {this.state.filter ? filterAndSearchModal : modal}
-            <button
-              onClick={this.handleArrowClick}
-              className={this.state.showModal ? 'sidepanel_btn_clicked' : 'sidepanel_btn_unclicked'}
-            >
-              {this.state.showModal ? leftArrow : rightArrow}
-            </button>
-            <BivakzoneModalMobile
-              className={
-                this.state.showModal ? 'bivak_modal_mobile_show' : 'bivak_modal_mobile_hide'
-              }
-              modalState={this.showModalFunc}
-              handleOpen={this.handleOnClick}
-              onRef={ref => (this.child = ref)}
-              handleClose={this.handleOnClose}
-              bivakzone={this.state.bivakzone}
-            />
-            <button
-              onClick={this.handleArrowClick}
-              className={
-                this.state.showModal ? 'sidepanel_btn_2_clicked' : 'sidepanel_btn_2_unclicked'
-              }
-            >
-              {this.state.showModal ? leftArrow : rightArrow}
-            </button>
           </section>
           {/* <Filter style={{position:"static", zIndex:"0"}} callBack={this.showBivakzones}></Filter> */}
         </LeafletMap>
@@ -299,5 +287,4 @@ class Map extends React.Component {
     );
   }
 }
-
 export default Map;

@@ -18,8 +18,10 @@ class Menu extends React.Component {
       translation: globalTranslations,
       options: { renderToStaticMarkup },
     });
-
     this.props.addTranslation(globalTranslations);
+    this.state = {
+      filterClicked: false,
+    };
   }
 
   render() {
@@ -35,7 +37,17 @@ class Menu extends React.Component {
             <Nav.Link
               onClick={() => {
                 {
-                  this.props.setShowFilter(true);
+                  if (this.state.filterClicked) {
+                    this.props.setShowFilter(false);
+                    this.setState({
+                      filterClicked: false,
+                    });
+                  } else {
+                    this.props.setShowFilter(true);
+                    this.setState({
+                      filterClicked: true,
+                    });
+                  }
                 }
               }}
             >

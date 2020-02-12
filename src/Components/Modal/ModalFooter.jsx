@@ -21,7 +21,11 @@ export default ({ properties }) => {
         delay={{ show: 250, hide: 400 }}
         overlay={<Tooltip>Dog {dog === 'yes' ? 'is allowed' : "isn't allowed"}</Tooltip>}
       >
-        <img style={dog === 'yes' ? availableStyle : unavailableStyle} src="/Icons/dog.png" />
+        <img
+          style={dog === 'yes' ? availableStyle : unavailableStyle}
+          src="/Icons/dog.png"
+          alt="dog"
+        />
       </OverlayTrigger>
       <OverlayTrigger
         placement="bottom"
@@ -33,6 +37,7 @@ export default ({ properties }) => {
         <img
           style={bicycle === 'yes' ? availableStyle : unavailableStyle}
           src="/Icons/bicycle.png"
+          alt="bicycle"
         />
       </OverlayTrigger>
       <OverlayTrigger
@@ -43,6 +48,7 @@ export default ({ properties }) => {
         <img
           style={openfire === 'yes' ? availableStyle : unavailableStyle}
           src="/Icons/campfire.png"
+          alt="open fire"
         />
       </OverlayTrigger>
       <OverlayTrigger
@@ -52,7 +58,11 @@ export default ({ properties }) => {
           <Tooltip>{fee === 'yes' ? 'Payment required!' : "You don't need to pay!"}</Tooltip>
         }
       >
-        <img style={fee === 'yes' ? availableStyle : unavailableStyle} src="/Icons/fee.png" />
+        <img
+          style={fee === 'yes' ? availableStyle : unavailableStyle}
+          src="/Icons/fee.png"
+          alt="fee"
+        />
       </OverlayTrigger>
       <OverlayTrigger
         placement="bottom"
@@ -66,6 +76,7 @@ export default ({ properties }) => {
         <img
           style={drinking_water === 'yes' ? availableStyle : unavailableStyle}
           src="/Icons/drinking_water.png"
+          alt="drink water"
         />
       </OverlayTrigger>
       <OverlayTrigger
@@ -78,6 +89,7 @@ export default ({ properties }) => {
         <img
           style={reservation === 'yes' ? availableStyle : unavailableStyle}
           src="/Icons/reservation.png"
+          alt="reservation"
         />
       </OverlayTrigger>
       <OverlayTrigger
@@ -90,6 +102,7 @@ export default ({ properties }) => {
         <img
           style={toilets === 'yes' ? availableStyle : unavailableStyle}
           src="/Icons/toilet.png"
+          alt="toilet"
         />
       </OverlayTrigger>
     </div>
@@ -127,9 +140,9 @@ export default ({ properties }) => {
   ],
 ]; 
 
-console.log( amenities.map(amenity => (
+amenities.map(amenity => (
       <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={amenity[0]}>
         {amenity[1]}
       </OverlayTrigger>
-      ))
+      )
       */
