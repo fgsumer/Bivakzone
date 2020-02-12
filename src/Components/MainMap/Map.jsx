@@ -3,12 +3,14 @@ import L from 'leaflet';
 import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import Filter from '../Filter/Filter';
+import { Link } from 'react-router-dom';
 
 import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
 import './Map.css';
 import Controllers from '../../controllers/controllers.js';
 import { Icon } from 'antd';
+import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 
 // const Leaflet = window.L;
 
@@ -265,7 +267,7 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="topright">
+          <Control key={this.state.showLocation} position="bottomright">
             {/* Control is used to control a component's position on map */}
             <button
               className="location-button"
@@ -274,7 +276,15 @@ class Map extends React.Component {
                 this.currentLocation();
               }}
             >
-              <img src={'/Icons/location.png'} alt="Location button" width="30px" height="30px" />
+              <img
+                src={'/Icons/location.png'}
+                alt="Location button"
+                width="30px"
+                height="30px"
+                className="currentLocationIcon"
+                data-toggle="tooltip"
+                title="detect my current location"
+              />
             </button>
           </Control>
 

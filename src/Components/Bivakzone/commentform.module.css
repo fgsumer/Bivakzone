@@ -1,0 +1,29 @@
+.comment {
+}
+.form {
+  margin: 2rem;
+  padding: 0.7rem;
+  border-radius: 20px;
+  /* float: left; */
+  /* width: 90%; */
+}
+.formItems {
+  background-color: #d9d9da;
+  border-bottom: solid #bbbabc;
+}
+.button {
+  /* background-color: #156d84; */
+  background-color: #6c7983;
+  box-shadow: 2px 2px 2px 2px #d0cfd1;
+  border: none;
+  float: right;
+  padding: 0.8rem;
+  width: 25%;
+  margin-bottom: 3rem;
+}
+.button:hover {
+  background-color: #38434c;
+}
+.hh1 {
+  color: #535354;
+}

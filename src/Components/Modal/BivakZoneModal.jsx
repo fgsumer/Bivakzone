@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { Card, Row } from 'antd';
+import { Card, Row, Col } from 'antd';
 import BivakCarousel from './Carousal';
 import Footer from './ModalFooter';
 import './BivakZoneModal.css';
 import { Link } from 'react-router-dom';
+import FavoriteButton from './FavoriteButton';
 
 class BivakZoneModal extends Component {
   state = {
@@ -40,9 +41,14 @@ class BivakZoneModal extends Component {
                 ></Card>
               </Row>
               <Row>
-                <Link to={`/home/${this.props.bivakzone.id}`}>
-                  <h1>{this.props.bivakzone.properties.name}</h1>
-                </Link>
+                <Col>
+                  <Link to={`/home/${this.props.bivakzone.id}`}>
+                    <h1>{this.props.bivakzone.properties.name}</h1>
+                  </Link>
+                </Col>
+                <Col>
+                  <FavoriteButton refresh={this.refreshSate} bivakzone={this.props.bivakzone} />
+                </Col>
               </Row>
               <Row style={{ height: 'max-content', borderTop: '1px solid rgb(47, 155, 255)' }}>
                 <Footer properties={this.props.bivakzone.properties}></Footer>

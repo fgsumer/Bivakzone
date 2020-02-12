@@ -1,6 +1,7 @@
 import React from 'react';
 import { Translate } from 'react-localize-redux';
 import { Container, Button, Row, Col } from 'react-bootstrap';
+import styles from './bivakdetails.module.css';
 
 const BivakDetails = ({ bivak }) => {
   console.log(bivak.geometry.type);
@@ -18,21 +19,34 @@ const BivakDetails = ({ bivak }) => {
   return (
     <Row>
       <Col lg={12}>
-        <h1>{bivak.properties.name}</h1>
-        <ul>
-          <li>
-            <Translate id="properties.operator">operator</Translate>:{bivak.properties.operator}
-          </li>
-          <li>
-            <Translate id="properties.fire">openfire</Translate>
-            {bivak.properties.openfire}
-          </li>
-          <li>opening_hours:{bivak.properties.opening_hours}</li>
-          <li>reservation:{bivak.properties.reservation}</li>
-          <li>
+        <article className={styles.detail}>
+          <h2 className={styles.hh2}>
+            {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)}
+          </h2>
+          {console.log(bivak.properties)}
+          {console.log(bivak.geometry)}
+          <p className={styles.paragraph}>
+            {bivak.properties.name.charAt(0).toUpperCase() + bivak.properties.name.slice(1)} is
+            operated by {bivak.properties.operator}.
+            {bivak.properties.openfire === 'yes'
+              ? ' Small campfire allowed under normal weather conditions (no dry period or strong winds) but only at the specifically designated place, not elsewhere. '
+              : null}
+            {bivak.properties.openfire === 'no'
+              ? ' and campfire is not allowed in this bivac zone. '
+              : null}
+            It is for maximum {bivak.properties.capacity} people and maximum for{' '}
+            {bivak.properties.maxtents} tents.
+            <p>
+              <br />
+              <a className={styles.link} href={bivak.properties.website}>
+                Learn More &#8594;{' '}
+              </a>
+            </p>
+            {/* <span>
             location:{bivak.geometry.coordinates[0]},{bivak.geometry.coordinates[1]}
-          </li>
-        </ul>
+          </span> */}
+          </p>
+        </article>
       </Col>
     </Row>
   );

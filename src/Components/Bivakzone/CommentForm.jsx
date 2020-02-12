@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import DisplayComment from './DisplayComment';
 import { Translate } from 'react-localize-redux';
 import { Link } from 'react-router-dom';
+import styles from './commentform.module.css';
 
 const Comment = ({ id }) => {
   const [oldComments, setOldComments] = useState(null);
@@ -17,7 +18,6 @@ const Comment = ({ id }) => {
       .then(comments => setOldComments(comments))
       .catch(err => console.log(err));
   };
-
   commentGetter();
 
   const LinkWithText = () => (
@@ -49,41 +49,78 @@ const Comment = ({ id }) => {
   return (
     <Row>
       <Col lg={12}>
-        {oldComments ? <DisplayComment oldComments={oldComments} /> : null}
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group>
-            <Form.Label>
-              <Translate id="comment.name">Name</Translate>
-            </Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              placeholder="your name"
-              ref={register({ required: true })}
-            />
-            {errors.name && <span className="errors">Name is required</span>}
-          </Form.Group>
+        <article className={styles.form}>
+          {oldComments ? <DisplayComment oldComments={oldComments} /> : null}
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+              <h4 className={styles.h11}>Leave your comment/feedback!</h4>
+              <Form.Label>
+                <Translate id="comment.name">Name * </Translate>
+              </Form.Label>
+              <Form.Control
+                className={styles.formItems}
+                type="text"
+                name="name"
+                placeholder="Type your name..."
+                ref={register({ required: true })}
+              />
+              {errors.name && <span className="errors">Name is required</span>}
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>
-              <Translate id="comment.message">Comment</Translate>
-            </Form.Label>
-            <Form.Control
-              as="textarea"
-              row="3"
-              name="message"
-              placeholder="your comment"
-              ref={register({ required: true })}
-            />
-            {errors.message && <span className="errors">Comment is required</span>}
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            <Translate id="comment.submit">Submit</Translate>
-          </Button>
-        </Form>
+            <Form.Group>
+              <Form.Label>Comment * </Form.Label>
+              <Form.Control
+                as="textarea"
+                row="3"
+                name="message"
+                placeholder="Type your comment..."
+                ref={register({ required: true })}
+                className={styles.formItems}
+              />
+              {errors.message && <span className="errors">Comment is required</span>}
+            </Form.Group>
+            <Button className={styles.button} variant="primary" type="submit">
+              Post Comment
+            </Button>
+          </Form>
+        </article>
       </Col>
     </Row>
   );
 };
 
 export default Comment;
+
+//     <Row>
+//         <Col lg={12}>
+//             {oldComments ? <DisplayComment oldComments={oldComments}/> : null}
+//             <Form onSubmit={handleSubmit(onSubmit)}>
+//                 <Form.Group>
+//                     <Form.Label><Translate id="comment.name">Name</Translate></Form.Label>
+//                     <Form.Control
+//                         type="text"
+//                         name="name"
+//                         placeholder="your name"
+//                         ref={register({required: true})}
+//                     />
+//                     {errors.name && <span className="errors">Name is required</span>}
+//                 </Form.Group>
+
+//                 <Form.Group>
+//                     <Form.Label><Translate id="comment.message">Comment</Translate></Form.Label>
+//                     <Form.Control
+//                         as="textarea"
+//                         row="3"
+//                         name="message"
+//                         placeholder="your comment"
+//                         ref={register({required: true})}
+//                     />
+//                     {errors.message && <span className="errors">Comment is required</span>}
+//                 </Form.Group>
+//                 <Button variant="primary" type="submit">
+//                     <Translate id="comment.submit">Submit</Translate>
+//                 </Button>
+//             </Form>
+//         </Col>
+//     </Row>
+// )
