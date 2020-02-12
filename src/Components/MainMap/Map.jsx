@@ -267,7 +267,10 @@ class Map extends React.Component {
               </GeoJSON>
             );
           })}
-          <Control key={this.state.showLocation} position="bottomright">
+          <Control
+            key={this.state.showLocation}
+            position={window.visualViewport.height < 700 ? 'topright' : 'bottomright'}
+          >
             {/* Control is used to control a component's position on map */}
             <button
               className="location-button"
