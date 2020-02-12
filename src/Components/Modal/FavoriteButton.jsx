@@ -9,7 +9,7 @@ const FavoriteButton = ({bivakzone,refresh})=>{
     const [store, setStore]= useState(initialValue);
     console.log(store)
     let exist
-      if (store){
+      if (store.length > 1){
            exist = store.find((fav)=> fav.id === bivakzone.id);
       }
     
@@ -65,6 +65,7 @@ const FavoriteButton = ({bivakzone,refresh})=>{
     "id": ""
         }];
       localStorage.setItem('favourites', JSON.stringify(defaultArr) )
+      setStore(JSON.parse(localStorage.getItem('favourites')))
       refresh(store)
     }
 
