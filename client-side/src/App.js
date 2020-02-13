@@ -1,10 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Layout from './Components/Layout';
-import {LocalizeProvider} from 'react-localize-redux'
+import { LocalizeProvider } from 'react-localize-redux';
 
 function App() {
-  return ( 
+  return (
     <LocalizeProvider>
       <Layout />
     </LocalizeProvider>
