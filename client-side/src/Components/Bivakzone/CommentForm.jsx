@@ -14,7 +14,7 @@ const Comment = ({ id }) => {
 
   const commentGetter = () => {
     axios
-      .get(`/api/comment/${id.replace('/', '%2F')}`)
+      .get(`/comment/${id.replace('/', '%2F')}`)
       .then(comments => setOldComments(comments))
       .catch(err => console.log(err));
   };
@@ -34,7 +34,7 @@ const Comment = ({ id }) => {
     e.target.reset();
     axios
       .post(
-        `/api/comment`,
+        `/comment`,
         { id, name, message },
         {
           headers: { 'Content-Type': 'application/json' },

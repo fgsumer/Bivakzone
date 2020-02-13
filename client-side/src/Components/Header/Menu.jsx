@@ -28,7 +28,7 @@ class Menu extends React.Component {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">
-          <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
+          <img src="Alternative-1.png" alt="Locate your bivakzone" style={{ height: '2rem' }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -50,7 +50,7 @@ class Menu extends React.Component {
                 }
               }}
             >
-              Search
+              Filter
             </Nav.Link>
             <Nav.Link>Favorites</Nav.Link>
             {/* <LanguageToggle /> */}

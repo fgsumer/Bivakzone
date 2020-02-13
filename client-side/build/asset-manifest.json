@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Berihugebre/BootCamp-Bivakzone/static/css/main.f05cbdd5.chunk.css",
+    "main.js": "/Berihugebre/BootCamp-Bivakzone/static/js/main.61070a33.chunk.js",
+    "main.js.map": "/Berihugebre/BootCamp-Bivakzone/static/js/main.61070a33.chunk.js.map",
+    "runtime-main.js": "/Berihugebre/BootCamp-Bivakzone/static/js/runtime-main.13cce980.js",
+    "runtime-main.js.map": "/Berihugebre/BootCamp-Bivakzone/static/js/runtime-main.13cce980.js.map",
+    "static/css/2.67123b20.chunk.css": "/Berihugebre/BootCamp-Bivakzone/static/css/2.67123b20.chunk.css",
+    "static/js/2.0e323e79.chunk.js": "/Berihugebre/BootCamp-Bivakzone/static/js/2.0e323e79.chunk.js",
+    "static/js/2.0e323e79.chunk.js.map": "/Berihugebre/BootCamp-Bivakzone/static/js/2.0e323e79.chunk.js.map",
+    "index.html": "/Berihugebre/BootCamp-Bivakzone/index.html",
+    "precache-manifest.d75c09c9b9bce2af10f260486f55a03f.js": "/Berihugebre/BootCamp-Bivakzone/precache-manifest.d75c09c9b9bce2af10f260486f55a03f.js",
+    "service-worker.js": "/Berihugebre/BootCamp-Bivakzone/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/Berihugebre/BootCamp-Bivakzone/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.f05cbdd5.chunk.css.map": "/Berihugebre/BootCamp-Bivakzone/static/css/main.f05cbdd5.chunk.css.map",
+    "static/js/2.0e323e79.chunk.js.LICENSE": "/Berihugebre/BootCamp-Bivakzone/static/js/2.0e323e79.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13cce980.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.0e323e79.chunk.js",
+    "static/css/main.f05cbdd5.chunk.css",
+    "static/js/main.61070a33.chunk.js"
+  ]
+}

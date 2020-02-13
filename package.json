@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-postbuild": "cd client-side && npm install && npm run build"
+    "heroku-postbuild": "cd client-side/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Berihugebre/BootCamp-Bivakzone/issues"
   },
-  "homepage": "https://github.com/Berihugebre/BootCamp-Bivakzone#readme",
+  "homepage": "http://localhost:3000/",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

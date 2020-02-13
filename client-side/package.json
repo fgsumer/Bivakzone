@@ -38,7 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxies": {
+    "origin": "https://cryptic-anchorage-35269.herokuapp.com/"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -67,5 +69,5 @@
   "bugs": {
     "url": "https://github.com/Berihugebre/BootCamp-Bivakzone/issues"
   },
-  "homepage": "https://github.com/Berihugebre/BootCamp-Bivakzone#readme"
+  "homepage": "http://localhost:3000/"
 }

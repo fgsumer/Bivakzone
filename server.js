@@ -9,9 +9,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 require('dotenv').config();
 
-// app.use(cors());
-// app.use(express.json());
-
 const mongoose = require('mongoose');
 const uri = process.env.ATLAS_URI;
 
@@ -23,10 +20,13 @@ connection
   })
   .catch(err => console.log(err));
 
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'client-side/build')));
+app.use(express.static(path.resolve(__dirname, './client-side/build')));
 
-app.get('/api', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const comment = await Comment.find();
     res.json(comment);
@@ -37,7 +37,7 @@ app.get('/api', async (req, res) => {
   }
 });
 
-app.get('/api/comment/:id', async (req, res) => {
+app.get('/comment/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const comment = await Comment.find({ bivakId: `${id}` });
@@ -54,7 +54,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client-side/build/index.html'));
 });
 
-app.post('/api/comment', async (req, res) => {
+app.post('/comment', async (req, res) => {
   const { name, message } = req.body;
   const bivakId = req.body.id;
   const comment = new Comment({ bivakId, name, message });
