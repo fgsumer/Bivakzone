@@ -3,7 +3,8 @@ import { Menu, Checkbox } from 'antd';
 import Bivakzones from '../../bivakzones.json';
 import Controllers from '../../controllers/controllers';
 import './Filter.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
+import {Translate} from 'react-localize-redux';
 
 const { SubMenu } = Menu;
 let filtredBivs;
@@ -86,7 +87,7 @@ class Filter extends Component {
             </li>
             <li className="item">
               <Checkbox id="fee" onChange={this.handleOnChange}>
-                <acronym title="no fee">
+                <acronym title="fee">
                   <span>
                     <img src="/Icons/fee.png" alt="no fee icon" className="icon" />
                   </span>
@@ -104,9 +105,9 @@ class Filter extends Component {
               </Checkbox>
             </li>
             <li className="item ">
-              <button onClick={this.handleFilterClick} className="listButton">
-                Filter
-              </button>
+              <Button onClick={this.handleFilterClick} className="listButton">
+               <Translate id="menu.filter">Filter</Translate>
+              </Button>
             </li>
           </ul>
         </Row>
