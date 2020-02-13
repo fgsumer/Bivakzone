@@ -45,6 +45,6 @@ export default props => {
       </Carousel>
     );
   } else {
-    return <h1>Nothingness</h1>;
+    return null;
   }
 };

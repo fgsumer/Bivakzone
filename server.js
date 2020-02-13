@@ -23,7 +23,7 @@ connection
   })
   .catch(err => console.log(err));
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
   try {
     const comment = await Comment.find();
     res.json(comment);
@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.get('/comment/:id', async (req, res) => {
+app.get('/api/comment/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const comment = await Comment.find({ bivakId: `${id}` });
@@ -50,7 +50,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client-side/build/index.html'));
 });
 
-app.post('/comment', async (req, res) => {
+app.post('/api/comment', async (req, res) => {
   const { name, message } = req.body;
   const bivakId = req.body.id;
   const comment = new Comment({ bivakId, name, message });
