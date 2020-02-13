@@ -46,6 +46,10 @@ app.get('/comment/:id', async (req, res) => {
   }
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client-side/build/index.html'));
+});
+
 app.post('/comment', async (req, res) => {
   const { name, message } = req.body;
   const bivakId = req.body.id;
@@ -63,7 +67,7 @@ app.post('/comment', async (req, res) => {
 });
 
 app
-  .use(express.static(path.join(__dirname, 'public')))
+  .use(express.static(path.join(__dirname, 'client-side/build')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .listen(port, () => console.log(`Listening on port ${port}`));

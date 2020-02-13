@@ -1,111 +1,106 @@
-#root .root {
-    margin: 0;
-    /* display: flex;
+.root {
+  margin: 0;
+  /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: red; */
 }
 
 .leaflet-container {
-    margin: 0;
-    height: 92vh;
-    width: 100vw;
-    position: absolute;
-    z-index: -1;
-    overflow: hidden;
+  margin: 0;
+  height: 92vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
 }
 
 #modal {
-    width: 1px;
-    height: 200px;
-    background: darkgoldenrod;
-    transition: width 2s;
-    /* -webkit-transition:2s;
+  width: 1px;
+  height: 200px;
+  background: darkgoldenrod;
+  transition: width 2s;
+  /* -webkit-transition:2s;
     -moz-transition:2s; */
-    /* position: absolute; */
-    /* right:calc(100% - 100px); */
-    overflow: hidden;
-    float: left;
+  /* position: absolute; */
+  /* right:calc(100% - 100px); */
+  overflow: hidden;
+  float: left;
 
-    /* z-index: 2000;  */
+  /* z-index: 2000;  */
 }
 
 #modal_on_click {
-    width: 400px;
-    height: 200px;
-    background: darkgoldenrod;
-    transition: width 1s ease-in-out;
-    overflow: hidden;
-    float: left;
-
-
+  width: 400px;
+  height: 200px;
+  background: darkgoldenrod;
+  transition: width 1s ease-in-out;
+  overflow: hidden;
+  float: left;
 }
 
-
 .image {
-    width: 100%;
+  width: 100%;
 }
 
 /* For mobile phones: */
 
-
 .markerIcon {
-    fill: #b52808;
-    stroke: #b52808;
-    opacity: 0.3;
-    stroke-width: 0.5;
+  fill: #b52808;
+  stroke: #b52808;
+  opacity: 0.3;
+  stroke-width: 0.5;
 }
 
-
 .selector {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .selector > li {
-    display: inline-block;
-    padding: 0 0.5rem;
+  display: inline-block;
+  padding: 0 0.5rem;
 }
 
 .selector button {
-    background-color: #eee;
-    box-shadow: none;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    border-radius: 4px;
-    min-width: 100px;
-    transition: all 0.3s ease-out;
+  background-color: #eee;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  padding: 10px 10px;
+  border-radius: 4px;
+  min-width: 100px;
+  transition: all 0.3s ease-out;
 }
 
 .selector button.active {
-    color: #61dafb;
-    background-color: #20232a;
+  color: #61dafb;
+  background-color: #20232a;
 }
 
 .errors {
-    font-size: small;
-    color: red;
+  font-size: small;
+  color: red;
 }
 
 .name {
-    color: #0275d8;
-    font-weight: bolder;
-    font-size: larger;
+  color: #0275d8;
+  font-weight: bolder;
+  font-size: larger;
 }
 
 .date {
-    color: gray;
-    font-size: x-small;
-    font-weight: bolder;
+  color: gray;
+  font-size: x-small;
+  font-weight: bolder;
 }
 
 .message {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
 }
 
 .image-button {
-    width: 20px;
-    height: 10px;
+  width: 20px;
+  height: 10px;
 }

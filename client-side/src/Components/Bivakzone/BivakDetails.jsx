@@ -1,6 +1,6 @@
 import React from 'react';
-import { Translate } from 'react-localize-redux';
-import { Container, Button, Row, Col } from 'react-bootstrap';
+//import { Translate } from 'react-localize-redux';
+import { Row, Col } from 'react-bootstrap';
 import styles from './bivakdetails.module.css';
 
 const BivakDetails = ({ bivak }) => {

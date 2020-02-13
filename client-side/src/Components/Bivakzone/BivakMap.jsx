@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import { Map as LeafletMap, GeoJSON, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafletMap, GeoJSON, TileLayer, Popup } from 'react-leaflet';
 //import { useParams } from 'react-router-dom';
 import bivakzones from '../../bivakzones.json';
 import Control from 'react-leaflet-control';

@@ -20,11 +20,11 @@ const Comment = ({ id }) => {
   };
   commentGetter();
 
-  const LinkWithText = () => (
-    <Link to="/">
-      <Translate id="here" />
-    </Link>
-  );
+  // const LinkWithText = () => (
+  //   <Link to="/">
+  //     <Translate id="here" />
+  //   </Link>
+  // );
 
   useEffect(() => {
     commentGetter();

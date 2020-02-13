@@ -1,5 +1,5 @@
 import React from 'react';
-import { OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default ({ properties }) => {
   const { bicycle, openfire, fee, toilets, dog, drinking_water, reservation } = properties;
@@ -13,16 +13,31 @@ export default ({ properties }) => {
     opacity: '0.5',
     border: '1px solid rgb(47, 155, 255)',
   };
+  const notKnownStyle = {
+    width: '10%',
+    opacity: '0.5',
+    border: '1px solid blue',
+    backgroundColor: 'gray',
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
       <OverlayTrigger
         placement="bottom"
         delay={{ show: 250, hide: 400 }}
-        overlay={<Tooltip>Dog {dog === 'yes' ? 'is allowed' : "isn't allowed"}</Tooltip>}
+        overlay={
+          <Tooltip>
+            Dog{' '}
+            {dog === 'yes'
+              ? 'is allowed'
+              : dog === 'no'
+              ? "isn't allowed"
+              : 'Info not available for dog'}
+          </Tooltip>
+        }
       >
         <img
-          style={dog === 'yes' ? availableStyle : unavailableStyle}
+          style={dog === 'yes' ? availableStyle : dog === 'no' ? unavailableStyle : notKnownStyle}
           src="/Icons/dog.png"
           alt="dog"
         />
@@ -31,11 +46,19 @@ export default ({ properties }) => {
         placement="bottom"
         delay={{ show: 250, hide: 400 }}
         overlay={
-          <Tooltip>{bicycle === 'yes' ? 'Accessible by ' : 'Not accessible by '}bicycle</Tooltip>
+          <Tooltip>
+            {bicycle === 'yes'
+              ? 'Accessible by bicycle'
+              : bicycle === 'no'
+              ? 'Not accessible by bicycle'
+              : 'Info not available about bicycle'}
+          </Tooltip>
         }
       >
         <img
-          style={bicycle === 'yes' ? availableStyle : unavailableStyle}
+          style={
+            bicycle === 'yes' ? availableStyle : bicycle === 'no' ? unavailableStyle : notKnownStyle
+          }
           src="/Icons/bicycle.png"
           alt="bicycle"
         />
@@ -43,10 +66,25 @@ export default ({ properties }) => {
       <OverlayTrigger
         placement="bottom"
         delay={{ show: 250, hide: 400 }}
-        overlay={<Tooltip>Campfire is {openfire === 'yes' ? 'allowed!' : 'not allowed!'}</Tooltip>}
+        overlay={
+          <Tooltip>
+            Campfire is{' '}
+            {openfire === 'yes'
+              ? 'Campfire is allowed!'
+              : openfire === 'no'
+              ? 'Campfire is not allowed!'
+              : 'Campfire info not available.'}
+          </Tooltip>
+        }
       >
         <img
-          style={openfire === 'yes' ? availableStyle : unavailableStyle}
+          style={
+            openfire === 'yes'
+              ? availableStyle
+              : openfire === 'no'
+              ? unavailableStyle
+              : notKnownStyle
+          }
           src="/Icons/campfire.png"
           alt="open fire"
         />
@@ -55,11 +93,17 @@ export default ({ properties }) => {
         placement="bottom"
         delay={{ show: 250, hide: 400 }}
         overlay={
-          <Tooltip>{fee === 'yes' ? 'Payment required!' : "You don't need to pay!"}</Tooltip>
+          <Tooltip>
+            {fee === 'yes'
+              ? 'Payment required!'
+              : fee === 'no'
+              ? "You don't need to pay!"
+              : 'Payment info is not available.'}
+          </Tooltip>
         }
       >
         <img
-          style={fee === 'yes' ? availableStyle : unavailableStyle}
+          style={fee === 'yes' ? availableStyle : fee === 'no' ? unavailableStyle : notKnownStyle}
           src="/Icons/fee.png"
           alt="fee"
         />
@@ -96,11 +140,20 @@ export default ({ properties }) => {
         placement="bottom"
         delay={{ show: 250, hide: 400 }}
         overlay={
-          <Tooltip>Toilet {toilets === 'yes' ? 'is available!' : "isn't available!"}</Tooltip>
+          <Tooltip>
+            Toilet{' '}
+            {toilets === 'yes'
+              ? 'is available!'
+              : toilets === 'no'
+              ? "isn't available!"
+              : 'info not available.'}
+          </Tooltip>
         }
       >
         <img
-          style={toilets === 'yes' ? availableStyle : unavailableStyle}
+          style={
+            toilets === 'yes' ? availableStyle : toilets === 'no' ? unavailableStyle : notKnownStyle
+          }
           src="/Icons/toilet.png"
           alt="toilet"
         />

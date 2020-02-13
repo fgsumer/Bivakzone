@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import BivakMap from './BivakMap';
+//import BivakMap from './BivakMap';
 import Bivakzone from './Bivakzone';
-import { Col } from 'react-bootstrap';
+//import { Col } from 'react-bootstrap';
 
 class Single extends Component {
   id = this.props.location.pathname

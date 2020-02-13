@@ -1,12 +1,12 @@
 {
-  "name": "BootCamp-Bivakzone",
+  "name": "BootCamp-Bivakzone-express",
   "version": "1.0.0",
   "description": "is a web app used to find bivakzones in Belguim. As advocates of open knowledge, we are going to use openstreetmap a free, editable map of the whole world.\tis a web app used to find bivakzones in Belguim. As advocates of open knowledge, we are going to use openstreetmap a free, editable map of the whole world.",
   "main": "db.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-postbuild": "cd client-side && npm install && npm run build"
+    "heroku-postbuild": "cd client-side && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mapbox-react": "^1.0.0",
     "mongoose": "^5.8.12"
   }
 }

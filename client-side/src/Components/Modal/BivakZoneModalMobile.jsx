@@ -18,7 +18,7 @@ class BivakZoneModal extends Component {
   //   },()=>console.log(this.state.slide))
   // }
   render() {
-    const { Meta } = Card;
+    //const { Meta } = Card;
     return (
       <>
         <article className={this.props.className}>

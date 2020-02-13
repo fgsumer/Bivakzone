@@ -22,7 +22,7 @@ class BivakZoneModal extends Component {
     );
   };
   render() {
-    const { Meta } = Card;
+    //const { Meta } = Card;
     return (
       <>
         <article style={this.props.style} className={'bivak_modal'}>

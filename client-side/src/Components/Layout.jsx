@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Menu from './Header/Menu';
