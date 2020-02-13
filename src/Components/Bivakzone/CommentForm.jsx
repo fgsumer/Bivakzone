@@ -20,12 +20,6 @@ const Comment = ({ id }) => {
   };
   commentGetter();
 
-  const LinkWithText = () => (
-    <Link to="/">
-      <Translate id="here" />
-    </Link>
-  );
-
   useEffect(() => {
     commentGetter();
   }, [newComment]);
@@ -55,7 +49,7 @@ const Comment = ({ id }) => {
           {oldComments ? <DisplayComment oldComments={oldComments} /> : null}
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
-              <h4 className={styles.h11}>Leave you comment!</h4>
+              <h4 className={styles.h11}>Leave your comment</h4>
               <Form.Label>
                 <Translate id="comment.name">Name * </Translate>
               </Form.Label>
@@ -82,7 +76,7 @@ const Comment = ({ id }) => {
               {errors.message && <span className="errors">Comment is required</span>}
             </Form.Group>
             <Button className={styles.button} variant="primary" type="submit">
-              Post Comment
+              Post
             </Button>
           </Form>
         </article>

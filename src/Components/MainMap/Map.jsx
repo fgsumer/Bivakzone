@@ -1,5 +1,5 @@
 import React from 'react';
-import L, { circleMarker } from 'leaflet';
+import L from 'leaflet';
 import { GeoJSON, Map as LeafletMap, Marker, Popup, TileLayer, ZoomControl,CircleMarker } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js';
 import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import '../Modal/BivakZoneModal.css'
 
 
 
@@ -292,7 +293,8 @@ class Map extends React.Component {
             >
               {this.state.showModal ? leftArrow : rightArrow}
             </button>
-            <BivakzoneModalMobile
+           
+            <BivakzoneModalMobile 
               className={
                 this.state.showModal ? 'bivak_modal_mobile_show' : 'bivak_modal_mobile_hide'
               }

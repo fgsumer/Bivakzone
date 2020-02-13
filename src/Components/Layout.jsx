@@ -6,6 +6,7 @@ import Map from './MainMap/Map';
 import bivakzones from '../bivakzones.json';
 import Single from './Bivakzone/Index';
 import './Layout.css';
+import FavoriteLists from './Modal/FavoriteLists';
 
 const Layout = props => {
   const [showFilter, setShowFilter] = useState();
@@ -40,6 +41,7 @@ const Layout = props => {
                   exact
                   component={Single}
                 />
+                <Route exact path="/favorite" component={FavoriteLists}/>
               </Switch>
             </Col>
           </Row>

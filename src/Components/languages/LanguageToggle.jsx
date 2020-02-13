@@ -6,7 +6,9 @@ const LanguageToggle = ({ languages, activeLanguage, setActiveLanguage }) => (
   <ul className="selector">
     {languages.map(lang => (
       <li key={lang.code}>
-        <Button onClick={() => setActiveLanguage(lang.code)}>{lang.name}</Button>
+        <Button size="sm" onClick={() => setActiveLanguage(lang.code)}>
+          {lang.name}
+        </Button>
       </li>
     ))}
   </ul>

@@ -63,10 +63,8 @@ const FavoriteButton = ({ bivakzone }) => {
 
   return (
     <>
-      <Button variant={exist ? 'warning' : 'success'} onClick={handleClick}>
-        <i class="fas fa-star"></i>
-      </Button>
-      <Button onClick={handleFav}>Remove favorite</Button>
+      <Button variant={exist ? 'warning' : 'success'} onClick={handleClick} className="fas fa-star m-2" />
+      {/* <Button onClick={handleFav}>Remove favorite</Button> */}
     </>
   );
 };
