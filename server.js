@@ -9,8 +9,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 require('dotenv').config();
 
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
 
 const mongoose = require('mongoose');
 const uri = process.env.ATLAS_URI;
@@ -22,6 +22,9 @@ connection
     console.log('MongoDB database connection established successfully');
   })
   .catch(err => console.log(err));
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'client-side/build')));
 
 app.get('/api', async (req, res) => {
   try {
@@ -46,9 +49,6 @@ app.get('/api/comment/:id', async (req, res) => {
   }
 });
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'client-side/build')));
-
 // Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client-side/build/index.html'));
@@ -70,8 +70,4 @@ app.post('/api/comment', async (req, res) => {
   }
 });
 
-app
-  .use(express.static(path.join(__dirname, 'client-side/build')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}`));
