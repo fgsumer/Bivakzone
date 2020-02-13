@@ -4,6 +4,7 @@
   "description": "is a web app used to find bivakzones in Belguim. As advocates of open knowledge, we are going to use openstreetmap a free, editable map of the whole world.\tis a web app used to find bivakzones in Belguim. As advocates of open knowledge, we are going to use openstreetmap a free, editable map of the whole world.",
   "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "heroku-postbuild": "cd client-side && npm install --only=dev && npm install && npm run build"
   },
