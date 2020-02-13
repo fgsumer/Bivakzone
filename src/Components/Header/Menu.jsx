@@ -1,9 +1,10 @@
 import React from 'react';
-import {Navbar, Nav}  from 'react-bootstrap';
-import {withLocalize, Translate} from 'react-localize-redux';
+import { Navbar, Nav } from 'react-bootstrap';
+import { withLocalize, Translate } from 'react-localize-redux';
 import globalTranslations from '../languages/data/language.json';
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToStaticMarkup } from 'react-dom/server';
 import LanguageToggle from '../languages/LanguageToggle';
+import Map from '../MainMap/Map.jsx';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class Menu extends React.Component {
       translation: globalTranslations,
       options: { renderToStaticMarkup },
     });
-
     this.props.addTranslation(globalTranslations);
     this.state = {
       filterClicked: false,
@@ -43,13 +43,11 @@ class Menu extends React.Component {
     return (
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
-          <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
-          
-
+          <img src="/Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
         </Navbar.Brand>
           <Nav>
-            <Nav.Link onClick={this.handleClick}>Search</Nav.Link>
-            <Nav.Link href="/favorite">Favorites</Nav.Link>
+            <Nav.Link onClick={this.handleClick}><Translate id="menu.filter">Filter</Translate></Nav.Link>
+            <Nav.Link href="/favorite"><Translate id="menu.favorite">Favorites</Translate></Nav.Link>
           </Nav>
             <LanguageToggle />
       </Navbar>
