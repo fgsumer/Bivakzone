@@ -11,6 +11,14 @@
   position: relative;
 }
 
+.bivak_btn{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* .bivak_modal_mobile{
     width: 30vw;
     height: 92vh;
@@ -48,8 +56,8 @@
   }
   .bivak_modal_mobile_show {
     width: 93vw;
-    height: 48vh;
-    top: 13vh;
+    height: 52vh;
+    top: 10vh;
     left: 1rem;
     position: relative;
     background: white;
