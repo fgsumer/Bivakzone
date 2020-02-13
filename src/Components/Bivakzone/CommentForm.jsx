@@ -47,7 +47,7 @@ const Comment = ({ id }) => {
           {oldComments ? <DisplayComment oldComments={oldComments} /> : null}
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
-              <h4 className={styles.h11}>Leave your comment</h4>
+              <h4 className={styles.h11}><Translate id="comment.header">Leave your comment</Translate></h4>
               <Form.Label>
                 <Translate id="comment.name">Name * </Translate>
               </Form.Label>
@@ -58,11 +58,13 @@ const Comment = ({ id }) => {
                 placeholder="Type your name..."
                 ref={register({ required: true })}
               />
-              {errors.name && <span className="errors">Name is required</span>}
+              {errors.name && <span className="errors"><Translate id="comment.errorName">Name is required</Translate></span>}
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Comment * </Form.Label>
+              <Form.Label>
+                <Translate id="comment.message">Comment *</Translate>
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 row="3"
@@ -71,10 +73,10 @@ const Comment = ({ id }) => {
                 ref={register({ required: true })}
                 className={styles.formItems}
               />
-              {errors.message && <span className="errors">Comment is required</span>}
+              {errors.message && <span className="errors"><Translate id="comment.errorMessage">Comment is required</Translate></span>}
             </Form.Group>
             <Button className={styles.button} variant="primary" type="submit">
-              Post
+               <Translate id="comment.post">Post</Translate>
             </Button>
           </Form>
         </article>

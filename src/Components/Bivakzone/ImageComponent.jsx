@@ -3,6 +3,7 @@ import {Carousel, Button, Container, Card } from 'react-bootstrap';
 import FavoriteButton from '../Modal/FavoriteButton';
 import controllers from '../../controllers/controllers';
 import {Link} from 'react-router-dom'
+import { Translate } from 'react-localize-redux';
 
 
 const ImageComponent=({bivak})=>{
@@ -25,7 +26,7 @@ const ImageComponent=({bivak})=>{
         return (
             <Container>
                 <FavoriteButton bivakzone={bivak} />
-                <Link to='/' ><Button className="far fa-arrow-alt-circle-left ml-5">Back</Button></Link>   
+                <Link to='/' ><Button className="far fa-arrow-alt-circle-left ml-5"><Translate id="comment.back">Back</Translate></Button></Link>   
                 <Carousel>
                     <Carousel.Item style={{width: "100%", height: "300px", overflow: "hidden"}}>
                         <img
@@ -50,7 +51,7 @@ const ImageComponent=({bivak})=>{
         return (
             <Container>
                 <FavoriteButton bivakzone={bivak} />
-                <Link to='/' ><Button className="far fa-arrow-alt-circle-left ml-5">Back</Button></Link>
+                <Link to='/' ><Button className="far fa-arrow-alt-circle-left ml-5"><Translate id="comment.back">Back</Translate></Button></Link>
             <Carousel>
                 {arryOfImages.map((image)=>(
                     <Carousel.Item style={{width: "100%", height: "300px", overflow: "hidden"}}>

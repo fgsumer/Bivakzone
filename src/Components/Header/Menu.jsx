@@ -43,11 +43,11 @@ class Menu extends React.Component {
     return (
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
-          <img src="Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
+          <img src="/Alternative-1.png" alt="logo" style={{ height: '2rem' }} />
         </Navbar.Brand>
           <Nav>
-            <Nav.Link onClick={this.handleClick}>Search</Nav.Link>
-            <Nav.Link href="/favorite">Favorites</Nav.Link>
+            <Nav.Link onClick={this.handleClick}><Translate id="menu.filter">Filter</Translate></Nav.Link>
+            <Nav.Link href="/favorite"><Translate id="menu.favorite">Favorites</Translate></Nav.Link>
           </Nav>
             <LanguageToggle />
       </Navbar>
