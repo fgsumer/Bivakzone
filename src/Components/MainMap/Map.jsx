@@ -7,7 +7,6 @@ import BivakZoneModal from '../Modal/BivakZoneModal';
 import '../../App.css';
 import './Map.css';
 import { Icon } from 'antd';
-import 'react-confirm-alert/src/react-confirm-alert.css';
 import Controllers from '../../controllers/controllers.js';
 import BivakzoneModalMobile from '../Modal/BivakZoneModalMobile';
 
