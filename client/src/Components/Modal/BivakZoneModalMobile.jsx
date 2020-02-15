@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import '../../App.css';
-import { Card, Row } from 'antd';
-import BivakCarousel from './Carousal';
-import Footer from './ModalFooter';
-import './BivakZoneModal.css';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "../../App.css";
+import { Card, Row } from "antd";
+import BivakCarousel from "./Carousal";
+import Footer from "./ModalFooter";
+import "./BivakZoneModal.css";
+import { Link } from "react-router-dom";
 
 class BivakZoneModal extends Component {
   // state= {
@@ -18,34 +18,24 @@ class BivakZoneModal extends Component {
   //   },()=>console.log(this.state.slide))
   // }
   render() {
-    const { Meta } = Card;
     return (
       <>
         <article className={this.props.className}>
           {this.props.bivakzone && (
             <>
-              <Row style={{ height: '50%' }}>
-                <Card
-                  bivakzone={this.props.bivakzone}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    border: '1xp soldi red',
-                    overflow: 'hidden',
-                  }}
-                  cover={<BivakCarousel bivakzone={this.props.bivakzone} />}
-                ></Card>
-              </Row>
-
-              <Row>
+              <div className= "carousel">
+                <BivakCarousel bivakzone={this.props.bivakzone} />
+              </div>
+ 
+              <div className="title">
                 <Link to={`/home/${this.props.bivakzone.id}`}>
-                  <h1>{this.props.bivakzone.properties.name}</h1>
+                  <h6>{this.props.bivakzone.properties.name}</h6>
                 </Link>
-              </Row>
+              </div>
 
-              <Row style={{ height: 'max-content', borderTop: '1px solid rgb(47, 155, 255)' }}>
+              <div className="footer">
                 <Footer properties={this.props.bivakzone.properties}></Footer>
-              </Row>
+              </div>
             </>
           )}
         </article>

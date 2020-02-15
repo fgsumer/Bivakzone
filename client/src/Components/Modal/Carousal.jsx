@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
-import Bivakzones from '../../bivakzones.json.js';
+import Bivakzones from '../../bivakzones.json';
 import Controllers from '../../controllers/controllers';
 
 export default props => {

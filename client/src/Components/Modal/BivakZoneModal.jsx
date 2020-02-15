@@ -41,9 +41,9 @@ class BivakZoneModal extends Component {
                 ></Card>
               </Row>
               <Row>
-                <Col>
+                <Col >
                   <Link to={`/home/${this.props.bivakzone.id}`}>
-                    <h1>{this.props.bivakzone.properties.name}</h1>
+                    <p>{this.props.bivakzone.properties.name}</p>
                   </Link>
                 </Col>
                 <Col>

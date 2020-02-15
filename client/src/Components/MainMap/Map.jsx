@@ -14,8 +14,9 @@ import BivakZoneModal from "../Modal/BivakZoneModal";
 import "../../App.css";
 import "./Map.css";
 import { Icon } from "antd";
-import Controllers from "../../controllers/controllers.js.js";
+import Controllers from "../../controllers/controllers.js";
 import BivakzoneModalMobile from "../Modal/BivakZoneModalMobile";
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const Leaflet = window.L;
 let markerdefault = L.icon({

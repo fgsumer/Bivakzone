@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Comment from './CommentForm';
 import BivakDetails from './BivakDetails';
-import bivakzones from '../../bivakzones.json.js';
+import bivakzones from '../../bivakzones.json';
 import ImageComponent from './ImageComponent';
 
 

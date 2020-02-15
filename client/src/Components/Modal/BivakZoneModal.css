@@ -33,30 +33,49 @@
   }
 
   .bivak_modal_mobile_hide {
-    width: 93vw;
+    width: 87vw;
     height: 18vh;
     top: 7vh;
-    left: 1rem;
     position: relative;
-    background: white;
+    background: rgb(224, 216, 216);
     transform: translateX(0vw);
     transition: transform 1s ease-in-out;
     overflow: hidden;
     z-index: 1;
+    border: 1px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
     display: block;
   }
+  .title{
+    font-size: 3rem;
+    background-color: white;
+    padding: .5rem .5rem .5rem 0rem ;
+    width: fit-content;
+    margin: 1rem 1rem 2rem 0rem;
+
+  }
+  .footer{
+
+    background-color: white;
+    padding: 0rem 1rem 0rem 1rem ;
+    width: fit-content;
+    margin: 1rem 1rem 4rem 0rem;
+  }
+  
   .bivak_modal_mobile_show {
-    width: 93vw;
-    height: 48vh;
+    display: flex;
+
+    padding: .5rem .5rem .5rem .5rem ;
+    width: 87vw;
+    height: 75vh;
     top: 13vh;
-    left: 1rem;
     position: relative;
-    background: white;
+    background: rgb(224, 216, 216);
     transform: translateX(0vw);
     transition: transform 1s ease-in-out;
     overflow: hidden;
     z-index: 1;
+    border: 1px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
     display: block;
   }

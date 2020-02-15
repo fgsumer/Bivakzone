@@ -1,5 +1,5 @@
 
-const bivakzones = require("../bivakzones.json.js")
+const bivakzones = require("../bivakzones.json")
 
     
        class Controllers {

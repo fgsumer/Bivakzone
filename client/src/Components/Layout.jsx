@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Menu from './Header/Menu';
 import Map from './MainMap/Map';
-import bivakzones from '../bivakzones.json.js';
+import bivakzones from '../bivakzones.json';
 import Single from './Bivakzone/Index';
 import './Layout.css';
 import FavoriteLists from './Modal/FavoriteLists';
