@@ -1,0 +1,32 @@
+{
+    "menu": {
+      "title": ["Bivouac Zone", "Bivakzone", "Zone De Bivouac"],
+      "filter":["Filter", "Filter", "Filtre"],
+      "favorite":["Favorite", "Favorieten", "Favoris"]
+    },
+        
+   "properties" :{
+          "bicycle": ["Accessible by bicycle", "Bereikbaar per fiets", "Accessible en vélo"],
+          "fire": ["Is Camp-fire Allowed","Is kampvuur toegestaan", "Le feu de camp est-il autorisé" ],
+          "toilet": ["Is there a toilet","Is er een toilet", "Y a-t-il des toilettes" ],
+          "water": ["Is there drinkable water", "Is er drinkbaar water", "Y a-t-il de l'eau potable"],
+          "fee": ["Should I have to pay", "Moet ik betalen", "Dois-je payer"],
+          "reservation": ["Is reservation required", "Is reserveren verplicht", "Faut-il réserver"],
+          "dog": ["Is a dog allowed", "Is een hond toegestaan", "Un chien est-il autorisé"],
+          "hours": ["Opening Hours", "Openingstijden", "Horaires d'ouvertures"],
+          "stay": ["Maximum Stay", "Maximaal verblijf", "Séjour maximum"],
+          "tent": ["Maximum Tent", " Maximale tent", "Tente maximum"],
+          "operator": ["Operator", "Operator", "Opérateur"]
+        },
+
+    "comment":{
+      "name":["Name", "Naam","Nom"],
+      "back":["Back", "Terug","Retour"],
+      "message":["Comment", "Commentaar", "Ommentaire"],
+      "post":["Post", "Post", "Publier"],
+      "header":["Leave your comment","Laat jouw reactie achter","laisse ton commentaire"],
+      "errorName":["Name is required", "Naam is vereist", "Le nom est requis"],
+      "errorMessage":["Comment is required", "Commentaar is verplicht", "Un commentaire est requis"]
+    }
+    
+  }

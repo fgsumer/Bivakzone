@@ -1,0 +1,15 @@
+.layout {
+    padding: 0;
+}
+
+.layout_header {
+    height: 8vh;
+}
+
+.layout_header .row {
+    height: 100%;
+}
+
+.layout_header nav {
+    height: 100%;
+}
