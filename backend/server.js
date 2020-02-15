@@ -2,6 +2,12 @@ const express = require('express');
 const Comment = require('./model');
 const cors = require('cors')
 const Db = require('./db');
+const fs= require('fs')
+const Converter= require('./jsonToGeoJson')
+
+const originalJSON= JSON.parse(fs.readFileSync('GeoJson.json'));
+
+
 
 const app = express();
 app.use(express.json());
@@ -45,5 +51,28 @@ app.post('/comment', async (req, res)=> {
           })
     }
 });
+
+app.get('/geojson', async(req, res)=>{
+
+
+  try{
+    console.log('hi')
+
+   const theGeoj= Converter.jsonToGeoJson(originalJSON)
+  
+
+   res.status(201).send(theGeoj)
+  
+  }
+  catch (error) {
+    res.status(404).json({
+        message: error.message
+      })
+}
+}
+ 
+
+
+)
 
 app.listen(8000, ()=>console.log('Server running on port 8000'))
