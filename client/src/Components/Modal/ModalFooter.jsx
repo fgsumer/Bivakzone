@@ -5,17 +5,20 @@ export default ({ properties }) => {
   const { bicycle, openfire, fee, toilets, dog, drinking_water, reservation } = properties;
   const availableStyle = {
     width: '10%',
-    // border: '1px solid blue',
+    border: '1px solid black',
+    borderRadius: '50px',
     backgroundColor: 'rgb(47, 155, 255)',
+    marginRight:'5%'
   };
   const unavailableStyle = {
     width: '10%',
-    opacity: '0.5',
-    border: '1px solid rgb(47, 155, 255)',
-  };
+    marginRight:'5%',
+    border: '1px solid black',
+    borderRadius: '50px',
+  }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+    <div style={{ width:'100%',display: 'flex', flexDirection: 'row', justifyContent: 'space-around', overflowX:"auto", alignItems:"center" }}>
       <OverlayTrigger
         placement="bottom"
         delay={{ show: 250, hide: 400 }}

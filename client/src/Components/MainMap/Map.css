@@ -1,7 +1,7 @@
 .sidepanel {
   position: absolute;
   z-index: 400;
-  width: max-content;
+  width: min-content;
 }
 
 .location-button {
@@ -18,8 +18,9 @@
   float: left;
   position: absolute;
   top: 0;
-  right: 28vw;
+  left: 1rem;
   background: white;
+  margin-left: 0.5rem;
 }
 .sidepanel_btn_clicked {
   height: 4rem;
@@ -27,8 +28,9 @@
   float: left;
   position: absolute;
   top: 0;
-  right: -2vw;
+  left: 32vw;
   background: white;
+  margin-left:-1rem;
 }
 
 .sidepanel_btn {
@@ -56,6 +58,7 @@
 @media screen and (max-width: 770px) {
   .sidepanel {
     bottom: 0;
+    height: fit-content;
   }
   .sidepanel_btn_unclicked {
     top: 92vh;
@@ -70,7 +73,7 @@
   .sidepanel_btn_2_unclicked {
     margin-bottom: 4rem;
     transform: rotate(-90deg);
-    top: 0;
+    left: 50%;
     display: block;
     left: 50%;
     position: absolute;

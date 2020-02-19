@@ -7,6 +7,7 @@ import "./BivakZoneModal.css";
 import { Link } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton";
 
+
 class BivakZoneModal extends Component {
   state = {
     slide: false,
@@ -28,39 +29,23 @@ class BivakZoneModal extends Component {
         <article style={this.props.style} className={"bivak_modal"}>
           {this.props.bivakzone && (
             <>
-              <Row style={{ height: "50%" }}>
-                <Card
-                  bivakzone={this.props.bivakzone}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "1xp soldi red",
-                    overflow: "hidden"
-                  }}
-                  cover={<BivakCarousel bivakzone={this.props.bivakzone} />}
-                ></Card>
-              </Row>
-              <Row>
-                <Col >
-                  <Link to={`/home/${this.props.bivakzone.id}`}>
-                    <p>{this.props.bivakzone.properties.name}</p>
-                  </Link>
-                </Col>
-                <Col>
-                  <FavoriteButton
+               <div className= "carousel">
+                <BivakCarousel bivakzone={this.props.bivakzone} />
+              </div>
+ 
+              <div className="title">
+                <Link to={`/home/${this.props.bivakzone.id}`}>
+                  <h6>{this.props.bivakzone.properties.name}</h6>
+                </Link>
+                <FavoriteButton className='favourite_btn'
                     refresh={this.refreshSate}
                     bivakzone={this.props.bivakzone}
                   />
-                </Col>
-              </Row>
-              <Row
-                style={{
-                  height: "max-content",
-                  borderTop: "1px solid rgb(47, 155, 255)"
-                }}
-              >
+              </div>
+
+              <div className="footer">
                 <Footer properties={this.props.bivakzone.properties}></Footer>
-              </Row>
+              </div>
             </>
           )}
         </article>

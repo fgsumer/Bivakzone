@@ -182,6 +182,7 @@ class Map extends React.Component {
       />
     );
 
+    let btn_2= this.state.showModal ? "sidepanel_btn_2_clicked" : "sidepanel_btn_2_unclicked"
     const position = [this.state.location.lat, this.state.location.lng];
     const bounds = Leaflet.latLngBounds([position, this.state.markerPosition]);
     return (
@@ -310,11 +311,7 @@ class Map extends React.Component {
             />
             <button
               onClick={this.handleArrowClick}
-              className={
-                this.state.showModal
-                  ? "sidepanel_btn_2_clicked"
-                  : "sidepanel_btn_2_unclicked"
-              }
+              className= {"sidepanel_btn_2" +" "+ btn_2 }
             >
               {this.state.showModal ? leftArrow : rightArrow}
             </button>

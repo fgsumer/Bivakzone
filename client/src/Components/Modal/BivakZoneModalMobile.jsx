@@ -5,6 +5,7 @@ import BivakCarousel from "./Carousal";
 import Footer from "./ModalFooter";
 import "./BivakZoneModal.css";
 import { Link } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton"
 
 class BivakZoneModal extends Component {
   // state= {
@@ -20,7 +21,7 @@ class BivakZoneModal extends Component {
   render() {
     return (
       <>
-        <article className={this.props.className}>
+        <article className={ "bivak_modal_mobile"+" "+ this.props.className}>
           {this.props.bivakzone && (
             <>
               <div className= "carousel">
@@ -31,6 +32,10 @@ class BivakZoneModal extends Component {
                 <Link to={`/home/${this.props.bivakzone.id}`}>
                   <h6>{this.props.bivakzone.properties.name}</h6>
                 </Link>
+                <FavoriteButton className='favourite_btn'
+                    refresh={this.refreshSate}
+                    bivakzone={this.props.bivakzone}
+                  />
               </div>
 
               <div className="footer">
