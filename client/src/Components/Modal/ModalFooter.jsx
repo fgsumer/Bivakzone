@@ -1,21 +1,22 @@
 import React from 'react';
 import { OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
+import './BivakZoneModal.css'
 
 export default ({ properties }) => {
   const { bicycle, openfire, fee, toilets, dog, drinking_water, reservation } = properties;
-  const availableStyle = {
-    width: '10%',
-    border: '1px solid black',
-    borderRadius: '50px',
-    backgroundColor: 'rgb(47, 155, 255)',
-    marginRight:'5%'
-  };
-  const unavailableStyle = {
-    width: '10%',
-    marginRight:'5%',
-    border: '1px solid black',
-    borderRadius: '50px',
-  }
+  // const "availableStyle" = {
+  //   width: '10%',
+  //   border: '1px solid black',
+  //   borderRadius: '50px',
+  //   backgroundColor: 'rgb(47, 155, 255)',
+  //   marginRight:'5%',
+  // };
+  // const un"availableStyle" = {
+  //   width: '10%',
+  //   marginRight:'5%',
+  //   border: '1px solid black',
+  //   borderRadius: '50px',
+  // }
 
   return (
     <div style={{ width:'100%',display: 'flex', flexDirection: 'row', justifyContent: 'space-around', overflowX:"auto", alignItems:"center" }}>
@@ -24,8 +25,8 @@ export default ({ properties }) => {
         delay={{ show: 250, hide: 400 }}
         overlay={<Tooltip>Dog {dog === 'yes' ? 'is allowed' : "isn't allowed"}</Tooltip>}
       >
-        <img
-          style={dog === 'yes' ? availableStyle : unavailableStyle}
+        <img 
+          className={dog === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/dog.png"
           alt="dog"
         />
@@ -37,8 +38,8 @@ export default ({ properties }) => {
           <Tooltip>{bicycle === 'yes' ? 'Accessible by ' : 'Not accessible by '}bicycle</Tooltip>
         }
       >
-        <img
-          style={bicycle === 'yes' ? availableStyle : unavailableStyle}
+        <img 
+          className={bicycle === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/bicycle.png"
           alt="bicycle"
         />
@@ -48,8 +49,8 @@ export default ({ properties }) => {
         delay={{ show: 250, hide: 400 }}
         overlay={<Tooltip>Campfire is {openfire === 'yes' ? 'allowed!' : 'not allowed!'}</Tooltip>}
       >
-        <img
-          style={openfire === 'yes' ? availableStyle : unavailableStyle}
+        <img className={openfire === 'yes' ? "icon":null}
+          className={openfire === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/campfire.png"
           alt="open fire"
         />
@@ -61,8 +62,8 @@ export default ({ properties }) => {
           <Tooltip>{fee === 'yes' ? 'Payment required!' : "You don't need to pay!"}</Tooltip>
         }
       >
-        <img
-          style={fee === 'yes' ? availableStyle : unavailableStyle}
+        <img 
+          className={fee === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/fee.png"
           alt="fee"
         />
@@ -76,8 +77,8 @@ export default ({ properties }) => {
           </Tooltip>
         }
       >
-        <img
-          style={drinking_water === 'yes' ? availableStyle : unavailableStyle}
+        <img 
+          className={drinking_water === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/drinking_water.png"
           alt="drink water"
         />
@@ -89,8 +90,8 @@ export default ({ properties }) => {
           <Tooltip>Reservation is {reservation === 'yes' ? 'required!' : 'not necessary.'}</Tooltip>
         }
       >
-        <img
-          style={reservation === 'yes' ? availableStyle : unavailableStyle}
+        <img 
+          className={reservation === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/reservation.png"
           alt="reservation"
         />
@@ -103,7 +104,7 @@ export default ({ properties }) => {
         }
       >
         <img
-          style={toilets === 'yes' ? availableStyle : unavailableStyle}
+          className={toilets === 'yes' ? "availableStyle" : "unavailableStyle"}
           src="/Icons/toilet.png"
           alt="toilet"
         />
@@ -115,31 +116,31 @@ export default ({ properties }) => {
 /* const amenities = [
   [
     "Dog {dog === 'yes' ? 'is allowed' : 'isn't allowed'}",
-    "<img style={dog === 'yes' ? availableStyle : unavailableStyle} src='/Icons/dog.png' />",
+    "<img style={dog === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/dog.png' />",
   ],
   [
     "{bicycle === 'yes' ? 'Accessible by ' : 'Not accessible by '}bicycle",
-    "<img style={bicycle === 'yes' ? availableStyle : unavailableStyle} src='/Icons/bicycle.png'/>",
+    "<img style={bicycle === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/bicycle.png'/>",
   ],
   [
     "Campfire is {openfire === 'yes' ? 'allowed!' : 'not allowed!'}",
-    "<img style={openfire === 'yes' ? availableStyle : unavailableStyle} src='/Icons/campfire.png'/>",
+    "<img style={openfire === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/campfire.png'/>",
   ],
   [
     "{fee === 'yes' ? 'Payment required!' : 'You don't need to pay!'}",
-    "<img style={fee === 'yes' ? availableStyle : unavailableStyle} src='/Icons/fee.png' />",
+    "<img style={fee === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/fee.png' />",
   ],
   [
     "Drinking water {drinking_water === 'yes' ? 'is available!' : 'isn't available!'}",
-    "<img style={drinking_water === 'yes' ? availableStyle : unavailableStyle} src='/Icons/drinking_water.png'/>",
+    "<img style={drinking_water === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/drinking_water.png'/>",
   ],
   [
     "Reservation is {reservation === 'yes' ? 'required!' : 'not necessary.'}",
-    "<img style={reservation === 'yes' ? availableStyle : unavailableStyle} src='/Icons/reservation.png'/>",
+    "<img style={reservation === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/reservation.png'/>",
   ],
   [
     "Toilet {toilets === 'yes' ? 'is available!' : 'isn't available!'}",
-    "<img style={toilets === 'yes' ? availableStyle : unavailableStyle} src='/Icons/toilet.png'/>",
+    "<img style={toilets === 'yes' ? "availableStyle" : un"availableStyle"} src='/Icons/toilet.png'/>",
   ],
 ]; 
 

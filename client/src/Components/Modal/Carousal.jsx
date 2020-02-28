@@ -17,12 +17,12 @@ export default props => {
 
     return (
       <Carousel
-        style={{ width: '100%', height: '100%', border: '1px solid black', overflow: 'hidden' }}
+        style={{ width: '100%', height: '100%', border: '1px solid black', overflow: 'hidden', paddingLeft: '2px' }}
         activeIndex={index}
         onSelect={handleSelect}
       >
         {imgsURL.length === 0 ? (
-          <Carousel.Item style={{ width: '100%', height: '200px', overflow: 'hidden' }}>
+          <Carousel.Item style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
             <img
               // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
               className="d-block w-100 h-100"
@@ -32,7 +32,7 @@ export default props => {
           </Carousel.Item>
         ) : (
           imgsURL.map(url => (
-            <Carousel.Item style={{ width: '100%', height: '200px', overflow: 'hidden' }}>
+            <Carousel.Item style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
               <img
                 // style={{overflow:"hidden", backgroundSize: "cover", width:"100px", height:"100px"}}
                 className="d-block w-100 h-100"

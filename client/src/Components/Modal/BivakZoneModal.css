@@ -1,6 +1,6 @@
 .bivak_modal {
   width: 30vw;
-  height: 61vh;
+  height: 74vh;
   background: rgb(224, 221, 221);
   transform: translateX(0vw);
   transition: transform 1s ease-in-out;
@@ -42,6 +42,39 @@
   align-items: center;
 }
 
+ .availableStyle {
+  width: 10%;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: rgb(47, 155, 255);
+  margin-right:5%;
+}
+
+.availableStyle:hover{
+
+  position:relative;
+  top:-5%;
+  width:14%;
+  height:auto;
+  display:block;
+  z-index:999;
+}
+.unavailableStyle {
+  width: 10%;
+  margin-right:5%;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+.unavailableStyle:hover{
+
+  position:relative;
+  top:-5%;
+  width:14%;
+  height:auto;
+  display:block;
+  z-index:999;
+}
+
 @media screen and (max-width: 770px) {
   .bivak_modal {
     width: 100vw;
@@ -81,7 +114,7 @@
   .footer{
     padding: 0rem 1rem 0rem 1rem ;
     /* width: fit-content; */
-    margin: 1rem 1rem 4rem 0rem;
+    margin: 0.2rem 1rem 4rem 0rem;
     overflow-x: auto;
     background-color: gray;
   }
@@ -91,7 +124,7 @@
     flex-direction: column;
     padding: .5rem .5rem .5rem .5rem ;
     width: 100vw;
-    height: 75vh;
+    height: 80vh;
     top: 13vh;
     position: relative;
     background-color: rgb(224, 216, 216);

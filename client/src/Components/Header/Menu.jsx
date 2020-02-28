@@ -12,7 +12,7 @@ class Menu extends React.Component {
     this.props.initialize({
       languages: [
         { name: 'En', code: 'en' },
-        { name: 'Du', code: 'du' },
+        { name: 'Nl', code: 'nl' },
         { name: 'Fr', code: 'fr' },
       ],
       translation: globalTranslations,
