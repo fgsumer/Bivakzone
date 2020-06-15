@@ -10,7 +10,7 @@ Locate is built for the “Outdoor for all” project that aims to map bivac zon
 ## Installation 
 * Clone the repository 
 ```bash
-$ git clone https://github.com/fgsumer/Locate.git
+$ git clone https://github.com/fgsumer/locate.git
 ```
 * Install the dependencies on both root and front end directories
 ```bash
